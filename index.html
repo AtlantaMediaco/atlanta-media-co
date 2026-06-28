@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Atlanta Media Co. — Cinematic Real Estate Media</title>
+<meta name="description" content="Cinematic real estate video, editorial photography, aerial, and 3D tours in Atlanta & North Georgia. Crafted to sell faster and build a brand that lingers." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Albert+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+/* =================================================================
+   ATLANTA MEDIA CO. — CINEMATIC LUXURY
+   ================================================================= */
+:root{
+  --bg:#f5f1e8;            /* warm cream (light) */
+  --bg-2:#efe9dc;
+  --panel:#e7dfce;
+  --ivory:#1a1611;         /* warm near-black text */
+  --ivory-2:#2c2519;
+  --muted:#6f6757;
+  --muted-2:#9a9080;
+  --brass:#cf1f2d;         /* deep red — true red, not orange */
+  --brass-2:#9c1420;       /* deep red accent text */
+  --line:rgba(26,22,17,.16);
+  --line-2:rgba(26,22,17,.08);
+  --serif:'Archivo','Albert Sans',sans-serif;
+  --sans:'Albert Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --e:cubic-bezier(.16,1,.3,1);
+  --e2:cubic-bezier(.7,0,.2,1);
+  --pad:clamp(1.25rem,4.5vw,5rem);
+  --maxw:1560px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ivory);font-size:16px;line-height:1.6;overflow-x:hidden}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--brass);color:var(--bg)}
+.serif{font-family:var(--serif)}
+.italic{font-style:italic}
+em{font-style:italic;color:var(--brass-2);font-family:var(--serif)}
+/* grain */
+.grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.vignette{position:fixed;inset:0;z-index:8999;pointer-events:none;box-shadow:inset 0 0 16vw rgba(50,34,16,.12)}
+/* ---------- custom cursor ---------- */
+.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9500;pointer-events:none;border-radius:50%;mix-blend-mode:difference}
+.cursor-dot{width:6px;height:6px;background:var(--ivory);transform:translate(-50%,-50%)}
+.cursor-ring{width:46px;height:46px;border:1px solid rgba(244,239,230,.6);transform:translate(-50%,-50%);
+  transition:width .35s var(--e),height .35s var(--e),background .35s var(--e),border-color .35s var(--e),opacity .35s}
+.cursor-ring .clabel{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;color:var(--bg);opacity:0;transition:opacity .3s;text-transform:uppercase}
+body.cur-hover .cursor-ring{width:84px;height:84px;background:var(--ivory);border-color:var(--ivory)}
+body.cur-hover .cursor-ring .clabel{opacity:1}
+@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
+/* ---------- preloader ---------- */
+.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.2rem}
+.loader.done{transform:translateY(-100%);transition:transform 1.1s var(--e)}
+.loader .lname{font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.04em;color:var(--ivory);opacity:0;animation:fadeUp 1s var(--e) .15s forwards}
+.loader .lbar{width:min(320px,60vw);height:1px;background:var(--line);position:relative;overflow:hidden}
+.loader .lbar i{position:absolute;inset:0;background:var(--brass);transform:scaleX(0);transform-origin:left}
+.loader .lnum{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--muted)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+/* ---------- type helpers ---------- */
+.tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-2);display:inline-flex;align-items:center;gap:.7rem}
+.tag::before{content:"";width:1.4rem;height:1px;background:var(--brass-2)}
+.tag.bare::before{display:none}
+.tag.center{justify-content:center}
+h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.04;letter-spacing:-.02em}
+/* word reveal */
+.lines .ln{display:block;overflow:hidden}
+.lines .w{display:inline-block;overflow:hidden;vertical-align:top}
+.lines .w > span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--e)}
+.lines.in .w > span{transform:translateY(0)}
+.lines .w{margin-right:.26em}
+/* ---------- buttons ---------- */
+.btn{position:relative;display:inline-flex;align-items:center;gap:.8rem;font-family:var(--sans);font-weight:500;
+  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:1.1rem 2rem;border-radius:1px;overflow:hidden;z-index:0;
+  transition:color .5s var(--e)}
+.btn .ar{transition:transform .5s var(--e)}
+.btn:hover .ar{transform:translateX(5px)}
+.btn::after{content:"";position:absolute;inset:0;z-index:-1;transition:transform .6s var(--e);transform-origin:left}
+.btn-brass{background:var(--brass);color:var(--bg)}
+.btn-brass::after{background:var(--ivory);transform:scaleX(0)}
+.btn-brass:hover::after{transform:scaleX(1)}
+.btn-out{border:1px solid var(--line);color:var(--ivory)}
+.btn-out::after{background:var(--ivory);transform:scaleX(0)}
+.btn-out:hover{color:var(--bg)}
+.btn-out:hover::after{transform:scaleX(1)}
+.btn-line{padding:0;letter-spacing:.16em;position:relative}
+.btn-line span.u{position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:currentColor;transform:scaleX(1);transform-origin:right;transition:transform .5s var(--e)}
+.btn-line:hover span.u{transform:scaleX(0);transform-origin:left}
+/* =================================================================
+   NAV
+   ================================================================= */
+header.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.7rem var(--pad);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:transform .6s var(--e),background .5s var(--e),padding .5s var(--e),border-color .5s var(--e);
+  border-bottom:1px solid transparent}
+header.nav.hide{transform:translateY(-100%)}
+header.nav.solid{background:rgba(245,241,232,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  padding:1.1rem var(--pad);border-bottom:1px solid var(--line-2)}
+.wordmark{font-family:var(--serif);font-size:1.3rem;letter-spacing:.02em;line-height:1}
+.wordmark small{display:block;font-family:var(--mono);font-size:.52rem;letter-spacing:.32em;color:var(--muted);margin-top:.4rem;text-transform:uppercase}
+.nav-r{display:flex;align-items:center;gap:2.4rem}
+.nav-r a.l{position:relative;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory-2);transition:color .4s}
+.nav-r a.l::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--brass);transition:width .4s var(--e)}
+.nav-r a.l:hover{color:var(--brass-2)}
+.nav-r a.l:hover::after{width:100%}
+.nav-book{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:.7rem 1.3rem;border-radius:1px;transition:all .45s var(--e)}
+.nav-book:hover{background:var(--brass);border-color:var(--brass);color:var(--bg)}
+.burger{display:none;flex-direction:column;gap:6px;width:30px;z-index:1100}
+.burger span{height:1.5px;width:100%;background:var(--ivory);transition:all .4s var(--e)}
+.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+.mobile{position:fixed;inset:0;z-index:1050;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);transform:translateY(-100%);transition:transform .7s var(--e)}
+.menu-open .mobile{transform:translateY(0)}
+.mobile a{font-family:var(--serif);font-size:clamp(2.2rem,11vw,4rem);padding:.45rem 0;border-bottom:1px solid var(--line-2);transition:color .4s,padding-left .4s var(--e)}
+.mobile a:hover{color:var(--brass-2);padding-left:1rem}
+.mobile .mf{margin-top:2.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
+/* =================================================================
+   HERO
+   ================================================================= */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;padding:0 var(--pad) clamp(2.5rem,6vh,5rem)}
+.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-media video,.hero-media .fb{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;top:-9%}
+.hero-media video{opacity:0;transition:opacity 1.6s var(--e)}
+.hero-media video.ready{opacity:1}
+.fb{background:
+  radial-gradient(110% 80% at 78% 12%,rgba(207,31,45,.20),transparent 55%),
+  radial-gradient(120% 120% at 8% 92%,rgba(206,186,156,.5),transparent 60%),
+  linear-gradient(160deg,#f7f3ea 0%,#ece4d4 50%,#e3d8c3 100%);
+  animation:kb 30s var(--e2) infinite alternate}
+.fb::after{content:"";position:absolute;inset:0;opacity:.25;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E")}
+@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16)}}
+.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(245,241,232,.94) 2%,rgba(245,241,232,.5) 38%,rgba(245,241,232,.15) 62%,rgba(245,241,232,.45) 100%)}
+/* cinematic letterbox bars */
+.bar{position:absolute;left:0;width:100%;height:6vh;background:var(--bg);z-index:3;pointer-events:none}
+.bar.top{top:0}.bar.bot{bottom:0}
+.hero-in{position:relative;z-index:4;width:100%;max-width:var(--maxw);margin:0 auto}
+.hero h1{font-size:clamp(2.6rem,8vw,8rem);line-height:.94;letter-spacing:-.02em;max-width:16ch;margin:1.6rem 0 1.7rem}
+.hero h1 .sm{display:block;font-size:.32em;font-style:italic;font-weight:400;color:var(--ivory-2);letter-spacing:0;margin-bottom:.25em}
+.hero .lede{font-size:clamp(1rem,1.4vw,1.18rem);max-width:48ch;color:rgba(26,22,17,.75);line-height:1.6}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;margin-top:2.4rem}
+.hero-corners{position:absolute;inset:0;z-index:4;pointer-events:none}
+.hc{position:absolute;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,22,17,.5)}
+.hc.tl{top:calc(6vh + 1.6rem);left:var(--pad)}
+.hc.br{bottom:calc(6vh + 1.6rem);right:var(--pad);text-align:right}
+.scroll-cue{position:absolute;left:50%;bottom:calc(6vh + 1.2rem);transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(26,22,17,.5);pointer-events:none}
+.scroll-cue .ln{width:1px;height:40px;background:linear-gradient(var(--brass),transparent);animation:drop 2.2s var(--e) infinite}
+.scroll-cue span{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.sound{position:absolute;right:var(--pad);bottom:calc(6vh + 1.2rem);z-index:5;display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,22,17,.7);pointer-events:auto}
+.sound .dot{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
+.sound:hover .dot{border-color:var(--brass)}
+.sound svg{width:13px;height:13px;fill:var(--ivory)}
+/* hero entrance (after loader) */
+.he{opacity:0;transform:translateY(22px)}
+.reveal-now .he{opacity:1;transform:translateY(0);transition:opacity 1s var(--e),transform 1s var(--e)}
+.reveal-now .d1{transition-delay:.1s}.reveal-now .d2{transition-delay:.25s}.reveal-now .d3{transition-delay:.4s}.reveal-now .d4{transition-delay:.55s}
+/* =================================================================
+   MARQUEE
+   ================================================================= */
+.strip{border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:1.5rem 0;overflow:hidden;background:var(--bg)}
+.strip .lab{text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-bottom:1.1rem}
+.mq{display:flex;width:max-content;gap:3.5rem;white-space:nowrap;animation:scrollx 45s linear infinite}
+.strip:hover .mq{animation-play-state:paused}
+.mq .it{font-family:var(--serif);font-size:1.4rem;color:var(--ivory-2);display:inline-flex;align-items:center;gap:3.5rem;font-style:italic}
+.mq .it::after{content:"✦";font-style:normal;color:var(--brass);font-size:.6rem}
+@keyframes scrollx{to{transform:translateX(-50%)}}
+/* =================================================================
+   SECTION SHELL
+   ================================================================= */
+section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
+.wrap{max-width:var(--maxw);margin:0 auto;width:100%}
+.shead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:clamp(2.5rem,5vh,4.5rem)}
+.shead h2{font-size:clamp(2rem,5vw,4.6rem);max-width:18ch}
+/* =================================================================
+   MANIFESTO
+   ================================================================= */
+.manifesto .big{font-family:var(--serif);font-size:clamp(1.6rem,4.2vw,3.4rem);line-height:1.22;font-weight:400;max-width:26ch;letter-spacing:-.005em}
+.manifesto .grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:3rem}
+.manifesto .note{max-width:40ch;color:var(--muted);justify-self:end;font-size:1.02rem}
+@media(min-width:900px){.manifesto .grid{grid-template-columns:1.5fr .8fr;align-items:end}}
+/* =================================================================
+   FEATURED REELS (vertical)
+   ================================================================= */
+.reels{background:var(--bg-2)}
+.reel-row{display:flex;gap:clamp(.9rem,1.6vw,1.4rem);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-ms-overflow-style:none;scrollbar-width:none}
+.reel-row::-webkit-scrollbar{display:none}
+.reel{position:relative;flex:0 0 auto;width:clamp(220px,23vw,300px);aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);scroll-snap-align:start;cursor:pointer}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--e)}
+.reel:hover video,.reel:hover img{transform:scale(1.05)}
+.reel .meta{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;z-index:2;
+  background:linear-gradient(to top,rgba(8,6,4,.85),transparent)}
+.reel .meta .pl{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:#f0a594;text-transform:uppercase}
+.reel .meta .ti{font-family:var(--serif);font-size:1.05rem;margin-top:.25rem;color:#f6f2ea}
+.reel .pp{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(244,239,230,.16);backdrop-filter:blur(6px);display:grid;place-items:center;border:1px solid var(--line);z-index:2;transition:all .4s}
+.reel:hover .pp{background:var(--brass);border-color:var(--brass)}
+.reel .pp svg{width:11px;height:11px;fill:var(--ivory)}
+/* placeholder */
+.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;overflow:hidden;background:linear-gradient(145deg,var(--panel),#d8ccb4)}
+.ph::before{content:"";position:absolute;inset:0;opacity:.25;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n3)'/%3E%3C/svg%3E")}
+.ph .ico{width:28px;height:28px;opacity:.5;stroke:var(--brass-2);fill:none;stroke-width:1.2}
+.ph .lb{position:relative;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* =================================================================
+   SERVICES (hover preview)
+   ================================================================= */
+.services{background:var(--bg)}
+.svc-wrap{position:relative}
+.svc-list{border-top:1px solid var(--line)}
+.svc{display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;padding:clamp(1.6rem,3.6vw,2.6rem) 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .5s var(--e)}
+.svc:hover{padding-left:1.4rem}
+.svc .n{font-family:var(--mono);font-size:.78rem;color:var(--brass);align-self:start;padding-top:.5rem}
+.svc .nm{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.05;transition:color .4s,opacity .4s}
+.svc .ds{color:var(--muted);max-width:46ch;margin-top:.6rem;font-size:.98rem}
+.svc .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.svc .tg{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line-2);padding:.3rem .7rem;border-radius:99px}
+.svc .pk{font-family:var(--mono);font-size:.66rem;color:var(--muted-2);letter-spacing:.1em;text-transform:uppercase;align-self:start;padding-top:.5rem;transition:color .4s}
+.svc:hover .nm{color:var(--brass-2)}
+@media(hover:hover) and (pointer:fine){
+  .svc-wrap.has-hover .svc:not(.active) .nm{opacity:.32}
+}
+.svc-preview{position:fixed;width:300px;height:380px;border-radius:3px;overflow:hidden;pointer-events:none;z-index:50;opacity:0;transform:scale(.94) translate(-50%,-50%);transition:opacity .4s var(--e),transform .5s var(--e);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.svc-preview.show{opacity:1;transform:scale(1) translate(-50%,-50%)}
+.svc-preview img,.svc-preview video{width:100%;height:100%;object-fit:cover}
+@media(max-width:780px){.svc-preview{display:none}.svc{grid-template-columns:auto 1fr}.svc .pk{display:none}}
+/* =================================================================
+   SELECTED WORK (full-bleed projects)
+   ================================================================= */
+.work{background:var(--bg-2)}
+.projects{display:flex;flex-direction:column;gap:clamp(3rem,7vw,6rem)}
+.proj{position:relative;cursor:pointer}
+.proj-media{position:relative;overflow:hidden;border-radius:3px;aspect-ratio:16/9;background:var(--panel);
+  clip-path:inset(8% 6% 8% 6%);transition:clip-path 1.2s var(--e)}
+.proj.in .proj-media{clip-path:inset(0 0 0 0)}
+.proj-media .inner{position:absolute;inset:0;transform:scale(1.18);transition:transform 1.4s var(--e)}
+.proj.in .proj-media .inner{transform:scale(1)}
+.proj-media .inner img,.proj-media .inner video{width:100%;height:100%;object-fit:cover}
+.proj-media .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,.6),transparent 45%);opacity:0;transition:opacity .5s}
+.proj:hover .proj-media .scrim{opacity:1}
+.proj:hover .proj-media .inner{transform:scale(1.04)}
+.proj .pp-big{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);width:clamp(70px,7vw,96px);height:clamp(70px,7vw,96px);border-radius:50%;background:rgba(244,239,230,.12);backdrop-filter:blur(8px);border:1px solid var(--line);display:grid;place-items:center;z-index:3;opacity:0;transition:all .5s var(--e)}
+.proj:hover .pp-big{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.proj .pp-big svg{width:22px;height:22px;fill:var(--ivory);margin-left:3px}
+.proj-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:1.3rem}
+.proj-foot .t{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1;transition:color .4s}
+.proj:hover .proj-foot .t{color:var(--brass-2)}
+.proj-foot .m{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.proj-foot .m b{color:var(--brass-2);font-weight:400}
+/* =================================================================
+   FILM BAND
+   ================================================================= */
+.filmband{padding:0;background:var(--bg)}
+.filmband .frame{position:relative;height:clamp(420px,72vh,760px);overflow:hidden;display:grid;place-items:center}
+.filmband video,.filmband img{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;top:-5%}
+.filmband .scrim{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(245,241,232,.4),rgba(245,241,232,.82))}
+.filmband .center{position:relative;z-index:2;text-align:center;padding:0 var(--pad)}
+.filmband .center .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;color:var(--brass-2);text-transform:uppercase}
+.filmband .center h2{font-size:clamp(2rem,6vw,5rem);margin:1rem 0 2rem;max-width:18ch;margin-inline:auto}
+.fplay{position:relative;width:clamp(80px,9vw,120px);height:clamp(80px,9vw,120px);border-radius:50%;background:rgba(26,22,17,.06);border:1px solid var(--line);display:grid;place-items:center;margin:0 auto;backdrop-filter:blur(8px);transition:all .5s var(--e)}
+.fplay::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--brass-2);animation:pulse 2.8s var(--e) infinite}
+@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
+.fplay:hover{background:var(--brass);transform:scale(1.05)}
+.fplay svg{width:26px;height:26px;fill:var(--ivory);margin-left:4px}
+/* =================================================================
+   STATS
+   ================================================================= */
+.stats{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(2.5rem,5vw,3rem) 1rem}
+@media(min-width:820px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
+.st .n{font-family:var(--serif);font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:.95;letter-spacing:-.02em;color:var(--ivory)}
+.st .n em{color:var(--brass-2)}
+.st .l{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.9rem}
+.st .d{color:var(--muted-2);margin-top:.5rem;font-size:.92rem;max-width:24ch}
+/* =================================================================
+   ABOUT
+   ================================================================= */
+.about{background:var(--bg)}
+.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
+@media(min-width:900px){.about-grid{grid-template-columns:.82fr 1.18fr}}
+.about-photo{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;background:var(--panel);clip-path:inset(6% 0 6% 0);transition:clip-path 1.2s var(--e)}
+.about-photo.in{clip-path:inset(0 0 0 0)}
+.about-photo .inner{position:absolute;inset:0;transform:scale(1.15);transition:transform 1.4s var(--e)}
+.about-photo.in .inner{transform:scale(1)}
+.about-photo .inner img{width:100%;height:100%;object-fit:cover}
+.about-photo .badge{position:absolute;left:0;bottom:1.4rem;background:var(--brass);color:var(--bg);padding:.6rem 1.2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;z-index:2}
+.about-body h2{font-size:clamp(2rem,4.6vw,3.6rem);margin:1.1rem 0 1.4rem;max-width:18ch}
+.about-body p{color:var(--muted);max-width:54ch;margin-bottom:1.1rem;font-size:1.05rem}
+.about-sign{font-family:var(--serif);font-style:italic;font-size:1.7rem;margin-top:1.6rem;color:var(--ivory)}
+.about-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:.4rem}
+/* =================================================================
+   PROCESS
+   ================================================================= */
+.process{background:var(--bg-2)}
+.steps{display:grid;grid-template-columns:1fr;gap:clamp(1.6rem,3vw,2.5rem)}
+@media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{padding-top:1.6rem;border-top:1px solid var(--line)}
+.step .sn{font-family:var(--mono);font-size:.72rem;color:var(--brass);letter-spacing:.1em}
+.step h3{font-size:clamp(1.4rem,3vw,2rem);margin:.9rem 0 .6rem}
+.step p{color:var(--muted);max-width:34ch}
+/* =================================================================
+   TESTIMONIALS
+   ================================================================= */
+.tests{background:var(--bg);text-align:center;overflow:hidden}
+.tests .tag{margin-bottom:2.5rem}
+.t-stage{position:relative;min-height:clamp(220px,32vh,300px)}
+.t-item{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.6rem;opacity:0;transform:translateY(20px);transition:opacity .8s var(--e),transform .8s var(--e);pointer-events:none}
+.t-item.on{opacity:1;transform:translateY(0)}
+.t-item .stars{color:var(--brass-2);letter-spacing:.3em;font-size:.9rem}
+.t-item .q{font-family:var(--serif);font-size:clamp(1.4rem,3.6vw,2.6rem);line-height:1.3;font-weight:400;max-width:24ch}
+.t-item .who .nm{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
+.t-item .who .rl{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted);margin-top:.4rem;text-transform:uppercase}
+.t-dots{display:flex;gap:.6rem;justify-content:center;margin-top:2.5rem}
+.t-dots button{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .4s}
+.t-dots button.on{background:var(--brass);width:22px;border-radius:99px}
+/* =================================================================
+   CTA
+   ================================================================= */
+.cta{background:var(--bg-2);text-align:center;padding:clamp(5rem,13vh,11rem) var(--pad)}
+.cta .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--brass-2);text-transform:uppercase}
+.cta h2{font-size:clamp(2.4rem,7.5vw,6.5rem);line-height:.98;max-width:16ch;margin:1.4rem auto 1.6rem}
+.cta .sub{color:var(--muted);max-width:46ch;margin:0 auto 2.6rem;font-size:1.05rem}
+.cta .avail{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:2.2rem;display:inline-flex;align-items:center;gap:.6rem}
+.cta .avail .pulse{width:7px;height:7px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 0 rgba(207,31,45,.6);animation:beat 2s infinite}
+@keyframes beat{0%{box-shadow:0 0 0 0 rgba(207,31,45,.5)}70%{box-shadow:0 0 0 9px rgba(207,31,45,0)}100%{box-shadow:0 0 0 0 rgba(207,31,45,0)}}
+/* =================================================================
+   FOOTER
+   ================================================================= */
+footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;border-top:1px solid var(--line-2)}
+.foot-top{display:grid;grid-template-columns:1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line-2)}
+@media(min-width:860px){.foot-top{grid-template-columns:1.5fr .6fr .6fr 1fr}}
+.foot-brand .wm{font-family:var(--serif);font-size:2.2rem}
+.foot-brand p{color:var(--muted-2);max-width:32ch;margin-top:1.2rem;font-size:.95rem}
+.fcol h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-2);margin-bottom:1.2rem}
+.fcol a,.fcol p{display:block;color:var(--ivory-2);font-size:.95rem;padding:.35rem 0;transition:color .3s,padding-left .3s var(--e)}
+.fcol a:hover{color:var(--brass-2);padding-left:.4rem}
+.nl{display:flex;border:1px solid var(--line);border-radius:1px;overflow:hidden;margin-top:.6rem}
+.nl input{flex:1;background:transparent;border:none;padding:.85rem 1rem;color:var(--ivory);font-family:inherit;font-size:.9rem;outline:none}
+.nl input::placeholder{color:var(--muted-2)}
+.nl button{background:var(--brass);color:var(--bg);padding:0 1.1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;transition:background .4s}
+.nl button:hover{background:var(--brass-2)}
+.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.2rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted-2);text-transform:uppercase}
+.foot-bottom .soc{display:flex;gap:1.4rem}
+.foot-bottom .soc a:hover{color:var(--brass-2)}
+/* =================================================================
+   LIGHTBOX
+   ================================================================= */
+.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(6,5,4,.96);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:var(--pad)}
+.lightbox.open{display:flex}
+.lb-in{position:relative;max-width:1200px;width:100%;max-height:88vh}
+.lb-in img,.lb-in video{width:100%;max-height:88vh;object-fit:contain;border-radius:3px}
+.lb-close{position:absolute;top:-3rem;right:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;display:flex;gap:.6rem;align-items:center;color:#f4efe6}
+.lb-close:hover{color:#f0a594}
+.lb-cap{position:absolute;bottom:-2.6rem;left:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#c9c0b0}
+/* =================================================================
+   REVEAL + RESPONSIVE
+   ================================================================= */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--e),transform 1s var(--e)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.par{will-change:transform}
+@media(max-width:920px){.nav-r{display:none}.burger{display:flex}}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition-duration:.001ms!important}
+  .reveal,.he,.lines .w>span{opacity:1!important;transform:none!important}
+  .proj-media,.about-photo{clip-path:none!important}
+  .proj-media .inner,.about-photo .inner{transform:none!important}
+}
+</style>
+<noscript><style>.he{opacity:1!important;transform:none!important}.reveal,.proj,.about-photo{opacity:1!important;transform:none!important;clip-path:none!important}.loader{display:none!important}.proj-media .inner,.about-photo .inner{transform:none!important}</style></noscript>
+</head>
+<body>
+<div class="grain"></div>
+<div class="vignette"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-ring"><span class="clabel">View</span></div>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#top" class="wordmark" data-cursor="">Atlanta Media Co.<small>More than real estate media</small></a>
+  <nav class="nav-r">
+    <a href="#work" class="l">Work</a>
+    <a href="#services" class="l">Services</a>
+    <a href="#about" class="l">About</a>
+    <a href="#contact" class="l">Contact</a>
+    <a href="#" class="nav-book" data-book>Book a Shoot</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile" id="mobile">
+  <a href="#work">Work</a>
+  <a href="#services">Services</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+  <a href="#" data-book>Book a Shoot</a>
+  <div class="mf">Atlanta &amp; North Georgia · Est. ATL</div>
+</div>
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-media" id="heroMedia"><div class="fb par" data-speed="0.12"></div></div>
+    <div class="hero-scrim"></div>
+    <div class="bar top"></div><div class="bar bot"></div>
+    <div class="hero-corners">
+      <div class="hc tl" id="hcLoc">Atlanta · North Georgia</div>
+      <div class="hc br">Reel — 2025</div>
+    </div>
+    <div class="hero-in">
+      <span class="tag he d1" id="heroEyebrow">Cinematic Real Estate Media</span>
+      <h1 class="he d2">
+        <span class="sm">More than real estate media —</span>
+        captured like <em>cinema.</em>
+      </h1>
+      <p class="lede he d3" id="heroLede">Editorial photography, cinematic video, aerial, and immersive 3D for the properties — and the agents — that refuse to blend in.</p>
+      <div class="hero-cta he d4">
+        <a href="#" class="btn btn-brass" data-book data-cursor>View Pricing &amp; Book <span class="ar">→</span></a>
+        <a href="#" class="btn btn-line" id="heroReel" data-cursor>Watch the Reel <span class="u"></span></a>
+      </div>
+    </div>
+    <button class="sound" id="soundBtn" aria-label="Toggle sound"><span class="dot"><svg id="soundIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2"/><line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2"/></svg></span><span id="soundLabel">Sound Off</span></button>
+    <div class="scroll-cue"><span>Scroll</span><span class="ln"></span></div>
+  </section>
+  <!-- TRUSTED -->
+  <div class="strip">
+    <div class="lab">Trusted by agents &amp; brokerages across Georgia</div>
+    <div class="mq" id="mq"></div>
+  </div>
+  <!-- MANIFESTO -->
+  <section class="manifesto" id="intro">
+    <div class="wrap">
+      <span class="tag reveal">The Philosophy</span>
+      <div class="grid">
+        <p class="big reveal">Exceptional photos and film are only the beginning. We build <em>genuine relationships</em> with agents — and become a real partner in your growth.</p>
+        <p class="note reveal">When your listings move and your brand grows, we've done our job. Let's make something the market remembers.</p>
+      </div>
+    </div>
+  </section>
+  <!-- FEATURED REELS -->
+  <section class="reels" id="reels">
+    <div class="wrap">
+      <div class="shead reveal">
+        <div><span class="tag">Featured Reels</span><h2>Vertical films,<br>built to travel.</h2></div>
+        <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Watch full reel <span class="u"></span></a>
+      </div>
+      <div class="reel-row" id="reelRow"></div>
+    </div>
+  </section>
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="shead reveal">
+        <div><span class="tag">What We Do</span><h2>A full media suite,<br>under one roof.</h2></div>
+        <a href="#" class="btn btn-line" data-book data-cursor>See pricing <span class="u"></span></a>
+      </div>
+      <div class="svc-wrap" id="svcWrap">
+        <div class="svc-list" id="svcList"></div>
+        <div class="svc-preview" id="svcPreview"></div>
+      </div>
+    </div>
+  </section>
+  <!-- SELECTED WORK -->
+  <section class="work" id="work">
+    <div class="wrap">
+      <div class="shead reveal">
+        <div><span class="tag">Selected Work</span><h2>Listings worth<br>lingering on.</h2></div>
+      </div>
+      <div class="projects" id="projects"></div>
+    </div>
+  </section>
+  <!-- FILM BAND -->
+  <section class="filmband" id="film">
+    <div class="frame" id="filmFrame">
+      <div class="ph"><svg class="ico" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="lb">Add your showreel</span></div>
+      <div class="scrim"></div>
+      <div class="center">
+        <div class="k">The Showreel</div>
+        <h2 id="filmTitle">A home, told beautifully.</h2>
+        <button class="fplay" id="fplay" data-cursor="Play" aria-label="Play showreel"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+      </div>
+    </div>
+  </section>
+  <!-- STATS -->
+  <section class="stats" id="stats">
+    <div class="wrap"><div class="stat-grid" id="statGrid"></div></div>
+  </section>
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-photo" id="aboutPhoto"><span class="badge">Founder &amp; Owner</span></div>
+        <div class="about-body reveal">
+          <span class="tag">Behind The Lens</span>
+          <h2>Hi, I'm Victor.</h2>
+          <p>Atlanta Media Co. is built on the belief that great real estate media starts with great relationships. I help agents elevate their listings with high-end visuals — while building genuine connections that last.</p>
+          <p>Every property has a story. My job is to tell it with precision and style — the kind of detail that makes buyers stop scrolling and start booking showings.</p>
+          <div class="about-sign">Victor Huertas</div>
+          <div class="about-role">Founder &amp; Owner — Atlanta Media Co.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="shead reveal"><div><span class="tag">How It Works</span><h2>Simple, by design.</h2></div></div>
+      <div class="steps" id="steps"></div>
+    </div>
+  </section>
+  <!-- TESTIMONIALS -->
+  <section class="tests" id="testimonials">
+    <div class="wrap">
+      <span class="tag center">Kind Words</span>
+      <div class="t-stage" id="tStage"></div>
+      <div class="t-dots" id="tDots"></div>
+    </div>
+  </section>
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="wrap">
+      <span class="k">Let's Work Together</span>
+      <h2 class="reveal">Make your next listing <em>unforgettable.</em></h2>
+      <p class="sub reveal">Premium real estate media in Atlanta &amp; North Georgia. Booking is quick — let's get your property on the calendar.</p>
+      <a href="#" class="btn btn-brass" data-book data-cursor>Book your shoot <span class="ar">→</span></a>
+      <div class="avail"><span class="pulse"></span> Limited monthly availability</div>
+    </div>
+  </section>
+</main>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <div class="wm">Atlanta Media Co.</div>
+        <p>Cinematic real estate video, editorial photography, aerial, and 3D tours for agents across Atlanta &amp; North Georgia.</p>
+      </div>
+      <div class="fcol"><h4>Explore</h4><a href="#work">Work</a><a href="#reels">Reels</a><a href="#services">Services</a><a href="#about">About</a></div>
+      <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a id="emailLink" href="#">Email</a></div>
+      <div class="fcol"><h4>Stay in the loop</h4><p style="padding-top:0">New work, availability &amp; promotions.</p><div class="nl"><input id="nlEmail" type="email" placeholder="Your email" aria-label="Email"/><button id="nlBtn">Join</button></div></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Atlanta Media Co, LLC — Cartersville, GA</span>
+      <div class="soc"><a id="igLink" href="#">Instagram</a><a id="ytLink" href="#">YouTube</a><a id="liLink" href="#">LinkedIn</a></div>
+    </div>
+  </div>
+</footer>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-in">
+    <button class="lb-close" id="lbClose" data-cursor="Close">Close ✕</button>
+    <div id="lbContent"></div>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+<!-- ================================================================
+     ⚙️  EDIT EVERYTHING HERE — THE ONLY PLACE YOU NEED TO TOUCH
+     ================================================================
+     ADD A PHOTO OR VIDEO:  paste its web address into  src:""
+     KEEP THE PLACEHOLDER:  leave  src:""  empty
+     GET A URL:             upload to your host (Cloudflare R2,
+                            Bunny.net, S3, Cloudinary, Vimeo direct
+                            link) and paste the link — or use a local
+                            path like "media/estate.mp4".
+     VIDEOS:                use compressed MP4 (H.264). Add a poster
+                            image so it looks great while loading.
+     ================================================================ -->
+<script>
+const SITE = {
+  /* ---- LINKS (booking already wired to your system) ---- */
+  bookingUrl:    "https://order.atlantamediaco.com/order/atlmediaco/media",
+  clientCareUrl: "https://www.atlantamediaco.com/client-care",
+  email:         "hello@atlantamediaco.com",   // ← confirm your real email
+  instagram:     "#",                            // ← your Instagram URL
+  youtube:       "#",                            // ← your YouTube URL
+  linkedin:      "#",                            // ← your LinkedIn URL
+  /* ---- HERO ---- */
+  hero:{
+    eyebrow:"Cinematic Real Estate Media",
+    location:"Atlanta · North Georgia",
+    videoUrl:"",   // ← paste your hero .mp4 URL (a 10–25s cinematic clip is ideal)
+    posterUrl:""   // ← optional still image shown while the video loads
+  },
+  /* ---- SHOWREEL (the big film band) ---- */
+  film:{ title:"A home, told beautifully.", videoUrl:"", posterUrl:"" },
+  /* ---- TRUSTED BY (confirm / edit these names) ---- */
+  trustedBy:[
+    "Keller Williams Cartersville","RE/MAX Greater Atlanta","Coldwell Banker Realty NW",
+    "Atlanta Communities","Berkshire Hathaway","Compass"
+  ],
+  /* ---- FEATURED REELS — vertical 9:16 clips (location · price style) ---- */
+  reels:[
+    {type:"video", src:"", poster:"", place:"Cartersville, GA", title:"$1.2M Estate"},
+    {type:"video", src:"", poster:"", place:"Marietta, GA",     title:"Modern Farmhouse"},
+    {type:"video", src:"", poster:"", place:"Atlanta, GA",      title:"$2.4M Penthouse"},
+    {type:"video", src:"", poster:"", place:"Acworth, GA",      title:"Lakefront Listing"},
+    {type:"video", src:"", poster:"", place:"Roswell, GA",      title:"Agent Brand Reel"}
+  ],
+  /* ---- SERVICES (each can have an optional image for the hover preview) ---- */
+  services:[
+    {name:"Cinematic Video",      pkg:"Film",   desc:"Stabilized listing films and vertical social cuts — motion that makes a property feel like a destination.", tags:["Listing Films","Reels","Walkthroughs"], image:""},
+    {name:"Editorial Photography",pkg:"Photo",  desc:"Crisp, color-accurate interiors and exteriors, HDR-blended and styled to make every room shine.", tags:["Interiors","Exteriors","Twilight"], image:""},
+    {name:"Aerial & Drone",       pkg:"Aerial", desc:"Sweeping aerial photo and video that frames the property, the lot, and the setting from above.", tags:["Aerial Photo","Aerial Video"], image:""},
+    {name:"3D Tours & Floor Plans",pkg:"3D",    desc:"Immersive, dollhouse-style 3D tours and accurate measured floor plans buyers can explore before they visit.", tags:["3D Tours","Floor Plans"], image:""},
+    {name:"Branding & Marketing", pkg:"Brand",  desc:"Single-property sites, branded social content, and agent branding sessions that build long-term equity.", tags:["Listing Sites","Branding","Social"], image:""}
+  ],
+  /* ---- SELECTED WORK — full-bleed projects ---- */
+  projects:[
+    {type:"video", src:"", poster:"", title:"Hilltop Estate",     location:"Cartersville, GA", price:"$1,250,000", year:"2025", tag:"Cinematic"},
+    {type:"image", src:"", poster:"", title:"Glass & Stone",      location:"Atlanta, GA",      price:"$2,400,000", year:"2025", tag:"Photography"},
+    {type:"video", src:"", poster:"", title:"Lakeside Modern",    location:"Acworth, GA",      price:"$895,000",   year:"2025", tag:"Film + Aerial"},
+    {type:"image", src:"", poster:"", title:"The Farmhouse",      location:"Marietta, GA",     price:"$1,050,000", year:"2024", tag:"Photography"}
+  ],
+  /* ---- ABOUT ---- */
+  about:{ photoUrl:"https://images.squarespace-cdn.com/content/v1/659e1610d2211507b81cd416/f0dd5f82-ec0a-4513-97ae-bdee70bb2144/victorweb.jpg" },
+  /* ---- STATS (edit numbers to your real figures; use *word* for brass emphasis) ---- */
+  stats:[
+    {n:"48hr",  l:"Standard Delivery", d:"Market-ready media, fast."},
+    {n:"100+",  l:"Listings Captured", d:"Across Atlanta & North Georgia."},
+    {n:"4K",    l:"Cinema-Grade",      d:"Shot in crisp, modern resolution."},
+    {n:"5.0",   l:"Agent Rating",      d:"Trusted by local pros."}
+  ],
+  /* ---- PROCESS ---- */
+  process:[
+    {n:"01", t:"Book online",  d:"Pick your package and schedule in minutes. We confirm and prep for your listing."},
+    {n:"02", t:"We shoot",     d:"On-site capture of photo, video, aerial, and 3D — styled and shot to sell."},
+    {n:"03", t:"Fast delivery",d:"Edited, market-ready media in your inbox — typically within 48 hours."}
+  ],
+  /* ---- TESTIMONIALS (replace with real client quotes) ---- */
+  testimonials:[
+    {quote:"The film made my listing look like a magazine spread. Under contract in a weekend.", name:"Add Client Name", role:"Realtor, Cartersville"},
+    {quote:"Fast, professional, and the tour got more engagement than anything I've posted.", name:"Add Client Name", role:"Agent, Greater Atlanta"},
+    {quote:"Victor cares about my brand, not just the shoot. A true partner.", name:"Add Client Name", role:"Broker"}
+  ]
+};
+/* =================================================================
+   RENDER + INTERACTION ENGINE  (no need to edit below)
+   ================================================================= */
+(function(){
+  const $=(s,el=document)=>el.querySelector(s);
+  const $$=(s,el=document)=>[...el.querySelectorAll(s)];
+  const fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  const lerp=(a,b,n)=>a+(b-a)*n;
+  /* ---- links + text ---- */
+  $$("[data-book]").forEach(a=>a.href=SITE.bookingUrl);
+  $("#clientCare").href=SITE.clientCareUrl;
+  $("#emailLink").href="mailto:"+SITE.email;
+  $("#igLink").href=SITE.instagram; $("#ytLink").href=SITE.youtube; $("#liLink").href=SITE.linkedin;
+  $("#year").textContent=new Date().getFullYear();
+  $("#heroEyebrow").textContent=SITE.hero.eyebrow;
+  $("#hcLoc").textContent=SITE.hero.location;
+  $("#filmTitle").textContent=SITE.film.title;
+  const PH=(label,vertical)=>`<div class="ph"><svg class="ico" viewBox="0 0 24 24">${vertical?'<polygon points="5 3 19 12 5 21 5 3"/>':'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'}</svg><span class="lb">${label}</span></div>`;
+  const playIco=`<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
+  /* ---- marquee ---- */
+  const mkItems=arr=>arr.map(n=>`<span class="it">${n}</span>`).join("");
+  $("#mq").innerHTML=mkItems(SITE.trustedBy)+mkItems(SITE.trustedBy);
+  /* ---- hero video ---- */
+  let heroVid=null;
+  if(SITE.hero.videoUrl){
+    heroVid=document.createElement("video");
+    heroVid.src=SITE.hero.videoUrl; heroVid.muted=true; heroVid.loop=true; heroVid.autoplay=true;
+    heroVid.playsInline=true; heroVid.setAttribute("playsinline","");
+    if(SITE.hero.posterUrl) heroVid.poster=SITE.hero.posterUrl;
+    heroVid.classList.add("par"); heroVid.dataset.speed="0.12";
+    heroVid.addEventListener("loadeddata",()=>heroVid.classList.add("ready"));
+    $("#heroMedia").appendChild(heroVid);
+    heroVid.play().catch(()=>{});
+  }
+  /* sound toggle */
+  $("#soundBtn").addEventListener("click",()=>{
+    if(!heroVid){ alert("Add your hero video URL in the SITE config (hero.videoUrl) to enable sound."); return; }
+    heroVid.muted=!heroVid.muted;
+    $("#soundLabel").textContent=heroVid.muted?"Sound Off":"Sound On";
+    $("#soundIcon").style.opacity=heroVid.muted?".7":"1";
+    if(!heroVid.muted) heroVid.play().catch(()=>{});
+  });
+  /* ---- reels ---- */
+  $("#reelRow").innerHTML=SITE.reels.map(r=>{
+    const media = r.src
+      ? (r.type==="video"
+          ? `<video src="${r.src}" muted loop playsinline preload="metadata" ${r.poster?`poster="${r.poster}"`:""}></video>`
+          : `<img src="${r.src}" alt="${r.title}" loading="lazy">`)
+      : PH("Add reel",true);
+    return `<div class="reel" data-cursor="${r.type==='video'?'Play':'View'}" data-type="${r.type}" data-src="${r.src||''}" data-poster="${r.poster||''}" data-title="${r.title} — ${r.place}">
+      ${media}
+      ${r.type==='video'?`<div class="pp">${playIco}</div>`:''}
+      <div class="meta"><div class="pl">${r.place}</div><div class="ti">${r.title}</div></div>
+    </div>`;
+  }).join("");
+  /* ---- services ---- */
+  $("#svcList").innerHTML=SITE.services.map((s,i)=>`
+    <div class="svc" data-cursor data-i="${i}">
+      <div class="n">0${i+1}</div>
+      <div>
+        <div class="nm">${s.name}</div>
+        <p class="ds">${s.desc}</p>
+        <div class="tags">${s.tags.map(t=>`<span class="tg">${t}</span>`).join("")}</div>
+      </div>
+      <div class="pk">${s.pkg}</div>
+    </div>`).join("");
+  /* ---- projects ---- */
+  $("#projects").innerHTML=SITE.projects.map(p=>{
+    const media = p.src
+      ? (p.type==="video"
+          ? `<video src="${p.src}" muted loop playsinline preload="metadata" ${p.poster?`poster="${p.poster}"`:""}></video>`
+          : `<img src="${p.src}" alt="${p.title}" loading="lazy">`)
+      : PH(p.type==='video'?'Add project film':'Add project photo',false);
+    return `<div class="proj" data-cursor="${p.type==='video'?'Play':'View'}" data-type="${p.type}" data-src="${p.src||''}" data-poster="${p.poster||''}" data-title="${p.title}">
+      <div class="proj-media"><div class="inner">${media}</div><div class="scrim"></div>
+        ${p.type==='video'?`<div class="pp-big">${playIco}</div>`:''}
+      </div>
+      <div class="proj-foot">
+        <div class="t">${p.title}</div>
+        <div class="m">${p.location} · <b>${p.price}</b> · ${p.year} · ${p.tag}</div>
+      </div>
+    </div>`;
+  }).join("");
+  /* ---- film band ---- */
+  if(SITE.film.posterUrl){
+    const i=document.createElement("img"); i.src=SITE.film.posterUrl; i.alt="Showreel";
+    $("#filmFrame").prepend(i); const ph=$(".ph",$("#filmFrame")); if(ph) ph.remove();
+  }
+  /* ---- stats ---- */
+  const em=t=>t.replace(/\*(.*?)\*/g,'<em>$1</em>');
+  $("#statGrid").innerHTML=SITE.stats.map(s=>`<div class="st reveal"><div class="n">${em(s.n)}</div><div class="l">${s.l}</div><div class="d">${s.d}</div></div>`).join("");
+  /* ---- about photo ---- */
+  if(SITE.about.photoUrl){
+    $("#aboutPhoto").insertAdjacentHTML("afterbegin",`<div class="inner"><img src="${SITE.about.photoUrl}" alt="Victor Huertas, Founder of Atlanta Media Co."></div>`);
+  }else{
+    $("#aboutPhoto").insertAdjacentHTML("afterbegin",`<div class="inner">${PH("Add your photo",false)}</div>`);
+  }
+  /* ---- process ---- */
+  $("#steps").innerHTML=SITE.process.map(s=>`<div class="step reveal"><div class="sn">${s.n}</div><h3>${s.t}</h3><p>${s.d}</p></div>`).join("");
+  /* ---- testimonials ---- */
+  const ts=SITE.testimonials;
+  $("#tStage").innerHTML=ts.map((t,i)=>`<div class="t-item${i===0?' on':''}"><div class="stars">★★★★★</div><p class="q">"${t.quote}"</p><div class="who"><div class="nm">${t.name}</div><div class="rl">${t.role}</div></div></div>`).join("");
+  $("#tDots").innerHTML=ts.map((_,i)=>`<button class="${i===0?'on':''}" data-d="${i}" aria-label="Quote ${i+1}"></button>`).join("");
+  let ti=0,tt;
+  const goT=n=>{ $$("#tStage .t-item").forEach((e,i)=>e.classList.toggle("on",i===n)); $$("#tDots button").forEach((e,i)=>e.classList.toggle("on",i===n)); ti=n; };
+  const autoT=()=>{ tt=setInterval(()=>goT((ti+1)%ts.length),5500); };
+  $$("#tDots button").forEach(b=>b.addEventListener("click",()=>{clearInterval(tt);goT(+b.dataset.d);autoT();}));
+  if(ts.length>1) autoT();
+  /* ---- lightbox ---- */
+  const lb=$("#lightbox"),lbC=$("#lbContent"),lbCap=$("#lbCap");
+  function openLB(type,src,title,poster){
+    if(!src) return;
+    lbC.innerHTML = type==="video"
+      ? `<video src="${src}" controls autoplay playsinline ${poster?`poster="${poster}"`:""}></video>`
+      : `<img src="${src}" alt="${title||''}">`;
+    lbCap.textContent=title||""; lb.classList.add("open"); document.body.style.overflow="hidden";
+  }
+  function closeLB(){ lb.classList.remove("open"); lbC.innerHTML=""; document.body.style.overflow=""; }
+  $("#lbClose").addEventListener("click",closeLB);
+  lb.addEventListener("click",e=>{if(e.target===lb)closeLB();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLB();});
+  $("#fplay").addEventListener("click",()=>{
+    if(SITE.film.videoUrl) openLB("video",SITE.film.videoUrl,SITE.film.title,SITE.film.posterUrl);
+    else alert("Add your showreel video URL in the SITE config (film.videoUrl) to enable playback.");
+  });
+  $("#heroReel").addEventListener("click",e=>{e.preventDefault(); if(SITE.film.videoUrl||SITE.hero.videoUrl) openLB("video",SITE.film.videoUrl||SITE.hero.videoUrl,"Showreel",SITE.film.posterUrl); else document.getElementById("reels").scrollIntoView();});
+  $("#reelsAll").addEventListener("click",e=>{e.preventDefault(); if(SITE.film.videoUrl) openLB("video",SITE.film.videoUrl,"Showreel",SITE.film.posterUrl); else document.getElementById("reels").scrollIntoView();});
+  function bindMedia(){
+    $$(".reel,.proj").forEach(el=>el.addEventListener("click",()=>{
+      const src=el.dataset.src; if(!src) return;
+      openLB(el.dataset.type,src,el.dataset.title,el.dataset.poster);
+    }));
+    // play project video on hover
+    if(fine){
+      $$(".proj").forEach(p=>{
+        const v=$("video",p); if(!v) return;
+        p.addEventListener("mouseenter",()=>v.play().catch(()=>{}));
+        p.addEventListener("mouseleave",()=>v.pause());
+      });
+    }
+  }
+  bindMedia();
+  /* ---- nav scroll ---- */
+  const nav=$("#nav"); let lastY=0;
+  const onScroll=()=>{
+    const y=window.scrollY;
+    nav.classList.toggle("solid",y>40);
+    if(y>lastY && y>window.innerHeight*0.9) nav.classList.add("hide"); else nav.classList.remove("hide");
+    lastY=y;
+  };
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  /* ---- mobile menu ---- */
+  $("#burger").addEventListener("click",()=>document.body.classList.toggle("menu-open"));
+  $$("#mobile a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("menu-open")));
+  /* ---- reveals ---- */
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.16,rootMargin:"0px 0px -6% 0px"});
+  function scan(){ $$(".reveal:not(.in),.proj:not(.in),.about-photo:not(.in)").forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,5)*55)+"ms";io.observe(el);}); }
+  scan();
+  /* ---- parallax ---- */
+  if(fine && !reduce){
+    const items=$$(".par");
+    let raf;
+    const tick=()=>{
+      const vh=window.innerHeight;
+      items.forEach(el=>{
+        const r=el.getBoundingClientRect();
+        const sp=parseFloat(el.dataset.speed||"0.1");
+        const off=((r.top+r.height/2)-vh/2)*sp*-1;
+        el.style.transform=`translate3d(0,${off.toFixed(1)}px,0) scale(1.04)`;
+      });
+      raf=requestAnimationFrame(tick);
+    };
+    tick();
+  }
+  /* ---- custom cursor ---- */
+  if(fine){
+    const dot=$(".cursor-dot"),ring=$(".cursor-ring"),clab=$(".clabel",ring);
+    let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
+    window.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
+    const cur=()=>{rx=lerp(rx,mx,.18);ry=lerp(ry,my,.18);ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(cur);};
+    cur();
+    $$("[data-cursor]").forEach(el=>{
+      el.addEventListener("mouseenter",()=>{document.body.classList.add("cur-hover");clab.textContent=el.getAttribute("data-cursor")||"View";});
+      el.addEventListener("mouseleave",()=>document.body.classList.remove("cur-hover"));
+    });
+  }
+  /* ---- magnetic buttons ---- */
+  if(fine && !reduce){
+    $$(".btn-brass,.nav-book,.fplay").forEach(b=>{
+      b.addEventListener("mousemove",e=>{
+        const r=b.getBoundingClientRect();
+        const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+        b.style.transform=`translate(${x*.18}px,${y*.22}px)`;
+      });
+      b.addEventListener("mouseleave",()=>b.style.transform="");
+    });
+  }
+  /* ---- services hover preview ---- */
+  if(fine){
+    const wrap=$("#svcWrap"),pv=$("#svcPreview");
+    let px=0,py=0,tx=0,tyy=0;
+    const pvTick=()=>{tx=lerp(tx,px,.16);tyy=lerp(tyy,py,.16);pv.style.left=tx+"px";pv.style.top=tyy+"px";requestAnimationFrame(pvTick);};
+    pvTick();
+    window.addEventListener("mousemove",e=>{px=e.clientX+60;py=e.clientY;});
+    $$("#svcList .svc").forEach(svc=>{
+      svc.addEventListener("mouseenter",()=>{
+        wrap.classList.add("has-hover"); svc.classList.add("active");
+        const s=SITE.services[+svc.dataset.i];
+        pv.innerHTML = s.image
+          ? `<img src="${s.image}" alt="${s.name}">`
+          : PH(s.name,false);
+        pv.classList.add("show");
+      });
+      svc.addEventListener("mouseleave",()=>{svc.classList.remove("active");});
+    });
+    $("#svcList").addEventListener("mouseleave",()=>{wrap.classList.remove("has-hover");pv.classList.remove("show");});
+  }
+  /* ---- newsletter ---- */
+  $("#nlBtn").addEventListener("click",()=>{
+    const e=$("#nlEmail").value.trim(); if(!e){$("#nlEmail").focus();return;}
+    window.location.href=`mailto:${SITE.email}?subject=Add me to your list&body=Please add ${encodeURIComponent(e)} to your updates.`;
+  });
+  /* ---- PRELOADER + hero word reveal ---- */
+  function buildLoader(){
+    const l=document.createElement("div");
+    l.className="loader"; l.id="loader";
+    l.innerHTML=`<div class="lname">Atlanta Media Co.</div><div class="lbar"><i></i></div><div class="lnum">000</div>`;
+    document.body.appendChild(l);
+    const bar=$("i",l),num=$(".lnum",l);
+    let p=0;const start=performance.now();const dur=reduce?200:1300;
+    const step=t=>{
+      const k=Math.min(1,(t-start)/dur); p=Math.round(k*100);
+      num.textContent=String(p).padStart(3,"0"); bar.style.transform=`scaleX(${k})`;
+      if(k<1) requestAnimationFrame(step);
+      else setTimeout(()=>{ l.classList.add("done"); document.body.classList.add("reveal-now");
+        setTimeout(()=>l.remove(),1200); }, 180);
+    };
+    requestAnimationFrame(step);
+  }
+  // run loader (skip gracefully if anything is off)
+  try{ buildLoader(); }catch(e){ document.body.classList.add("reveal-now"); }
+  /* allow click to skip loader */
+  document.addEventListener("click",function once(){ const l=$("#loader"); if(l){l.classList.add("done");document.body.classList.add("reveal-now");setTimeout(()=>l.remove(),1100);} document.removeEventListener("click",once); });
+})();
+</script>
+</body>
+</html>

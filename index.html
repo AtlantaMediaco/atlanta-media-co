@@ -384,7 +384,7 @@ footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;bor
 .hero-scrim{background:
   linear-gradient(105deg, rgba(8,7,5,.82) 0%, rgba(8,7,5,.52) 34%, rgba(8,7,5,.18) 58%, rgba(8,7,5,0) 82%),
   linear-gradient(to top, rgba(8,7,5,.50), rgba(8,7,5,0) 50%)}
-.hero .bar{display:none}.hero .sound{display:none}.hero-vimeo{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%);border:0;pointer-events:none}
+.hero .bar{display:none}.hero .sound{display:none}.hero-vimeo{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%);border:0;pointer-events:none}.hero-mp4{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}@media(max-width:768px){.hero-vimeo{display:none}.hero-mp4{display:block}}
 .hero .hc.br{display:none}
 .hero h1,.hero h1 .sm,.hero h1 em{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.005em}
 .hero h1{font-weight:500;font-style:normal}
@@ -451,7 +451,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
 <main id="top">
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-media" id="heroMedia"><div class="fb par" data-speed="0.12"></div><iframe class="hero-vimeo" src="https://player.vimeo.com/video/1220375566?h=3c1de00dcf&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="Atlanta Media Co. hero film"></iframe></div>
+    <div class="hero-media" id="heroMedia"><div class="fb par" data-speed="0.12"></div><iframe class="hero-vimeo" src="https://player.vimeo.com/video/1220375566?h=3c1de00dcf&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="Atlanta Media Co. hero film"></iframe><video class="hero-mp4" src="hero.mp4" muted loop autoplay playsinline preload="none" poster="hero-poster.jpg"></video></div>
     <div class="hero-scrim"></div>
     <div class="bar top"></div><div class="bar bot"></div>
     <div class="hero-corners">

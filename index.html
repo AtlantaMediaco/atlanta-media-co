@@ -385,6 +385,18 @@ footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;bor
   linear-gradient(105deg, rgba(8,7,5,.82) 0%, rgba(8,7,5,.52) 34%, rgba(8,7,5,.18) 58%, rgba(8,7,5,0) 82%),
   linear-gradient(to top, rgba(8,7,5,.50), rgba(8,7,5,0) 50%)}
 .hero .bar{display:none}.hero .sound{display:none}.hero-vimeo{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%);border:0;pointer-events:none}.hero-mp4{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:1!important}@media(max-width:768px){.hero-vimeo{display:none}.hero-mp4{display:block}}
+.svc-view{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2)}
+.svc.has-gallery{cursor:pointer}
+.glb{position:fixed;inset:0;z-index:3000;background:rgba(8,7,4,.97);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;overflow-y:auto;padding:clamp(3rem,7vh,5rem) clamp(1rem,4vw,3rem) 4rem}
+.glb.open{display:block}
+.glb-head{display:flex;justify-content:space-between;align-items:center;max-width:1500px;margin:0 auto 1.6rem;gap:1rem}
+.glb-head h3{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.7rem);color:var(--ivory)}
+.gclose{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);border:1px solid var(--line);padding:.6rem 1.1rem;border-radius:1px;flex:0 0 auto;cursor:pointer}
+.gclose:hover{background:var(--brass);color:var(--bg);border-color:var(--brass)}
+.glb-grid{max-width:1500px;margin:0 auto;column-count:3;column-gap:14px}
+@media(max-width:900px){.glb-grid{column-count:2}}
+@media(max-width:560px){.glb-grid{column-count:1}}
+.glb-grid img{width:100%;margin:0 0 14px;border-radius:3px;display:block;break-inside:avoid;background:var(--panel)}
 .hero .hc.br{display:none}
 .hero h1,.hero h1 .sm,.hero h1 em{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.005em}
 .hero h1{font-weight:500;font-style:normal}
@@ -600,6 +612,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   </div>
 </footer>
 <!-- LIGHTBOX -->
+<div class="glb" id="glb"><div class="glb-head"><h3 id="glbTitle"></h3><button class="gclose" id="glbClose">Close ✕</button></div><div class="glb-grid" id="glbGrid"></div></div>
 <div class="lightbox" id="lightbox">
   <div class="lb-in">
     <button class="lb-close" id="lbClose" data-cursor="Close">Close ✕</button>
@@ -653,8 +666,8 @@ const SITE = {
   /* ---- SERVICES (each can have an optional image for the hover preview) ---- */
   services:[
     {name:"Cinematic Video",      pkg:"Film",   desc:"Stabilized listing films and vertical social cuts — motion that makes a property feel like a destination.", tags:["Listing Films","Reels","Walkthroughs"], image:""},
-    {name:"Editorial Photography",pkg:"Photo",  desc:"Crisp, color-accurate interiors and exteriors, HDR-blended and styled to make every room shine.", tags:["Interiors","Exteriors","Twilight"], image:""},
-    {name:"Listing Photography",  pkg:"Listing",desc:"Clean, MLS-ready listing photography for standard listings — polished, consistent, and turned around fast.", tags:["Listing Photos","Standard Listings","Quick Turn"], image:""},
+    {name:"Editorial Photography",pkg:"Photo",  desc:"Crisp, color-accurate interiors and exteriors, HDR-blended and styled to make every room shine.", tags:["Interiors","Exteriors","Twilight"], image:"ed-01.jpg", gallery:["ed-01.jpg","ed-02.jpg","ed-03.jpg","ed-04.jpg","ed-05.jpg","ed-06.jpg","ed-07.jpg","ed-08.jpg","ed-09.jpg","ed-10.jpg","ed-11.jpg","ed-12.jpg"]},
+    {name:"Listing Photography",  pkg:"Listing",desc:"Clean, MLS-ready listing photography for standard listings — polished, consistent, and turned around fast.", tags:["Listing Photos","Standard Listings","Quick Turn"], image:"li-01.jpg", gallery:["li-01.jpg","li-02.jpg","li-03.jpg","li-04.jpg","li-05.jpg","li-06.jpg","li-07.jpg","li-08.jpg","li-09.jpg","li-10.jpg","li-11.jpg","li-12.jpg"]},
     {name:"Branding & Marketing", pkg:"Brand",  desc:"Single-property sites, branded social content, and agent branding sessions that build long-term equity.", tags:["Listing Sites","Branding","Social"], image:""}
   ],
   /* ---- SELECTED WORK — full-bleed projects ---- */
@@ -743,12 +756,13 @@ const SITE = {
   }).join("");
   /* ---- services ---- */
   $("#svcList").innerHTML=SITE.services.map((s,i)=>`
-    <div class="svc" data-cursor data-i="${i}">
+    <div class="svc${s.gallery?' has-gallery':''}" data-cursor="${s.gallery?'View gallery':''}" data-i="${i}">
       <div class="n">0${i+1}</div>
       <div>
         <div class="nm">${s.name}</div>
         <p class="ds">${s.desc}</p>
         <div class="tags">${s.tags.map(t=>`<span class="tg">${t}</span>`).join("")}</div>
+        ${s.gallery?`<span class="svc-view">View gallery · ${s.gallery.length} photos →</span>`:""}
       </div>
       <div class="pk">${s.pkg}</div>
     </div>`).join("");
@@ -883,6 +897,20 @@ const SITE = {
       b.addEventListener("mouseleave",()=>b.style.transform="");
     });
   }
+  /* ---- service galleries (click to open) ---- */
+  (function(){
+    const glb=$("#glb"),glbGrid=$("#glbGrid"),glbTitle=$("#glbTitle");
+    if(!glb) return;
+    function openG(i){const s=SITE.services[i]; if(!s||!s.gallery||!s.gallery.length)return;
+      glbTitle.textContent=s.name;
+      glbGrid.innerHTML=s.gallery.map(src=>`<img src="${src}" alt="${s.name}" loading="lazy">`).join("");
+      glb.classList.add("open"); document.body.style.overflow="hidden";}
+    function closeG(){glb.classList.remove("open"); glbGrid.innerHTML=""; document.body.style.overflow="";}
+    $("#glbClose").addEventListener("click",closeG);
+    glb.addEventListener("click",e=>{if(e.target===glb)closeG();});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeG();});
+    $$("#svcList .svc").forEach(svc=>{const i=+svc.dataset.i; if(SITE.services[i]&&SITE.services[i].gallery){svc.addEventListener("click",()=>openG(i));}});
+  })();
   /* ---- services hover preview ---- */
   if(fine){
     const wrap=$("#svcWrap"),pv=$("#svcPreview");

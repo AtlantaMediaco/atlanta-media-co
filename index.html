@@ -202,7 +202,7 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .reel-row{display:flex;gap:clamp(.9rem,1.6vw,1.4rem);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-ms-overflow-style:none;scrollbar-width:none}
 .reel-row::-webkit-scrollbar{display:none}
 .reel{position:relative;flex:0 0 auto;width:clamp(220px,23vw,300px);aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);scroll-snap-align:start;cursor:pointer}
-.reel video,.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--e)}
+.reel video,.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--e)}.reel-vimeo{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
 .reel:hover video,.reel:hover img{transform:scale(1.05)}
 .reel .meta{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;z-index:2;
   background:linear-gradient(to top,rgba(8,6,4,.85),transparent)}
@@ -657,11 +657,11 @@ const SITE = {
   ],
   /* ---- FEATURED REELS — vertical 9:16 clips (location · price style) ---- */
   reels:[
-    {type:"video", src:"", poster:"", place:"Cartersville, GA", title:"$1.2M Estate"},
-    {type:"video", src:"", poster:"", place:"Marietta, GA",     title:"Modern Farmhouse"},
-    {type:"video", src:"", poster:"", place:"Atlanta, GA",      title:"$2.4M Penthouse"},
-    {type:"video", src:"", poster:"", place:"Acworth, GA",      title:"Lakefront Listing"},
-    {type:"video", src:"", poster:"", place:"Roswell, GA",      title:"Agent Brand Reel"}
+    {type:"video", vimeo:"1220726892?h=99ef95a2b0", src:"", poster:"", place:"Cartersville, GA", title:"$1.2M Estate"},
+    {type:"video", vimeo:"1220726658?h=82b7152c0a", src:"", poster:"", place:"Marietta, GA",     title:"Modern Farmhouse"},
+    {type:"video", vimeo:"1220726660?h=635c3bccbf", src:"", poster:"", place:"Atlanta, GA",      title:"$2.4M Penthouse"},
+    {type:"video", vimeo:"1220726661?h=e0585fde30", src:"", poster:"", place:"Acworth, GA",      title:"Lakefront Listing"},
+    {type:"video", vimeo:"1220726659?h=17b8637ea1", src:"", poster:"", place:"Roswell, GA",      title:"Agent Brand Reel"}
   ],
   /* ---- SERVICES (each can have an optional image for the hover preview) ---- */
   services:[
@@ -743,14 +743,14 @@ const SITE = {
   });
   /* ---- reels ---- */
   $("#reelRow").innerHTML=SITE.reels.map(r=>{
-    const media = r.src
+    const media = r.vimeo ? `<iframe class="reel-vimeo" src="https://player.vimeo.com/video/${r.vimeo}&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay" title="${r.title}"></iframe>` : r.src
       ? (r.type==="video"
           ? `<video src="${r.src}" muted loop playsinline preload="metadata" ${r.poster?`poster="${r.poster}"`:""}></video>`
           : `<img src="${r.src}" alt="${r.title}" loading="lazy">`)
       : PH("Add reel",true);
     return `<div class="reel" data-cursor="${r.type==='video'?'Play':'View'}" data-type="${r.type}" data-src="${r.src||''}" data-poster="${r.poster||''}" data-title="${r.title} — ${r.place}">
       ${media}
-      ${r.type==='video'?`<div class="pp">${playIco}</div>`:''}
+      ${(r.type==='video'&&!r.vimeo)?`<div class="pp">${playIco}</div>`:''}
       <div class="meta"><div class="pl">${r.place}</div><div class="ti">${r.title}</div></div>
     </div>`;
   }).join("");

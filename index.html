@@ -210,7 +210,7 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .reel .meta .ti{font-family:var(--serif);font-size:1.05rem;margin-top:.25rem;color:#f6f2ea}
 .reel .pp{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(244,239,230,.16);backdrop-filter:blur(6px);display:grid;place-items:center;border:1px solid var(--line);z-index:2;transition:all .4s}
 .reel:hover .pp{background:var(--brass);border-color:var(--brass)}
-.reel .pp svg{width:11px;height:11px;fill:var(--ivory)}
+.reel .pp svg{width:11px;height:11px;fill:var(--ivory)}.reels{overflow:hidden}.reel-carousel{position:relative}.reel-row{display:flex;gap:clamp(1.3rem,3vw,2.6rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:1.6rem clamp(.5rem,4vw,3rem) 2rem;-ms-overflow-style:none;scrollbar-width:none;scroll-padding-left:clamp(.5rem,4vw,3rem)}.reel-cell{flex:0 0 auto;scroll-snap-align:center}.phone{position:relative;width:clamp(232px,25vw,292px);aspect-ratio:9/19.3;background:linear-gradient(150deg,#26262a 0%,#0b0b0d 55%,#000 100%);border-radius:15%/7%;padding:9px;box-shadow:0 34px 70px rgba(0,0,0,.6),0 0 0 2px rgba(231,197,104,.12),inset 0 0 0 1.5px rgba(255,255,255,.07);transition:transform .7s var(--e),box-shadow .7s var(--e)}.phone:hover{transform:translateY(-10px);box-shadow:0 44px 90px rgba(0,0,0,.66),0 0 0 2px rgba(231,197,104,.28),inset 0 0 0 1.5px rgba(255,255,255,.09)}.phone-scr{position:relative;width:100%;height:100%;border-radius:12%/5.6%;overflow:hidden;background:#000}.reel-vimeo,.phone-scr video,.phone-scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}.phone-island{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:30%;height:15px;background:#000;border-radius:20px;z-index:6}.ig-grad-t{position:absolute;top:0;left:0;right:0;height:32%;background:linear-gradient(rgba(0,0,0,.45),transparent);z-index:2;pointer-events:none}.ig-grad-b{position:absolute;bottom:0;left:0;right:0;height:44%;background:linear-gradient(transparent,rgba(0,0,0,.72));z-index:2;pointer-events:none}.ig-top{position:absolute;top:8.5%;left:12px;right:12px;display:flex;align-items:center;gap:.55rem;z-index:4}.ig-u{font-family:var(--sans);font-weight:600;font-size:.74rem;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55)}.ig-follow{font-family:var(--sans);font-weight:600;font-size:.6rem;color:#fff;border:1px solid rgba(255,255,255,.75);border-radius:6px;padding:.14rem .55rem}.ig-side{position:absolute;right:9px;bottom:15%;display:flex;flex-direction:column;gap:1.05rem;align-items:center;z-index:4}.ig-ic svg{width:23px;height:23px;fill:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.55))}.ig-cap{position:absolute;left:12px;right:50px;bottom:6.5%;z-index:4;font-family:var(--sans);font-size:.72rem;line-height:1.35;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.6)}.ig-cap b{font-weight:700}.rc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:12;width:52px;height:52px;border-radius:50%;background:rgba(20,15,8,.66);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--ivory);font-family:var(--serif);font-size:1.7rem;line-height:0;display:grid;place-items:center;cursor:pointer;transition:all .4s var(--e)}.rc-arrow:hover{background:var(--brass);color:var(--bg);border-color:var(--brass)}.rc-arrow.prev{left:-4px}.rc-arrow.next{right:-4px}@media(max-width:760px){.rc-arrow{display:none}}
 /* placeholder */
 .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;overflow:hidden;background:linear-gradient(145deg,var(--panel),#0d0a06)}
 .ph::before{content:"";position:absolute;inset:0;opacity:.25;mix-blend-mode:multiply;
@@ -504,10 +504,10 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="reels" id="reels">
     <div class="wrap">
       <div class="shead reveal">
-        <div><span class="tag">Featured Reels</span><h2>Vertical reels,<br>built to travel.</h2></div>
-        <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Watch full reel <span class="u"></span></a>
+        <div><span class="tag">Social Reels</span><h2>Made to stop<br>the scroll.</h2></div>
+        <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Follow on Instagram <span class="u"></span></a>
       </div>
-      <div class="reel-row" id="reelRow"></div>
+      <div class="reel-carousel"><button class="rc-arrow prev" id="rcPrev" aria-label="Previous reels">‹</button><div class="reel-row" id="reelRow"></div><button class="rc-arrow next" id="rcNext" aria-label="More reels">›</button></div>
     </div>
   </section>
   <!-- SERVICES -->
@@ -743,15 +743,15 @@ const SITE = {
   });
   /* ---- reels ---- */
   $("#reelRow").innerHTML=SITE.reels.map(r=>{
-    const media = r.vimeo ? `<iframe class="reel-vimeo" src="https://player.vimeo.com/video/${r.vimeo}&title=0&byline=0&portrait=0" allow="autoplay" title="${r.title}"></iframe>` : r.src
+    const media = r.vimeo ? `<iframe class="reel-vimeo" src="https://player.vimeo.com/video/${r.vimeo}&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="${r.title}"></iframe>` : r.src
       ? (r.type==="video"
           ? `<video src="${r.src}" muted loop playsinline preload="metadata" ${r.poster?`poster="${r.poster}"`:""}></video>`
           : `<img src="${r.src}" alt="${r.title}" loading="lazy">`)
       : PH("Add reel",true);
-    return `<div class="reel" data-cursor="${r.type==='video'?'Play':'View'}" data-type="${r.type}" data-src="${r.src||''}" data-poster="${r.poster||''}" data-title="${r.title} — ${r.place}">
+    return `<div class="reel-cell"><div class="phone"><div class="phone-scr">
       ${media}
-      ${(r.type==='video'&&!r.vimeo)?`<div class="pp">${playIco}</div>`:''}
-      <div class="meta"><div class="pl">${r.place}</div><div class="ti">${r.title}</div></div>
+      <div class="ig-grad-t"></div><div class="ig-grad-b"></div><div class="ig-top"><span class="ig-u">atlantamediaco</span><span class="ig-follow">Follow</span></div><div class="ig-side"><span class="ig-ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7.4-4.5-9.9-9.1C.6 8.7 2.1 5.6 5 5.6c1.9 0 3 1.1 3.5 1.9C9 6.7 10.1 5.6 12 5.6c2.9 0 4.4 3.1 2.9 6.3C19.4 16.5 12 21 12 21z"/></svg></span><span class="ig-ic"><svg viewBox="0 0 24 24"><path d="M12 3C6.5 3 2 6.8 2 11.4c0 2.2 1.1 4.3 2.9 5.7L4 21l4.1-1.6c1.2.4 2.5.6 3.9.6 5.5 0 10-3.8 10-8.6S17.5 3 12 3z"/></svg></span><span class="ig-ic"><svg viewBox="0 0 24 24"><path d="M2 21l20-9L2 3v6.5L16 12 2 14.5V21z"/></svg></span></div>
+      <div class="ig-cap"><b>atlantamediaco</b> ${r.title} · ${r.place}</div></div><div class="phone-island"></div></div>
     </div>`;
   }).join("");
   /* ---- services ---- */
@@ -826,7 +826,7 @@ const SITE = {
     else alert("Add your showreel video URL in the SITE config (film.videoUrl) to enable playback.");
   });
   $("#heroReel").addEventListener("click",e=>{e.preventDefault(); if(SITE.film.videoUrl||SITE.hero.videoUrl) openLB("video",SITE.film.videoUrl||SITE.hero.videoUrl,"Showreel",SITE.film.posterUrl); else document.getElementById("reels").scrollIntoView();});
-  $("#reelsAll").addEventListener("click",e=>{e.preventDefault(); if(SITE.film.videoUrl) openLB("video",SITE.film.videoUrl,"Showreel",SITE.film.posterUrl); else document.getElementById("reels").scrollIntoView();});
+  $("#reelsAll").addEventListener("click",e=>{e.preventDefault(); if(SITE.instagram&&SITE.instagram!=="#"){window.open(SITE.instagram,"_blank");} else {document.getElementById("reels").scrollIntoView();}});(function(){var row=document.getElementById("reelRow"),prev=document.getElementById("rcPrev"),next=document.getElementById("rcNext");if(!row)return;var step=function(){var c=row.querySelector('.reel-cell');var gap=parseFloat(getComputedStyle(row).gap)||24;return c?c.getBoundingClientRect().width+gap:320;};if(next)next.addEventListener('click',function(){row.scrollBy({left:step(),behavior:'smooth'});});if(prev)prev.addEventListener('click',function(){row.scrollBy({left:-step(),behavior:'smooth'});});var auto=setInterval(function(){if(row.scrollLeft+row.clientWidth>=row.scrollWidth-8){row.scrollTo({left:0,behavior:'smooth'});}else{row.scrollBy({left:step(),behavior:'smooth'});}},4200);row.addEventListener('mouseenter',function(){clearInterval(auto);});row.addEventListener('touchstart',function(){clearInterval(auto);},{passive:true});})();
   function bindMedia(){
     $$(".reel,.proj").forEach(el=>el.addEventListener("click",()=>{
       const src=el.dataset.src; if(!src) return;

@@ -429,7 +429,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
 .tm-bio{color:var(--muted);max-width:42ch;margin-top:.9rem;font-size:.97rem}
 
 .hero h1 em{background:radial-gradient(135% 130% at 26% 16%,rgba(255,249,224,.98) 0%,rgba(255,244,205,0) 44%),linear-gradient(96deg,#7c5810 0%,#c99a34 15%,#f7e08d 31%,#ffe479 47%,#c99b34 63%,#f4d77e 80%,#8f6a1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(240,201,95,.30))}
-.btn-brass{background:#e7c568;color:#1b1305}
+.btn-brass{background:#e7c568;color:#1b1305}/* polish pass */#work{display:none}.mobile{visibility:hidden;transition:transform .7s var(--e),visibility 0s linear .7s}.menu-open .mobile{visibility:visible;transition:transform .7s var(--e),visibility 0s}@media(max-width:768px),(max-height:760px){.hero .scroll-cue{display:none}}#ytLink,#liLink{display:none}.shead h2{font-size:clamp(1.9rem,3.8vw,3.4rem);font-weight:600}.cta h2{font-size:clamp(2.1rem,5vw,4.5rem);font-weight:600}.st .n{font-size:clamp(2.4rem,4.2vw,3.8rem)}.manifesto .big{font-size:clamp(1.5rem,3.1vw,2.6rem);max-width:30ch}.manifesto .grid{grid-template-columns:1fr!important;gap:1.4rem;margin-top:2rem}.manifesto .note{justify-self:start;font-size:1.05rem;max-width:52ch}.rl-disc{display:none}.rl-rail{bottom:27%}.rl-aud{padding-right:42px}@media(min-width:761px){.reel-cell{zoom:.8}}.svc .tags,.svc .pk{display:none}.about-photo .badge{display:none}
 </style>
 <noscript><style>.he{opacity:1!important;transform:none!important}.reveal,.proj,.about-photo{opacity:1!important;transform:none!important;clip-path:none!important}.loader{display:none!important}.proj-media .inner,.about-photo .inner{transform:none!important}</style></noscript>
 </head>
@@ -442,7 +442,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
 <header class="nav" id="nav">
   <a href="#top" class="wordmark" data-cursor="">Atlanta Media Co.<small>Atlanta · North Georgia</small></a>
   <nav class="nav-r">
-    <a href="#work" class="l">Work</a>
+    <a href="#reels" class="l">Work</a>
     <a href="#services" class="l">Services</a>
     <a href="#about" class="l">About</a>
     <a href="client-care.html" class="l">Client Care</a>
@@ -452,7 +452,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
 </header>
 <div class="mobile" id="mobile">
-  <a href="#work">Work</a>
+  <a href="#reels">Work</a>
   <a href="#services">Services</a>
   <a href="#about">About</a>
   <a href="client-care.html">Client Care</a>
@@ -601,7 +601,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
         <div class="wm">Atlanta Media Co.</div>
         <p>Cinematic real estate video, editorial photography, branding, and marketing for agents across Atlanta &amp; North Georgia.</p>
       </div>
-      <div class="fcol"><h4>Explore</h4><a href="#work">Work</a><a href="#reels">Reels</a><a href="#services">Services</a><a href="#about">About</a></div>
+      <div class="fcol"><h4>Explore</h4><a href="#reels">Work</a><a href="#reels">Reels</a><a href="#services">Services</a><a href="#about">About</a></div>
       <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a id="emailLink" href="#">Email</a></div>
       <div class="fcol"><h4>Stay in the loop</h4><p style="padding-top:0">New work, availability &amp; promotions.</p><div class="nl"><input id="nlEmail" type="email" placeholder="Your email" aria-label="Email"/><button id="nlBtn">Join</button></div></div>
     </div>
@@ -638,7 +638,7 @@ const SITE = {
   bookingUrl:    "https://order.atlantamediaco.com/order/atlmediaco/media",
   clientCareUrl: "client-care.html",
   email:         "hello@atlantamediaco.com",   // ← confirm your real email
-  instagram:     "#",                            // ← your Instagram URL
+  instagram:     "https://www.instagram.com/atlantamediaco/",                            // ← your Instagram URL
   youtube:       "#",                            // ← your YouTube URL
   linkedin:      "#",                            // ← your LinkedIn URL
   /* ---- HERO ---- */
@@ -742,13 +742,13 @@ const SITE = {
     if(!heroVid.muted) heroVid.play().catch(()=>{});
   });
   /* ---- reels ---- */
-  $("#reelRow").innerHTML=SITE.reels.map(r=>{
+  $("#reelRow").innerHTML=SITE.reels.map((r,i)=>{
     const media = r.vimeo ? `<iframe class="reel-vimeo" src="https://player.vimeo.com/video/${r.vimeo}&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="${r.title}"></iframe>` : r.src
       ? (r.type==="video"
           ? `<video src="${r.src}" muted loop playsinline preload="metadata" ${r.poster?`poster="${r.poster}"`:""}></video>`
           : `<img src="${r.src}" alt="${r.title}" loading="lazy">`)
       : PH("Add reel",true);
-    return `<div class='reel-cell'><div class='phone'><div class='phone-scr'><div class='rl-gt'></div><div class='rl-gb'></div><div class='rl-st'><span class='clk'>9:41</span><span class='sic'>${ICO.sig}${ICO.wifi}${ICO.batt}</span></div><div class='rl-island'></div><div class='rl-top'><span class='bk'>${ICO.chev}</span><span class='ttl'>Reels</span><span class='cam'>${ICO.cam}</span></div><div class='rl-rail'><span class='rl-act'>${ICO.heart}<b>3,689</b></span><span class='rl-act'>${ICO.comment}<b>977</b></span><span class='rl-act'>${ICO.send}<b>680</b></span><span class='rl-act more'>${ICO.more}</span><span class='rl-disc'><img src='${LOGO}' alt=''></span></div><div class='rl-info'><div class='rl-uline'><span class='rl-ava'><img src='${LOGO}' alt=''></span><span class='un'>atlantamediaco</span><span class='vf'>${ICO.verified}</span><span class='fol'>Follow</span></div><div class='rl-cap'>${r.title} · ${r.place}</div><div class='rl-aud'>${ICO.mn}<span class='nm'>Atlanta Media Co · Original audio</span><span class='usr'>${ICO.person}166K</span></div><div class='rl-athumb'><img src='${LOGO}' alt=''></div></div><div class='rl-nav'>${ICO.home}${ICO.search}${ICO.reelsNav}${ICO.shop}<span class='np'><img src='${LOGO}' alt=''></span></div><div class='rl-home'></div>
+    return `<div class='reel-cell'><div class='phone'><div class='phone-scr'><div class='rl-gt'></div><div class='rl-gb'></div><div class='rl-st'><span class='clk'>9:41</span><span class='sic'>${ICO.sig}${ICO.wifi}${ICO.batt}</span></div><div class='rl-island'></div><div class='rl-top'><span class='bk'>${ICO.chev}</span><span class='ttl'>Reels</span><span class='cam'>${ICO.cam}</span></div><div class='rl-rail'><span class='rl-act'>${ICO.heart}<b>${['2,184','3,689','1,407','4,912','968'][i%5]}</b></span><span class='rl-act'>${ICO.comment}<b>${['142','977','88','231','57'][i%5]}</b></span><span class='rl-act'>${ICO.send}<b>${['310','680','204','512','96'][i%5]}</b></span><span class='rl-act more'>${ICO.more}</span><span class='rl-disc'><img src='${LOGO}' alt=''></span></div><div class='rl-info'><div class='rl-uline'><span class='rl-ava'><img src='${LOGO}' alt=''></span><span class='un'>atlantamediaco</span><span class='vf'>${ICO.verified}</span><span class='fol'>Follow</span></div><div class='rl-cap'>${r.title} · ${r.place}</div><div class='rl-aud'>${ICO.mn}<span class='nm'>Atlanta Media Co · Original audio</span><span class='usr'>${ICO.person}166K</span></div><div class='rl-athumb'><img src='${LOGO}' alt=''></div></div><div class='rl-nav'>${ICO.home}${ICO.search}${ICO.reelsNav}${ICO.shop}<span class='np'><img src='${LOGO}' alt=''></span></div><div class='rl-home'></div>
       ${media}
       
       </div></div>

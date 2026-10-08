@@ -77,7 +77,8 @@ body.cur-hover .cursor-ring .clabel{opacity:1}
 .tag::before{content:"";width:1.4rem;height:1px;background:var(--brass-2)}
 .tag.bare::before{display:none}
 .tag.center{justify-content:center}
-h1,h2,h3{font-family:var(--serif);font-weight:700;line-height:1.04;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
+h2,h3{text-wrap:balance}
 /* word reveal */
 .lines .ln{display:block;overflow:hidden}
 .lines .w{display:inline-block;overflow:hidden;vertical-align:top}
@@ -184,15 +185,15 @@ header.nav.solid{background:rgba(16,13,8,.87);backdrop-filter:blur(20px);-webkit
 /* =================================================================
    SECTION SHELL
    ================================================================= */
-section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
+section{padding:clamp(3.5rem,8vh,6.5rem) var(--pad);position:relative}
 .wrap{max-width:var(--maxw);margin:0 auto;width:100%}
 .shead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:clamp(2.5rem,5vh,4.5rem)}
-.shead h2{font-size:clamp(2rem,5vw,4.6rem);max-width:18ch}
+.shead h2{font-size:clamp(1.75rem,3.2vw,2.75rem);max-width:24ch}
 /* =================================================================
    MANIFESTO
    ================================================================= */
-.manifesto .big{font-family:var(--serif);font-size:clamp(1.6rem,4.2vw,3.4rem);line-height:1.22;font-weight:400;max-width:26ch;letter-spacing:-.005em}
-.manifesto .grid{display:grid;grid-template-columns:1fr;gap:2.5rem;margin-top:3rem}
+.manifesto .big{font-family:var(--serif);font-size:clamp(1.35rem,2.6vw,2.2rem);line-height:1.22;font-weight:400;max-width:26ch;letter-spacing:-.005em}
+.manifesto .grid{display:grid;grid-template-columns:1fr;gap:2rem}
 .manifesto .note{max-width:40ch;color:var(--muted);justify-self:end;font-size:1.02rem}
 @media(min-width:900px){.manifesto .grid{grid-template-columns:1.5fr .8fr;align-items:end}}
 /* =================================================================
@@ -223,10 +224,10 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .services{background:var(--bg)}
 .svc-wrap{position:relative}
 .svc-list{border-top:1px solid var(--line)}
-.svc{display:grid;grid-template-columns:auto 1fr auto;gap:1.4rem;align-items:center;padding:clamp(1.6rem,3.6vw,2.6rem) 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .5s var(--e)}
+.svc{display:grid;grid-template-columns:1fr;gap:1.4rem;align-items:center;padding:clamp(1.6rem,3.6vw,2.6rem) 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .5s var(--e)}
 .svc:hover{padding-left:1.4rem}
 .svc .n{font-family:var(--mono);font-size:.78rem;color:var(--brass);align-self:start;padding-top:.5rem}
-.svc .nm{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.05;transition:color .4s,opacity .4s}
+.svc .nm{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,1.9rem);line-height:1.05;transition:color .4s,opacity .4s}
 .svc .ds{color:var(--muted);max-width:46ch;margin-top:.6rem;font-size:.98rem}
 .svc .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
 .svc .tg{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line-2);padding:.3rem .7rem;border-radius:99px}
@@ -238,12 +239,24 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .svc-preview{position:fixed;width:300px;height:380px;border-radius:3px;overflow:hidden;pointer-events:none;z-index:50;opacity:0;transform:scale(.94) translate(-50%,-50%);transition:opacity .4s var(--e),transform .5s var(--e);box-shadow:0 30px 80px rgba(0,0,0,.55)}
 .svc-preview.show{opacity:1;transform:scale(1) translate(-50%,-50%)}
 .svc-preview img,.svc-preview video{width:100%;height:100%;object-fit:cover}
-@media(max-width:780px){.svc-preview{display:none}.svc{grid-template-columns:auto 1fr}.svc .pk{display:none}}
+@media(max-width:780px){.svc-preview{display:none}}
 /* =================================================================
    SELECTED WORK (full-bleed projects)
    ================================================================= */
 .work{background:var(--bg-2)}
-.projects{display:flex;flex-direction:column;gap:clamp(3rem,7vw,6rem)}
+.work-tiles{display:grid;grid-template-columns:1fr;gap:1.2rem}
+@media(min-width:760px){.work-tiles{grid-template-columns:repeat(3,1fr)}}
+.wt{display:block}
+.wt-img{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:var(--panel)}
+@media(min-width:760px){.wt-img{aspect-ratio:4/5}}
+.wt-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--e)}
+.wt:hover .wt-img img{transform:scale(1.04)}
+.wt-play{position:absolute;left:1rem;bottom:1rem;width:46px;height:46px;border-radius:50%;background:rgba(16,13,8,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(245,234,208,.35);display:grid;place-items:center}
+.wt-play svg{width:15px;height:15px;fill:var(--ivory);margin-left:2px}
+.wt-cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.9rem}
+.wt-t{font-family:var(--serif);font-size:1.3rem;color:var(--ivory);transition:color .3s}
+.wt:hover .wt-t{color:var(--brass-2)}
+.wt-n{color:var(--muted);font-size:.9rem;white-space:nowrap}
 .proj{position:relative;cursor:pointer}
 .proj-media{position:relative;overflow:hidden;border-radius:3px;aspect-ratio:16/9;background:var(--panel);
   clip-path:inset(8% 6% 8% 6%);transition:clip-path 1.2s var(--e)}
@@ -278,15 +291,22 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .fplay:hover{background:var(--brass);transform:scale(1.05)}
 .fplay svg{width:26px;height:26px;fill:var(--ivory);margin-left:4px}
 /* =================================================================
-   STATS
+   PROOF BAR (sits under the hero; overlaps it on wide screens)
    ================================================================= */
-.stats{background:var(--bg-2);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
-.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(2.5rem,5vw,3rem) 1rem}
-@media(min-width:820px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
-.st .n{font-family:var(--serif);font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:.95;letter-spacing:-.02em;color:var(--ivory)}
-.st .n em{color:var(--brass-2)}
-.st .l{font-family:var(--mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.9rem}
-.st .d{color:var(--muted-2);margin-top:.5rem;font-size:.92rem;max-width:24ch}
+.proof{position:relative;z-index:6;padding:0 var(--pad);background:var(--bg)}
+.proof-in{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:4px;overflow:hidden}
+.pf{display:block;background:var(--bg-2);padding:1.05rem 1.15rem 1.15rem}
+a.pf:hover .pf-n{color:var(--brass-2)}
+.pf-n{font-family:var(--serif);font-weight:500;font-size:1.45rem;line-height:1.15;color:var(--ivory);transition:color .3s}
+.pf-n .st5{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;color:var(--brass);margin-left:.45rem;vertical-align:.18em}
+.pf-l{color:var(--muted);font-size:.9rem;line-height:1.4;margin-top:.3rem}
+@media(min-width:900px){
+  .proof{background:transparent;margin-top:-3.6rem}
+  .proof-in{grid-template-columns:repeat(4,1fr);background:rgba(231,197,104,.16)}
+  .pf{background:rgba(16,13,8,.84);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:1.25rem 1.5rem 1.35rem}
+  .hero{padding-bottom:calc(clamp(2.5rem,6vh,5rem) + 3.6rem)}
+}
+@media(max-width:899px){.proof{padding-top:1.25rem}}
 /* =================================================================
    ABOUT
    ================================================================= */
@@ -311,14 +331,14 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 @media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
 .step{padding-top:1.6rem;border-top:1px solid var(--line)}
 .step .sn{font-family:var(--mono);font-size:.72rem;color:var(--brass);letter-spacing:.1em}
-.step h3{font-size:clamp(1.4rem,3vw,2rem);margin:.9rem 0 .6rem}
+.step h3{font-size:clamp(1.2rem,1.8vw,1.45rem);margin:.8rem 0 .5rem}
 .step p{color:var(--muted);max-width:34ch}
 /* =================================================================
    TESTIMONIALS
    ================================================================= */
 .tests{background:var(--bg);overflow:hidden}
 .rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2rem,4vh,3rem)}
-.rv-head h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;margin-top:1.1rem;max-width:14ch}
+.rv-head h2{font-size:clamp(1.75rem,3.2vw,2.75rem);max-width:24ch}
 .rv-badge{display:flex;align-items:center;gap:1.1rem;border:1px solid var(--line);padding:1.1rem 1.4rem;border-radius:3px;transition:border-color .4s,background .4s}
 .rv-badge:hover{border-color:var(--brass);background:rgba(231,197,104,.05)}
 .rv-score{font-family:var(--serif);font-size:3rem;line-height:1;color:var(--ivory)}
@@ -327,7 +347,7 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .rv-link{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);margin-left:.6rem;white-space:nowrap}
 .rv-feature{text-align:center;padding:clamp(2rem,4.5vh,3.2rem) 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(2.5rem,5vh,4rem)}
 .rv-feature .rv-stars{font-size:.9rem;letter-spacing:.3em}
-.rv-feature blockquote{font-family:var(--serif);font-size:clamp(1.35rem,2.8vw,2.2rem);line-height:1.3;max-width:30ch;margin:1.4rem auto 1.6rem;color:var(--ivory)}
+.rv-feature blockquote{font-family:var(--serif);font-size:clamp(1.25rem,2.3vw,1.85rem);line-height:1.3;max-width:30ch;margin:1.4rem auto 1.6rem;color:var(--ivory)}
 .rv-who .nm{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
 .rv-who .rl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:.35rem}
 .tests{padding-top:clamp(3.5rem,8vh,6rem);padding-bottom:clamp(3.5rem,8vh,6rem)}
@@ -349,10 +369,11 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .rv-more{text-align:center;margin-top:1.6rem}
 /* guarantee */
 .guarantee{background:var(--bg);padding-top:0}
-.g-box{text-align:center;border:1px solid var(--line);border-radius:3px;padding:clamp(2.6rem,6vw,4.5rem) clamp(1.4rem,5vw,4rem);background:linear-gradient(180deg,rgba(231,197,104,.06),rgba(231,197,104,0))}
-.g-box .tag{justify-content:center}
-.g-box h2{font-size:clamp(2.1rem,5vw,4rem);line-height:1.02;margin:1.1rem auto 1.2rem;max-width:16ch}
-.g-box p{color:var(--ivory-2);max-width:54ch;margin:0 auto 2rem;font-size:1.08rem}
+.g-row{display:grid;gap:1.4rem;align-items:center;background:var(--bg-2);border:1px solid var(--line-2);border-left:2px solid var(--brass);border-radius:4px;padding:clamp(1.4rem,3vw,2rem) clamp(1.3rem,3vw,2.2rem)}
+@media(min-width:900px){.g-row{grid-template-columns:1fr auto;gap:3rem}}
+.g-row h2{font-size:clamp(1.35rem,2.2vw,1.8rem)}
+.g-row p{color:var(--muted);max-width:62ch;margin-top:.45rem;font-size:1rem}
+.g-row .btn{justify-self:start}
 /* agent video testimonials */
 .rv-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-bottom:clamp(2rem,4vh,3rem)}
 .rv-video .vf{position:relative;aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);border:1px solid var(--line-2)}
@@ -365,19 +386,18 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .hero-proof .sep{color:var(--brass);opacity:.6}
 .hero-proof:hover{color:var(--ivory)}
 /* promise row */
-.promise-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:clamp(3.5rem,8vh,5.5rem)}
-.promise{list-style:none;display:grid;grid-template-columns:1fr;gap:1.4rem;max-width:1100px;margin:1.6rem auto 0;text-align:left}
+.promise{list-style:none;display:grid;grid-template-columns:1fr;gap:1.4rem;max-width:1100px;margin:clamp(3rem,6vh,4rem) auto 0;text-align:left}
 @media(min-width:700px){.promise{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1080px){.promise{grid-template-columns:repeat(4,1fr)}}
 .promise li{border-top:1px solid var(--line);padding-top:1.1rem}
-.promise b{display:block;font-family:var(--serif);font-weight:400;font-size:1.3rem;color:var(--ivory)}
+.promise b{display:block;font-family:var(--serif);font-weight:500;font-size:1.15rem;color:var(--ivory)}
 .promise span{display:block;color:var(--muted);font-size:.95rem;margin-top:.35rem}
 /* =================================================================
    CTA
    ================================================================= */
-.cta{background:var(--bg-2);text-align:center;padding:clamp(5rem,13vh,11rem) var(--pad)}
+.cta{background:var(--bg-2);text-align:center;padding:clamp(4rem,9vh,7rem) var(--pad)}
 .cta .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--brass-2);text-transform:uppercase}
-.cta h2{font-size:clamp(2.4rem,7.5vw,6.5rem);line-height:.98;max-width:16ch;margin:1.4rem auto 1.6rem}
+.cta h2{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.05;max-width:18ch;margin:0 auto 1.2rem}
 .cta .sub{color:var(--muted);max-width:46ch;margin:0 auto 2.6rem;font-size:1.05rem}
 .cta .avail{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:2.2rem;display:inline-flex;align-items:center;gap:.6rem}
 .cta .avail .pulse{width:7px;height:7px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 0 rgba(227,29,29,.6);animation:beat 2s infinite}
@@ -429,7 +449,7 @@ footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;bor
   linear-gradient(105deg, rgba(8,7,5,.82) 0%, rgba(8,7,5,.52) 34%, rgba(8,7,5,.18) 58%, rgba(8,7,5,0) 82%),
   linear-gradient(to top, rgba(8,7,5,.50), rgba(8,7,5,0) 50%)}
 .hero .bar{display:none}.hero .sound{display:none}.hero-vimeo{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%);border:0;pointer-events:none}.hero-mp4{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:1!important}@media(max-width:768px){.hero-vimeo{display:none}.hero-mp4{display:block}}
-.svc-view{display:inline-block;margin-top:.9rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2)}
+.svc-view{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:500;color:var(--brass-2)}
 .svc.has-gallery{cursor:pointer}
 .glb{position:fixed;inset:0;z-index:3000;background:rgba(8,7,4,.97);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;overflow-y:auto;padding:clamp(3rem,7vh,5rem) clamp(1rem,4vw,3rem) 4rem}
 .glb.open{display:block}
@@ -483,12 +503,12 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
 <div class="cursor-ring"><span class="clabel">View</span></div>
 <!-- NAV -->
 <header class="nav" id="nav">
-  <a href="#top" class="wordmark" data-cursor="">Atlanta Media Co.<small>Atlanta · North Georgia</small></a>
+  <a href="#top" class="wordmark" data-cursor="">Atlanta Media Co.</a>
   <nav class="nav-r">
     <a href="#work" class="l">Work</a>
     <a href="#services" class="l">Services</a>
     <a href="#about" class="l">About</a>
-    <a href="client-care.html" class="l">Client Care</a>
+    <a href="/client-care" class="l">Client Care</a>
     <a href="#contact" class="l">Contact</a>
     <a href="#" class="nav-book" data-book>Book a Shoot</a>
   </nav>
@@ -498,10 +518,9 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <a href="#work">Work</a>
   <a href="#services">Services</a>
   <a href="#about">About</a>
-  <a href="client-care.html">Client Care</a>
+  <a href="/client-care">Client Care</a>
   <a href="#contact">Contact</a>
   <a href="#" data-book>Book a Shoot</a>
-  <div class="mf">Atlanta &amp; North Georgia · Est. ATL</div>
 </div>
 <main id="top">
   <!-- HERO -->
@@ -514,7 +533,6 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
       <div class="hc br">Reel — 2025</div>
     </div>
     <div class="hero-in">
-      <span class="tag he d1" id="heroEyebrow">Atlanta Real Estate Media</span>
       <h1 class="he d2">
         
         Win the listing.<br>Sell the home.<br><em>Grow your name.</em>
@@ -524,15 +542,11 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
         <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
         <a href="#" class="btn btn-line" id="heroReel" data-cursor>Watch the Reel <span class="u"></span></a>
       </div>
-      <a href="#testimonials" class="hero-proof he d4" id="heroProof"></a>
     </div>
     <button class="sound" id="soundBtn" aria-label="Toggle sound"><span class="dot"><svg id="soundIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2"/><line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2"/></svg></span><span id="soundLabel">Sound Off</span></button>
-    <div class="scroll-cue"><span>Scroll</span><span class="ln"></span></div>
   </section>
-  <!-- STATS -->
-  <section class="stats" id="stats">
-    <div class="wrap"><div class="stat-grid" id="statGrid"></div></div>
-  </section>
+  <!-- PROOF -->
+  <div class="proof" id="stats"><div class="proof-in" id="statGrid"></div></div>
   <!-- TRUSTED -->
   <div class="strip">
     <div class="lab">Trusted by agents &amp; brokerages across Georgia</div>
@@ -542,7 +556,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="tests" id="testimonials">
     <div class="wrap">
       <div class="rv-head reveal">
-        <div><span class="tag">What Agents Say</span><h2>Hear it from<br><em>agents like you.</em></h2></div>
+        <div><h2>Hear it from agents like you.</h2></div>
         <a class="rv-badge" id="rvBadge" href="#" target="_blank" rel="noopener" data-cursor>
           <div class="rv-score" id="rvScore">5.0</div>
           <div><div class="rv-stars">★★★★★</div><div class="rv-meta" id="rvMeta">Reviews on Google</div></div>
@@ -557,10 +571,11 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <!-- GUARANTEE -->
   <section class="guarantee" id="guarantee">
     <div class="wrap">
-      <div class="g-box reveal">
-        <span class="tag">Our Guarantee</span>
-        <h2>Your first listing is <em>risk-free.</em></h2>
-        <p>If you or your seller aren't happy with the photos, we'll reshoot at our cost within 48 hours. After that, if we ever miss a shot, we come back and get it at no charge.</p>
+      <div class="g-row reveal">
+        <div class="g-copy">
+          <h2>Your first listing is risk-free.</h2>
+          <p>If you or your seller aren't happy with the photos, we'll reshoot at our cost within 48 hours. After that, if we ever miss a shot, we come back and get it at no charge.</p>
+        </div>
         <a href="#" class="btn btn-brass" data-book data-cursor>Book My First Shoot <span class="ar">→</span></a>
       </div>
     </div>
@@ -568,7 +583,6 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <!-- MANIFESTO -->
   <section class="manifesto" id="intro">
     <div class="wrap">
-      <span class="tag reveal">Why Agents Choose Us</span>
       <div class="grid">
         <p class="big reveal">You need more than good photos. You need someone who answers fast, shows up on time, and cares how your listing looks <em>as much as you do.</em></p>
         <p class="note reveal">When your listing sells and the next seller calls you because of it, we've done our job.</p>
@@ -579,7 +593,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="reels" id="reels">
     <div class="wrap">
       <div class="shead reveal">
-        <div><span class="tag">Social Reels</span><h2>Reels that get<br><em>you</em> noticed.</h2></div>
+        <div><h2>Reels that get you noticed.</h2></div>
         <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Follow on Instagram <span class="u"></span></a>
       </div>
       <div class="reel-carousel"><button class="rc-arrow prev" id="rcPrev" aria-label="Previous reels">‹</button><div class="reel-row" id="reelRow"></div><button class="rc-arrow next" id="rcNext" aria-label="More reels">›</button></div>
@@ -589,7 +603,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="services" id="services">
     <div class="wrap">
       <div class="shead reveal">
-        <div><span class="tag">What You Get</span><h2>Everything your listing needs,<br>in one booking.</h2></div>
+        <div><h2>Everything your listing needs, in one booking.</h2></div>
         <a href="#" class="btn btn-line" data-book data-cursor>See pricing <span class="u"></span></a>
       </div>
       <div class="svc-wrap" id="svcWrap">
@@ -602,9 +616,9 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="work" id="work">
     <div class="wrap">
       <div class="shead reveal">
-        <div><span class="tag">Selected Work</span><h2>See what your listing<br>could look like.</h2></div>
+        <div><h2>See what your listing could look like.</h2></div>
       </div>
-      <div class="projects" id="projects"></div>
+      <div class="work-tiles" id="workTiles"></div>
     </div>
   </section>
   <!-- FILM BAND -->
@@ -622,7 +636,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <!-- ABOUT -->
   <section class="about" id="about">
     <div class="wrap">
-      <div class="shead reveal"><div><span class="tag">Meet The Team</span><h2>The people who'll take care of you.</h2></div></div>
+      <div class="shead reveal"><div><h2>The people who'll take care of you.</h2></div></div>
       <div class="team-grid">
         <div class="team-member reveal">
           <div class="about-photo" id="aboutPhoto"><span class="badge">Founder &amp; Owner</span></div>
@@ -642,18 +656,16 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <!-- PROCESS -->
   <section class="process" id="process">
     <div class="wrap">
-      <div class="shead reveal"><div><span class="tag">How It Works</span><h2>Easy for you, start to finish.</h2></div></div>
+      <div class="shead reveal"><div><h2>Easy for you, start to finish.</h2></div></div>
       <div class="steps" id="steps"></div>
     </div>
   </section>
   <!-- CTA -->
   <section class="cta" id="contact">
     <div class="wrap">
-      <span class="k">Your Next Listing</span>
       <h2 class="reveal">Make your next listing <em>unforgettable.</em></h2>
       <p class="sub reveal">Booking takes a few minutes. Pick your package and time, and we'll take it from there.</p>
       <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
-      <div class="promise-k reveal">Our promise to you</div>
       <ul class="promise reveal">
         <li><b>24-hour delivery</b><span>Guaranteed. Most listings land by the next morning.</span></li>
         <li><b>No contracts</b><span>Book us when you need us. Nothing to sign up for.</span></li>
@@ -671,7 +683,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
         <div class="wm">Atlanta Media Co.</div>
         <p>Photo, video, and marketing that help Atlanta &amp; North Georgia agents sell listings and grow their name.</p>
       </div>
-      <div class="fcol"><h4>Explore</h4><a href="#work">Work</a><a href="#reels">Reels</a><a href="#services">Services</a><a href="#about">About</a></div>
+      <div class="fcol"><h4>Explore</h4><a href="/listing-photography">Listing Photography</a><a href="/editorial-photography">Editorial Photography</a><a href="/cinematic-video">Cinematic Video</a><a href="#about">About</a></div>
       <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a id="emailLink" href="#">Email</a></div>
       <div class="fcol"><h4>Stay in the loop</h4><p style="padding-top:0">New work, availability &amp; promotions.</p><div class="nl"><input id="nlEmail" type="email" placeholder="Your email" aria-label="Email"/><button id="nlBtn">Join</button></div></div>
     </div>
@@ -682,7 +694,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   </div>
 </footer>
 <!-- LIGHTBOX -->
-<div class="glb" id="glb"><div class="glb-head"><h3 id="glbTitle"></h3><button class="gclose" id="glbClose">Close ✕</button></div><div class="glb-grid" id="glbGrid"></div></div>
+
 <div class="lightbox" id="lightbox">
   <div class="lb-in">
     <button class="lb-close" id="lbClose" data-cursor="Close">Close ✕</button>
@@ -706,7 +718,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
 const SITE = {
   /* ---- LINKS (booking already wired to your system) ---- */
   bookingUrl:    "https://order.atlantamediaco.com/order/atlmediaco/media",
-  clientCareUrl: "client-care.html",
+  clientCareUrl: "/client-care",
   email:         "hello@atlantamediaco.com",   // ← confirm your real email
   instagram:     "#",                            // ← your Instagram URL
   youtube:       "#",                            // ← your YouTube URL
@@ -735,25 +747,25 @@ const SITE = {
   ],
   /* ---- SERVICES (each can have an optional image for the hover preview) ---- */
   services:[
-    {name:"Cinematic Video",      pkg:"Film",   desc:"Listing films and vertical reels that let buyers feel the home before they visit — and give you content worth posting.", tags:["Listing Films","Reels","Walkthroughs"], image:""},
-    {name:"Editorial Photography",pkg:"Photo",  desc:"Bright, true-to-color photos that show buyers every room at its best and make your listing the one they want to see.", tags:["Interiors","Exteriors","Twilight"], image:"ed-02.jpg", gallery:["ed-01.jpg","ed-02.jpg","ed-03.jpg","ed-04.jpg","ed-05.jpg","ed-06.jpg","ed-07.jpg","ed-08.jpg","ed-09.jpg","ed-10.jpg","ed-11.jpg","ed-12.jpg","ed-13.jpg","ed-14.jpg","ed-15.jpg","ed-16.jpg","ed-17.jpg","ed-18.jpg","ed-19.jpg","ed-20.jpg","ed-21.jpg","ed-22.jpg","ed-23.jpg","ed-24.jpg","ed-25.jpg","ed-26.jpg","ed-27.jpg","ed-28.jpg","ed-29.jpg","ed-30.jpg","ed-31.jpg","ed-32.jpg","ed-33.jpg","ed-34.jpg","ed-35.jpg","ed-36.jpg","ed-37.jpg","ed-38.jpg","ed-39.jpg","ed-40.jpg","ed-41.jpg","ed-42.jpg","ed-43.jpg","ed-44.jpg"]},
-    {name:"Listing Photography",  pkg:"Listing",desc:"Clean, MLS-ready photos for your everyday listings. Consistent quality and fast turnaround, so you can go live sooner.", tags:["Listing Photos","Standard Listings","Quick Turn"], image:"li-02.jpg", gallery:["li-01.jpg","li-02.jpg","li-03.jpg","li-04.jpg","li-05.jpg","li-06.jpg","li-07.jpg","li-08.jpg","li-09.jpg","li-10.jpg","li-11.jpg","li-12.jpg","li-13.jpg","li-14.jpg","li-15.jpg","li-16.jpg","li-17.jpg","li-18.jpg","li-19.jpg","li-20.jpg","li-21.jpg","li-22.jpg","li-23.jpg","li-24.jpg","li-25.jpg","li-26.jpg","li-27.jpg","li-28.jpg","li-29.jpg","li-30.jpg","li-31.jpg","li-32.jpg","li-33.jpg","li-34.jpg","li-35.jpg","li-36.jpg","li-37.jpg","li-38.jpg","li-39.jpg","li-40.jpg","li-41.jpg","li-42.jpg","li-43.jpg","li-44.jpg","li-45.jpg","li-46.jpg","li-47.jpg","li-48.jpg","li-49.jpg","li-50.jpg","li-51.jpg"]},
+    {name:"Cinematic Video",      pkg:"Film",   page:"/cinematic-video",       linkText:"See the films",   desc:"Listing films and vertical reels that let buyers feel the home before they visit — and give you content worth posting.", tags:["Listing Films","Reels","Walkthroughs"], image:""},
+    {name:"Editorial Photography",pkg:"Photo",  page:"/editorial-photography", linkText:"See all 44 photos",  desc:"Bright, true-to-color photos that show buyers every room at its best and make your listing the one they want to see.", tags:["Interiors","Exteriors","Twilight"], image:"ed-02.jpg", gallery:["ed-01.jpg","ed-02.jpg","ed-03.jpg","ed-04.jpg","ed-05.jpg","ed-06.jpg","ed-07.jpg","ed-08.jpg","ed-09.jpg","ed-10.jpg","ed-11.jpg","ed-12.jpg","ed-13.jpg","ed-14.jpg","ed-15.jpg","ed-16.jpg","ed-17.jpg","ed-18.jpg","ed-19.jpg","ed-20.jpg","ed-21.jpg","ed-22.jpg","ed-23.jpg","ed-24.jpg","ed-25.jpg","ed-26.jpg","ed-27.jpg","ed-28.jpg","ed-29.jpg","ed-30.jpg","ed-31.jpg","ed-32.jpg","ed-33.jpg","ed-34.jpg","ed-35.jpg","ed-36.jpg","ed-37.jpg","ed-38.jpg","ed-39.jpg","ed-40.jpg","ed-41.jpg","ed-42.jpg","ed-43.jpg","ed-44.jpg"]},
+    {name:"Listing Photography",  pkg:"Listing",page:"/listing-photography",   linkText:"See all 51 photos",desc:"Clean, MLS-ready photos for your everyday listings. Consistent quality and fast turnaround, so you can go live sooner.", tags:["Listing Photos","Standard Listings","Quick Turn"], image:"li-02.jpg", gallery:["li-01.jpg","li-02.jpg","li-03.jpg","li-04.jpg","li-05.jpg","li-06.jpg","li-07.jpg","li-08.jpg","li-09.jpg","li-10.jpg","li-11.jpg","li-12.jpg","li-13.jpg","li-14.jpg","li-15.jpg","li-16.jpg","li-17.jpg","li-18.jpg","li-19.jpg","li-20.jpg","li-21.jpg","li-22.jpg","li-23.jpg","li-24.jpg","li-25.jpg","li-26.jpg","li-27.jpg","li-28.jpg","li-29.jpg","li-30.jpg","li-31.jpg","li-32.jpg","li-33.jpg","li-34.jpg","li-35.jpg","li-36.jpg","li-37.jpg","li-38.jpg","li-39.jpg","li-40.jpg","li-41.jpg","li-42.jpg","li-43.jpg","li-44.jpg","li-45.jpg","li-46.jpg","li-47.jpg","li-48.jpg","li-49.jpg","li-50.jpg","li-51.jpg"]},
     {name:"Branding & Marketing", pkg:"Brand",  desc:"Property websites, social content, and branding sessions that keep your name in front of sellers long after this listing closes.", tags:["Listing Sites","Branding","Social"], image:""}
   ],
-  /* ---- SELECTED WORK — full-bleed projects ---- */
-  projects:[
-    {type:"video", src:"", poster:"", title:"Hilltop Estate",     location:"Cartersville, GA", price:"$1,250,000", year:"2025", tag:"Cinematic"},
-    {type:"image", src:"", poster:"", title:"Glass & Stone",      location:"Atlanta, GA",      price:"$2,400,000", year:"2025", tag:"Photography"},
-    {type:"video", src:"", poster:"", title:"Lakeside Modern",    location:"Acworth, GA",      price:"$895,000",   year:"2025", tag:"Film"}
+  /* ---- SELECTED WORK — each tile opens its own shareable page ---- */
+  work:[
+    {title:"Listing Photography",   page:"/listing-photography",   image:"li-01.jpg", note:"51 photos"},
+    {title:"Editorial Photography", page:"/editorial-photography", image:"ed-02.jpg", note:"44 photos"},
+    {title:"Cinematic Video",       page:"/cinematic-video",       image:"li-49.jpg", note:"Listing films and reels", video:true}
   ],
   /* ---- ABOUT ---- */
   about:{ photoUrl:"https://images.squarespace-cdn.com/content/v1/659e1610d2211507b81cd416/f0dd5f82-ec0a-4513-97ae-bdee70bb2144/victorweb.jpg" },
   /* ---- STATS (edit numbers to your real figures; use *word* for brass emphasis) ---- */
   stats:[
-    {n:"400+",  l:"Listings Shot",       d:"Across Atlanta & North Georgia."},   // ← from Spiro order history (Oct 2026)
-    {n:"24hr",  l:"Delivery, Guaranteed", d:"Most listings land by the next morning, usually before noon."},
-    {n:"$0",    l:"Risk on Your First Listing", d:"Not happy with the photos? We reshoot them free."},
-    {n:"5.0",   l:"Google Rating",     d:"Across {reviews} five-star reviews."}
+    {n:"400+",      l:"listings shot across Atlanta and North Georgia"},   // ← from Spiro order history (Oct 2026)
+    {n:"24 hours",  l:"delivery, guaranteed. Most land by the next morning."},
+    {n:"5.0", stars:true, l:"on Google, from {reviews} reviews", href:"#testimonials"},
+    {n:"Risk-free", l:"first listing. Not happy? We reshoot free.", href:"#guarantee"}
   ],
   /* ---- PROCESS ---- */
   process:[
@@ -795,7 +807,7 @@ const SITE = {
   $("#emailLink").href="mailto:"+SITE.email;
   $("#igLink").href=SITE.instagram; $("#ytLink").href=SITE.youtube; $("#liLink").href=SITE.linkedin;
   $("#year").textContent=new Date().getFullYear();
-  $("#heroEyebrow").textContent=SITE.hero.eyebrow;
+  
   $("#hcLoc").textContent=SITE.hero.location;
   $("#filmTitle").textContent=SITE.film.title;
   const PH=(label,vertical)=>`<div class="ph"><svg class="ico" viewBox="0 0 24 24">${vertical?'<polygon points="5 3 19 12 5 21 5 3"/>':'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'}</svg><span class="lb">${label}</span></div>`;
@@ -837,34 +849,20 @@ const SITE = {
     </div>`;
   }).join("");
   /* ---- services ---- */
-  $("#svcList").innerHTML=SITE.services.map((s,i)=>`
-    <div class="svc${s.gallery?' has-gallery':''}" data-cursor="${s.gallery?'View gallery':''}" data-i="${i}">
-      <div class="n">0${i+1}</div>
+  $("#svcList").innerHTML=SITE.services.map((s,i)=>{const t=s.page?"a":"div";return `
+    <${t} class="svc${s.page?' has-page':''}"${s.page?` href="${s.page}" data-cursor="View"`:""} data-i="${i}">
       <div>
         <div class="nm">${s.name}</div>
         <p class="ds">${s.desc}</p>
         <div class="tags">${s.tags.map(t=>`<span class="tg">${t}</span>`).join("")}</div>
-        ${s.gallery?`<span class="svc-view">View gallery · ${s.gallery.length} photos →</span>`:""}
+        ${s.page?`<span class="svc-view">${s.linkText||"See the work"} →</span>`:""}
       </div>
-      <div class="pk">${s.pkg}</div>
-    </div>`).join("");
-  /* ---- projects ---- */
-  $("#projects").innerHTML=SITE.projects.map(p=>{
-    const media = p.src
-      ? (p.type==="video"
-          ? `<video src="${p.src}" muted loop playsinline preload="metadata" ${p.poster?`poster="${p.poster}"`:""}></video>`
-          : `<img src="${p.src}" alt="${p.title}" loading="lazy">`)
-      : PH(p.type==='video'?'Add project film':'Add project photo',false);
-    return `<div class="proj" data-cursor="${p.type==='video'?'Play':'View'}" data-type="${p.type}" data-src="${p.src||''}" data-poster="${p.poster||''}" data-title="${p.title}">
-      <div class="proj-media"><div class="inner">${media}</div><div class="scrim"></div>
-        ${p.type==='video'?`<div class="pp-big">${playIco}</div>`:''}
-      </div>
-      <div class="proj-foot">
-        <div class="t">${p.title}</div>
-        <div class="m">${p.location} · <b>${p.price}</b> · ${p.year} · ${p.tag}</div>
-      </div>
-    </div>`;
-  }).join("");
+    </${t}>`}).join("");
+  /* ---- selected work tiles ---- */
+  $("#workTiles").innerHTML=SITE.work.map(w=>`<a class="wt reveal" href="${w.page}" data-cursor="View">
+      <div class="wt-img"><img src="${w.image}" alt="${w.title} by Atlanta Media Co." loading="lazy">${w.video?`<span class="wt-play">${playIco}</span>`:""}</div>
+      <div class="wt-cap"><span class="wt-t">${w.title}</span><span class="wt-n">${w.note}</span></div>
+    </a>`).join("");
   /* ---- film band ---- */
   if(SITE.film.posterUrl){
     const i=document.createElement("img"); i.src=SITE.film.posterUrl; i.alt="Showreel";
@@ -872,7 +870,7 @@ const SITE = {
   }
   /* ---- stats ---- */
   const em=t=>t.replace(/\*(.*?)\*/g,'<em>$1</em>');
-  $("#statGrid").innerHTML=SITE.stats.map(s=>`<div class="st reveal"><div class="n">${em(s.n)}</div><div class="l">${s.l}</div><div class="d">${s.d.replace("{reviews}",SITE.reviews.count)}</div></div>`).join("");
+  $("#statGrid").innerHTML=SITE.stats.map(s=>{const t=s.href?"a":"div";return `<${t} class="pf"${s.href?` href="${s.href}"`:""}><div class="pf-n">${s.n}${s.stars?'<span class="st5" aria-label="5 stars">★★★★★</span>':''}</div><div class="pf-l">${s.l.replace("{reviews}",SITE.reviews.count)}</div></${t}>`}).join("");
   /* ---- about photo ---- */
   if(SITE.about.photoUrl){
     $("#aboutPhoto").insertAdjacentHTML("afterbegin",`<div class="inner"><img src="${SITE.about.photoUrl}" alt="Victor Huertas, Founder of Atlanta Media Co."></div>`);
@@ -885,7 +883,6 @@ const SITE = {
   const R=SITE.reviews, stars="★★★★★";
   $("#rvBadge").href=R.url; $("#rvScore").textContent=R.rating;
   $("#rvMeta").textContent=`${R.count} reviews on Google`;
-  $("#heroProof").innerHTML=`<span class="hp-stars">${stars}</span><span>${R.rating} on Google</span><span class="sep">·</span><span>${R.count} reviews</span><span class="sep">·</span><span>First listing risk-free</span>`;
   const who=r=>`<div class="rv-who"><div class="nm">${r.name}</div><div class="rl">${r.role?r.role+" · ":""}Google review</div></div>`;
   const V=SITE.videoReviews||[];
   if(V.length){ const vb=$("#rvVideos"); vb.hidden=false;
@@ -984,20 +981,6 @@ const SITE = {
       b.addEventListener("mouseleave",()=>b.style.transform="");
     });
   }
-  /* ---- service galleries (click to open) ---- */
-  (function(){
-    const glb=$("#glb"),glbGrid=$("#glbGrid"),glbTitle=$("#glbTitle");
-    if(!glb) return;
-    function openG(i){const s=SITE.services[i]; if(!s||!s.gallery||!s.gallery.length)return;
-      glbTitle.textContent=s.name;
-      glbGrid.innerHTML=s.gallery.map(src=>`<img src="${src}" alt="${s.name}" loading="lazy">`).join("");
-      glb.classList.add("open"); document.body.style.overflow="hidden";}
-    function closeG(){glb.classList.remove("open"); glbGrid.innerHTML=""; document.body.style.overflow="";}
-    $("#glbClose").addEventListener("click",closeG);
-    glb.addEventListener("click",e=>{if(e.target===glb)closeG();});
-    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeG();});
-    $$("#svcList .svc").forEach(svc=>{const i=+svc.dataset.i; if(SITE.services[i]&&SITE.services[i].gallery){svc.addEventListener("click",()=>openG(i));}});
-  })();
   /* ---- services hover preview ---- */
   if(fine){
     const wrap=$("#svcWrap"),pv=$("#svcPreview");

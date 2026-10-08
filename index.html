@@ -317,7 +317,7 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
    TESTIMONIALS
    ================================================================= */
 .tests{background:var(--bg);overflow:hidden}
-.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2.5rem,5vh,4rem)}
+.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2rem,4vh,3rem)}
 .rv-head h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1.02;margin-top:1.1rem;max-width:14ch}
 .rv-badge{display:flex;align-items:center;gap:1.1rem;border:1px solid var(--line);padding:1.1rem 1.4rem;border-radius:3px;transition:border-color .4s,background .4s}
 .rv-badge:hover{border-color:var(--brass);background:rgba(231,197,104,.05)}
@@ -325,16 +325,22 @@ section{padding:clamp(4.5rem,11vh,9.5rem) var(--pad);position:relative}
 .rv-stars{color:var(--brass);letter-spacing:.18em;font-size:.95rem}
 .rv-meta{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
 .rv-link{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);margin-left:.6rem;white-space:nowrap}
-.rv-feature{text-align:center;padding:clamp(2.5rem,6vh,4.5rem) 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(2.5rem,5vh,4rem)}
+.rv-feature{text-align:center;padding:clamp(2rem,4.5vh,3.2rem) 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(2.5rem,5vh,4rem)}
 .rv-feature .rv-stars{font-size:.9rem;letter-spacing:.3em}
-.rv-feature blockquote{font-family:var(--serif);font-size:clamp(1.45rem,3.3vw,2.5rem);line-height:1.3;max-width:30ch;margin:1.4rem auto 1.6rem;color:var(--ivory)}
+.rv-feature blockquote{font-family:var(--serif);font-size:clamp(1.35rem,2.8vw,2.2rem);line-height:1.3;max-width:30ch;margin:1.4rem auto 1.6rem;color:var(--ivory)}
 .rv-who .nm{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
 .rv-who .rl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:.35rem}
-.rv-grid{columns:1;column-gap:1.4rem}
-@media(max-width:699px){.rv-card:nth-child(n+5){display:none}}
-@media(min-width:700px){.rv-grid{columns:2}}
-@media(min-width:1080px){.rv-grid{columns:3}}
-.rv-card{break-inside:avoid;margin-bottom:1.4rem;background:var(--bg-2);border:1px solid var(--line-2);border-radius:3px;padding:1.6rem 1.6rem 1.4rem;transition:border-color .4s,transform .6s var(--e)}
+.tests{padding-top:clamp(3.5rem,8vh,6rem);padding-bottom:clamp(3.5rem,8vh,6rem)}
+.rv-carousel{position:relative}
+.rv-row{display:flex;gap:1.4rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:.4rem 0 .6rem}
+.rv-row::-webkit-scrollbar{display:none}
+.rv-row .rv-card{flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column;margin-bottom:0}
+@media(min-width:700px){.rv-row .rv-card{flex-basis:calc((100% - 1.4rem)/2)}}
+@media(min-width:1080px){.rv-row .rv-card{flex-basis:calc((100% - 2.8rem)/3)}}
+.rv-row .rv-card .rv-who{margin-top:auto}
+.rv-carousel .rc-arrow.prev{left:-60px}.rv-carousel .rc-arrow.next{right:-60px}
+@media(max-width:1179px){.rv-carousel .rc-arrow{display:none}}
+.rv-card{background:var(--bg-2);border:1px solid var(--line-2);border-radius:3px;padding:1.6rem 1.6rem 1.4rem;transition:border-color .4s,transform .6s var(--e)}
 .rv-card:hover{border-color:var(--line);transform:translateY(-4px)}
 .rv-card .rv-stars{font-size:.8rem}
 .rv-card p{color:var(--ivory-2);font-size:1rem;line-height:1.65;margin:1rem 0 1.3rem}
@@ -516,6 +522,21 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
     <div class="lab">Trusted by agents &amp; brokerages across Georgia</div>
     <div class="mq" id="mq"></div>
   </div>
+  <!-- TESTIMONIALS -->
+  <section class="tests" id="testimonials">
+    <div class="wrap">
+      <div class="rv-head reveal">
+        <div><span class="tag">What Agents Say</span><h2>Hear it from<br><em>agents like you.</em></h2></div>
+        <a class="rv-badge" id="rvBadge" href="#" target="_blank" rel="noopener" data-cursor>
+          <div class="rv-score" id="rvScore">5.0</div>
+          <div><div class="rv-stars">★★★★★</div><div class="rv-meta" id="rvMeta">Reviews on Google</div></div>
+          <span class="rv-link">Read all →</span>
+        </a>
+      </div>
+      <figure class="rv-feature reveal" id="rvFeature"></figure>
+      <div class="rv-carousel"><button class="rc-arrow prev" id="rvPrev" aria-label="Previous reviews">‹</button><div class="rv-row" id="rvGrid"></div><button class="rc-arrow next" id="rvNext" aria-label="More reviews">›</button></div>
+    </div>
+  </section>
   <!-- MANIFESTO -->
   <section class="manifesto" id="intro">
     <div class="wrap">
@@ -599,21 +620,6 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
     <div class="wrap">
       <div class="shead reveal"><div><span class="tag">How It Works</span><h2>Easy for you, start to finish.</h2></div></div>
       <div class="steps" id="steps"></div>
-    </div>
-  </section>
-  <!-- TESTIMONIALS -->
-  <section class="tests" id="testimonials">
-    <div class="wrap">
-      <div class="rv-head reveal">
-        <div><span class="tag">What Agents Say</span><h2>Hear it from<br><em>agents like you.</em></h2></div>
-        <a class="rv-badge" id="rvBadge" href="#" target="_blank" rel="noopener" data-cursor>
-          <div class="rv-score" id="rvScore">5.0</div>
-          <div><div class="rv-stars">★★★★★</div><div class="rv-meta" id="rvMeta">Reviews on Google</div></div>
-          <span class="rv-link">Read all →</span>
-        </a>
-      </div>
-      <figure class="rv-feature reveal" id="rvFeature"></figure>
-      <div class="rv-grid" id="rvGrid"></div>
     </div>
   </section>
   <!-- CTA -->
@@ -855,6 +861,9 @@ const SITE = {
   $("#heroProof").innerHTML=`<span class="hp-stars">${stars}</span><span>${R.rating} on Google</span><span class="sep">·</span><span>${R.count} reviews</span><span class="sep">·</span><span>Next-morning delivery</span>`;
   const who=r=>`<div class="rv-who"><div class="nm">${r.name}</div><div class="rl">${r.role?r.role+" · ":""}Google review</div></div>`;
   $("#rvFeature").innerHTML=`<div class="rv-stars">${stars}</div><blockquote>“${R.featured.quote}”</blockquote>${who(R.featured)}`;
+  const rvRow=$("#rvGrid"), rvStep=()=>{const c=rvRow.querySelector(".rv-card");return c?c.offsetWidth+22:300};
+  $("#rvPrev").addEventListener("click",()=>rvRow.scrollBy({left:-rvStep(),behavior:"smooth"}));
+  $("#rvNext").addEventListener("click",()=>rvRow.scrollBy({left:rvStep(),behavior:"smooth"}));
   $("#rvGrid").innerHTML=R.items.map(r=>`<div class="rv-card reveal"><div class="rv-stars">${stars}</div><p>“${r.quote}”</p>${who(r)}</div>`).join("");
   /* ---- lightbox ---- */
   const lb=$("#lightbox"),lbC=$("#lbContent"),lbCap=$("#lbCap");

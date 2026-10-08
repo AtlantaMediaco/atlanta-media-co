@@ -126,11 +126,11 @@ header.nav.solid{background:rgba(16,13,8,.87);backdrop-filter:blur(20px);-webkit
 .menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
 .menu-open .burger span:nth-child(2){opacity:0}
 .menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-.mobile{position:fixed;inset:0;z-index:1050;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);transform:translateY(-100%);transition:transform .7s var(--e)}
-.menu-open .mobile{transform:translateY(0)}
+.mobile{position:fixed;inset:0;z-index:1050;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);overflow-y:auto;transform:translateY(-100%);visibility:hidden;transition:transform .7s var(--e),visibility 0s linear .7s}
+.menu-open .mobile{transform:translateY(0);visibility:visible;transition:transform .7s var(--e),visibility 0s}
+.menu-open header.nav{z-index:1100;background:transparent;border-bottom-color:transparent}
 .mobile a{font-family:var(--serif);font-size:clamp(2.2rem,11vw,4rem);padding:.45rem 0;border-bottom:1px solid var(--line-2);transition:color .4s,padding-left .4s var(--e)}
 .mobile a:hover{color:var(--brass-2);padding-left:1rem}
-.mobile .mf{margin-top:2.5rem;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;color:var(--muted);text-transform:uppercase}
 /* =================================================================
    HERO
    ================================================================= */
@@ -463,6 +463,8 @@ footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;bor
 .glb-grid img{width:100%;margin:0 0 14px;border-radius:3px;display:block;break-inside:avoid;background:var(--panel)}
 .hero .hc.br,.hero .hc.tl{display:none}
 .hero h1,.hero h1 .sm,.hero h1 em{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.005em}
+/* same brushed-gold finish on every gold headline word */
+h2 em,.manifesto .big em{background:radial-gradient(135% 130% at 26% 16%,rgba(255,249,224,.98) 0%,rgba(255,244,205,0) 44%),linear-gradient(96deg,#7c5810 0%,#c99a34 15%,#f7e08d 31%,#ffe479 47%,#c99b34 63%,#f4d77e 80%,#8f6a1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-right:.06em;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3)) drop-shadow(0 0 12px rgba(240,201,95,.18))}
 .hero h1{font-weight:500;font-style:normal}
 .hero h1 .sm,.hero h1 em{font-style:italic}
 .hero h1{color:#f7f3ea}
@@ -556,7 +558,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="tests" id="testimonials">
     <div class="wrap">
       <div class="rv-head reveal">
-        <div><h2>Hear it from agents like you.</h2></div>
+        <div><h2>Hear it from <em>agents like you.</em></h2></div>
         <a class="rv-badge" id="rvBadge" href="#" target="_blank" rel="noopener" data-cursor>
           <div class="rv-score" id="rvScore">5.0</div>
           <div><div class="rv-stars">★★★★★</div><div class="rv-meta" id="rvMeta">Reviews on Google</div></div>
@@ -573,7 +575,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
     <div class="wrap">
       <div class="g-row reveal">
         <div class="g-copy">
-          <h2>Your first listing is risk-free.</h2>
+          <h2>Your first listing is <em>risk-free.</em></h2>
           <p>If you or your seller aren't happy with the photos, we'll reshoot at our cost within 48 hours. After that, if we ever miss a shot, we come back and get it at no charge.</p>
         </div>
         <a href="#" class="btn btn-brass" data-book data-cursor>Book My First Shoot <span class="ar">→</span></a>
@@ -593,7 +595,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <section class="reels" id="reels">
     <div class="wrap">
       <div class="shead reveal">
-        <div><h2>Reels that get you noticed.</h2></div>
+        <div><h2>Reels that get <em>you noticed.</em></h2></div>
         <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Follow on Instagram <span class="u"></span></a>
       </div>
       <div class="reel-carousel"><button class="rc-arrow prev" id="rcPrev" aria-label="Previous reels">‹</button><div class="reel-row" id="reelRow"></div><button class="rc-arrow next" id="rcNext" aria-label="More reels">›</button></div>

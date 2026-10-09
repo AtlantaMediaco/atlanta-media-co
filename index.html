@@ -374,6 +374,8 @@ a.pf:hover .pf-n{color:var(--brass-2)}
 .g-row h2{font-size:clamp(1.35rem,2.2vw,1.8rem)}
 .g-row p{color:var(--muted);max-width:62ch;margin-top:.45rem;font-size:1rem}
 .g-row .btn{justify-self:start}
+.g-more{color:var(--brass-2);white-space:nowrap;border-bottom:1px solid rgba(221,186,92,.35)}
+.g-more:hover{color:var(--ivory);border-color:var(--ivory)}
 /* agent video testimonials */
 .rv-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-bottom:clamp(2rem,4vh,3rem)}
 .rv-video .vf{position:relative;aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);border:1px solid var(--line-2)}
@@ -437,7 +439,7 @@ footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;bor
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--e),transform 1s var(--e)}
 .reveal.in{opacity:1;transform:translateY(0)}
 .par{will-change:transform}
-@media(max-width:920px){.nav-r{display:none}.burger{display:flex}}
+@media(max-width:1180px){.nav-r{display:none}.burger{display:flex}}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition-duration:.001ms!important}
   .reveal,.he,.lines .w>span{opacity:1!important;transform:none!important}
@@ -511,6 +513,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
     <a href="#services" class="l">Services</a>
     <a href="#about" class="l">About</a>
     <a href="/client-care" class="l">Client Care</a>
+    <a href="/guarantee" class="l">Our Guarantee</a>
     <a href="#contact" class="l">Contact</a>
     <a href="#" class="nav-book" data-book>Book a Shoot</a>
   </nav>
@@ -521,6 +524,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
   <a href="#services">Services</a>
   <a href="#about">About</a>
   <a href="/client-care">Client Care</a>
+  <a href="/guarantee">Our Guarantee</a>
   <a href="#contact">Contact</a>
   <a href="#" data-book>Book a Shoot</a>
 </div>
@@ -575,10 +579,10 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
     <div class="wrap">
       <div class="g-row reveal">
         <div class="g-copy">
-          <h2>Your first listing is <em>risk-free.</em></h2>
-          <p>If you or your seller aren't happy with the photos, we'll reshoot at our cost within 48 hours. After that, if we ever miss a shot, we come back and get it at no charge.</p>
+          <h2>Every shoot is <em>risk-free.</em></h2>
+          <p>If something isn't right with the photos, we come back and reshoot at no charge within 48 hours. We don't stop until you're happy. <a href="/guarantee" class="g-more">How our guarantee works</a></p>
         </div>
-        <a href="#" class="btn btn-brass" data-book data-cursor>Book My First Shoot <span class="ar">→</span></a>
+        <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
       </div>
     </div>
   </section>
@@ -672,7 +676,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
         <li><b>24-hour delivery</b><span>Guaranteed. Most listings land by the next morning.</span></li>
         <li><b>No contracts</b><span>Book us when you need us. Nothing to sign up for.</span></li>
         <li><b>No cancellation fees</b><span>Plans change. Reschedule without paying extra.</span></li>
-        <li><b>Risk-free first listing</b><span>If you don't love the photos, we reshoot them for free.</span></li>
+        <li><b>Risk-free, every shoot</b><span>If something isn't right, we come back and fix it for free.</span></li>
       </ul>
     </div>
   </section>
@@ -686,7 +690,7 @@ header.nav:not(.solid) .burger span{background:#f7f3ea}
         <p>Photo, video, and marketing that help Atlanta &amp; North Georgia agents sell listings and grow their name.</p>
       </div>
       <div class="fcol"><h4>Explore</h4><a href="/listing-photography">Listing Photography</a><a href="/editorial-photography">Editorial Photography</a><a href="/cinematic-video">Cinematic Video</a><a href="#about">About</a></div>
-      <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a id="emailLink" href="#">Email</a></div>
+      <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a href="/guarantee">Our Guarantee</a><a id="emailLink" href="#">Email</a></div>
       <div class="fcol"><h4>Stay in the loop</h4><p style="padding-top:0">New work, availability &amp; promotions.</p><div class="nl"><input id="nlEmail" type="email" placeholder="Your email" aria-label="Email"/><button id="nlBtn">Join</button></div></div>
     </div>
     <div class="foot-bottom">
@@ -767,7 +771,7 @@ const SITE = {
     {n:"400+",      l:"listings shot across Atlanta and North Georgia"},   // ← from Spiro order history (Oct 2026)
     {n:"24 hours",  l:"delivery, guaranteed. Most land by the next morning."},
     {n:"5.0", stars:true, l:"on Google, from {reviews} reviews", href:"#testimonials"},
-    {n:"Risk-free", l:"on your first listing. If you don't love the photos, we'll reshoot them for free.", href:"#guarantee"}
+    {n:"Risk-free", l:"on every shoot. If something isn't right, we come back and fix it for free.", href:"#guarantee"}
   ],
   /* ---- PROCESS ---- */
   process:[

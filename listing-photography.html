@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Listing Photography — Atlanta Media Co.</title>
+<meta name="description" content="Clean, MLS-ready listing photos for Atlanta and North Georgia agents. Most listings land by the next morning." />
+<link rel="canonical" href="https://www.atlantamediaco.com/listing-photography" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.atlantamediaco.com/listing-photography" />
+<meta property="og:title" content="Listing Photography — Atlanta Media Co." />
+<meta property="og:description" content="Clean, MLS-ready listing photos for Atlanta and North Georgia agents. Most listings land by the next morning." />
+<meta property="og:image" content="https://www.atlantamediaco.com/li-01.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.atlantamediaco.com/li-01.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#100d08; --bg-2:#1a1409; --panel:#241b10;
+  --ivory:#f5ead0; --ivory-2:#ecdfbf; --muted:#b6a67f; --muted-2:#968763;
+  --brass:#e7c568; --brass-2:#ddba5c;
+  --line:rgba(231,197,104,.26); --line-2:rgba(231,197,104,.14);
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Albert Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  --e:cubic-bezier(.16,1,.3,1);
+  --pad:clamp(1.25rem,4.5vw,5rem); --maxw:1320px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--bg);color:var(--ivory);font-size:16px;line-height:1.6}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--brass);color:var(--bg)}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.1;letter-spacing:-.01em;text-wrap:balance}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
+/* nav */
+header.nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem var(--pad);background:rgba(16,13,8,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid var(--line-2)}
+.wordmark{font-family:var(--serif);font-size:1.3rem;line-height:1}
+.nav-r{display:flex;align-items:center;gap:1.8rem}
+.nav-r a.l{font-size:.92rem;color:var(--ivory-2);transition:color .3s}
+.nav-r a.l:hover{color:var(--brass-2)}
+.nav-book{font-size:.88rem;font-weight:500;border:1px solid var(--line);padding:.55rem 1rem;border-radius:3px;transition:all .3s var(--e)}
+.nav-book:hover{background:var(--brass);border-color:var(--brass);color:var(--bg)}
+@media(max-width:760px){.nav-r a.l{display:none}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:500;font-size:.95rem;padding:.9rem 1.5rem;border-radius:3px;transition:all .3s var(--e)}
+.btn-brass{background:var(--brass);color:var(--bg)}
+.btn-brass:hover{background:var(--ivory)}
+.btn-out{border:1px solid var(--line);color:var(--ivory)}
+.btn-out:hover{border-color:var(--ivory)}
+/* intro */
+.intro{padding-top:clamp(2.5rem,7vh,4.5rem);padding-bottom:clamp(2rem,5vh,3rem)}
+.back{display:inline-block;color:var(--muted);font-size:.92rem;margin-bottom:1.2rem}
+.back:hover{color:var(--brass-2)}
+.intro h1{font-size:clamp(2.1rem,4.6vw,3.6rem)}
+.intro .lead{color:var(--ivory-2);font-size:clamp(1.02rem,1.4vw,1.15rem);max-width:60ch;margin-top:.9rem}
+.intro .meta{color:var(--muted);font-size:.92rem;margin-top:.6rem}
+.actions{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:1.6rem}
+/* photo grid */
+.grid{display:grid;gap:10px;grid-template-columns:repeat(2,1fr)}
+.grid.port{grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.grid.land{grid-template-columns:repeat(2,1fr)}.grid.port{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){.grid.land{grid-template-columns:repeat(3,1fr)}.grid.port{grid-template-columns:repeat(4,1fr)}}
+.ph{position:relative;display:block;width:100%;overflow:hidden;border-radius:3px;background:var(--panel)}
+.grid.land .ph{aspect-ratio:3/2}
+.grid.port .ph{aspect-ratio:2/3}
+.ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--e),opacity .5s}
+.ph:hover img{transform:scale(1.03)}
+/* video */
+.vf{position:relative;border-radius:4px;overflow:hidden;background:var(--panel);border:1px solid var(--line-2)}
+.vf iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vf.wide{aspect-ratio:16/9}
+.vf.tall{aspect-ratio:9/16}
+.sub{font-size:clamp(1.4rem,2.4vw,1.9rem);margin:clamp(2.5rem,6vh,3.5rem) 0 1.2rem}
+.reels{display:grid;gap:1rem;grid-template-columns:repeat(2,1fr)}
+@media(min-width:760px){.reels{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){.reels{grid-template-columns:repeat(5,1fr)}}
+.reels figcaption{margin-top:.6rem}
+.reels figcaption b{display:block;font-family:var(--serif);font-weight:500;font-size:1.05rem}
+.reels figcaption span{color:var(--muted);font-size:.88rem}
+/* end block */
+.end{padding-top:clamp(3rem,7vh,4.5rem);padding-bottom:clamp(3rem,7vh,4.5rem)}
+.g-row{display:grid;gap:1.3rem;align-items:center;background:var(--bg-2);border:1px solid var(--line-2);border-left:2px solid var(--brass);border-radius:4px;padding:clamp(1.4rem,3vw,2rem) clamp(1.3rem,3vw,2.2rem)}
+@media(min-width:900px){.g-row{grid-template-columns:1fr auto;gap:3rem}}
+.g-row h2{font-size:clamp(1.35rem,2.2vw,1.8rem)}
+.g-row h2 em{font-style:italic;background:radial-gradient(135% 130% at 26% 16%,rgba(255,249,224,.98) 0%,rgba(255,244,205,0) 44%),linear-gradient(96deg,#7c5810 0%,#c99a34 15%,#f7e08d 31%,#ffe479 47%,#c99b34 63%,#f4d77e 80%,#8f6a1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-right:.06em}
+.g-row p{color:var(--muted);max-width:62ch;margin-top:.45rem}
+.g-row .btn{justify-self:start}
+.more{display:flex;flex-wrap:wrap;gap:.6rem 1.6rem;margin-top:1.6rem;color:var(--muted);font-size:.95rem}
+.more a{color:var(--brass-2)}
+.more a:hover{color:var(--ivory)}
+/* footer */
+footer{padding:2.5rem var(--pad) 2rem;border-top:1px solid var(--line-2);text-align:center}
+footer .wm{font-family:var(--serif);font-size:1.5rem}
+footer .links{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;justify-content:center;margin:1rem 0;font-size:.92rem;color:var(--muted)}
+footer .links a:hover{color:var(--brass-2)}
+footer .cp{font-size:.82rem;color:var(--muted-2)}
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:#0a0805;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.lb[hidden]{display:none}
+.lb img{max-width:calc(100vw - 2rem);max-height:calc(100svh - 7rem);object-fit:contain;border-radius:2px;user-select:none;-webkit-user-drag:none}
+.lb-btn{position:absolute;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(245,234,208,.08);border:1px solid var(--line);font-size:1.5rem;line-height:1;color:var(--ivory)}
+.lb-btn:hover{background:var(--brass);color:var(--bg);border-color:var(--brass)}
+.lb-prev{left:1rem;top:50%;transform:translateY(-50%)}
+.lb-next{right:1rem;top:50%;transform:translateY(-50%)}
+.lb-close{right:1rem;top:1rem;font-size:1.2rem}
+.lb-count{position:absolute;left:50%;bottom:1.2rem;transform:translateX(-50%);color:var(--muted);font-size:.9rem}
+@media(max-width:760px){.lb-prev,.lb-next{top:auto;bottom:.8rem;transform:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="nav">
+  <a href="/" class="wordmark">Atlanta Media Co.</a>
+  <nav class="nav-r">
+    <a href="/#work" class="l">Work</a>
+    <a href="/#services" class="l">Services</a>
+    <a href="/client-care" class="l">Client Care</a>
+    <a href="https://order.atlantamediaco.com/order/atlmediaco/media" class="nav-book">Book a Shoot</a>
+  </nav>
+</header>
+<main>
+  <section class="intro wrap">
+    <a href="/#work" class="back">← All work</a>
+    <h1>Listing Photography</h1>
+    <p class="lead">Clean, MLS-ready photos for your everyday listings. Consistent quality and fast turnaround, so you can go live sooner.</p>
+    <p class="meta">51 photos from recent listings. Tap any photo to see it full size.</p>
+    <div class="actions">
+      <a href="https://order.atlantamediaco.com/order/atlmediaco/media" class="btn btn-brass">Book My Shoot</a>
+      <button class="btn btn-out" id="share" type="button">Share this page</button>
+    </div>
+  </section>
+  <section class="wrap">
+    <div class="grid land" id="grid"></div>
+  </section>
+  <section class="wrap end">
+    <div class="g-row">
+      <div>
+        <h2>Want your listing to <em>look like this?</em></h2>
+        <p>Your first listing is risk-free. If you or your seller aren't happy with the photos, we'll reshoot at our cost within 48 hours.</p>
+      </div>
+      <a href="https://order.atlantamediaco.com/order/atlmediaco/media" class="btn btn-brass">Book My Shoot</a>
+    </div>
+    <nav class="more" aria-label="More work"><span>See more:</span><a href="/editorial-photography">Editorial Photography</a><a href="/cinematic-video">Cinematic Video</a></nav>
+  </section>
+</main>
+<footer>
+  <div class="wm">Atlanta Media Co.</div>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/listing-photography">Listing Photography</a>
+    <a href="/editorial-photography">Editorial Photography</a>
+    <a href="/cinematic-video">Cinematic Video</a>
+    <a href="/client-care">Client Care</a>
+  </div>
+  <div class="cp">© <span id="year"></span> Atlanta Media Co, LLC, Cartersville, GA</div>
+</footer>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer"><img id="lbImg" alt=""><button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous photo">‹</button><button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next photo">›</button><button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close">✕</button><div class="lb-count" id="lbCount"></div></div>
+<script>
+(function(){
+  var PHOTOS = ["li-01.jpg", "li-02.jpg", "li-03.jpg", "li-04.jpg", "li-05.jpg", "li-06.jpg", "li-07.jpg", "li-08.jpg", "li-09.jpg", "li-10.jpg", "li-11.jpg", "li-12.jpg", "li-13.jpg", "li-14.jpg", "li-15.jpg", "li-16.jpg", "li-17.jpg", "li-18.jpg", "li-19.jpg", "li-20.jpg", "li-21.jpg", "li-22.jpg", "li-23.jpg", "li-24.jpg", "li-25.jpg", "li-26.jpg", "li-27.jpg", "li-28.jpg", "li-29.jpg", "li-30.jpg", "li-31.jpg", "li-32.jpg", "li-33.jpg", "li-34.jpg", "li-35.jpg", "li-36.jpg", "li-37.jpg", "li-38.jpg", "li-39.jpg", "li-40.jpg", "li-41.jpg", "li-42.jpg", "li-43.jpg", "li-44.jpg", "li-45.jpg", "li-46.jpg", "li-47.jpg", "li-48.jpg", "li-49.jpg", "li-50.jpg", "li-51.jpg"], TITLE = "Listing Photography";
+  var grid = document.getElementById('grid');
+  grid.innerHTML = PHOTOS.map(function(f,i){
+    return '<button class="ph" type="button" data-i="'+i+'" aria-label="Open photo '+(i+1)+' of '+PHOTOS.length+'">'
+      + '<img src="thumbs/'+f+'" alt="'+TITLE+' by Atlanta Media Co., photo '+(i+1)+'" loading="'+(i<8?'eager':'lazy')+'" decoding="async"></button>';
+  }).join('');
+  var lb=document.getElementById('lb'), img=document.getElementById('lbImg'), cnt=document.getElementById('lbCount'), cur=0, lastFocus=null;
+  function show(i){ cur=(i+PHOTOS.length)%PHOTOS.length; img.src=PHOTOS[cur]; img.alt=TITLE+', photo '+(cur+1);
+    cnt.textContent=(cur+1)+' / '+PHOTOS.length;
+    try{ history.replaceState(null,'','#photo-'+(cur+1)); }catch(e){}
+    var n=new Image(); n.src=PHOTOS[(cur+1)%PHOTOS.length]; }
+  function open(i){ lastFocus=document.activeElement; lb.hidden=false; document.body.style.overflow='hidden'; show(i); document.getElementById('lbClose').focus(); }
+  function close(){ lb.hidden=true; img.removeAttribute('src'); document.body.style.overflow='';
+    try{ history.replaceState(null,'',location.pathname); }catch(e){} if(lastFocus) lastFocus.focus(); }
+  grid.addEventListener('click',function(e){ var b=e.target.closest('.ph'); if(b) open(+b.dataset.i); });
+  document.getElementById('lbPrev').addEventListener('click',function(){ show(cur-1); });
+  document.getElementById('lbNext').addEventListener('click',function(){ show(cur+1); });
+  document.getElementById('lbClose').addEventListener('click',close);
+  lb.addEventListener('click',function(e){ if(e.target===lb) close(); });
+  document.addEventListener('keydown',function(e){ if(lb.hidden) return;
+    if(e.key==='Escape') close(); else if(e.key==='ArrowLeft') show(cur-1); else if(e.key==='ArrowRight') show(cur+1); });
+  var sx=null; lb.addEventListener('touchstart',function(e){ sx=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx; sx=null;
+    if(Math.abs(dx)>45) show(cur+(dx<0?1:-1)); });
+  var m=location.hash.match(/^#photo-(\d+)$/); if(m){ var k=+m[1]-1; if(k>=0&&k<PHOTOS.length) open(k); }
+})();
+
+(function(){
+  var b=document.getElementById('share'); if(!b) return;
+  b.addEventListener('click',function(){
+    var url=location.origin+location.pathname, title=document.title;
+    if(navigator.share){ navigator.share({title:title,url:url}).catch(function(){}); return; }
+    var done=function(){ b.textContent='Link copied'; setTimeout(function(){ b.textContent='Share this page'; },2200); };
+    if(navigator.clipboard){ navigator.clipboard.writeText(url).then(done,function(){ prompt('Copy this link:',url); }); }
+    else { prompt('Copy this link:',url); }
+  });
+  document.getElementById('year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>

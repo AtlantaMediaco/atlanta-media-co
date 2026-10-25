@@ -1035,5 +1035,114 @@ const SITE = {
   document.addEventListener("click",function once(){ const l=$("#loader"); if(l){l.classList.add("done");document.body.classList.add("reveal-now");setTimeout(()=>l.remove(),1100);} document.removeEventListener("click",once); });
 })();
 </script>
+<!-- =================================================================
+     HOLIDAY PROMO POP-UP (Nov 1 – Dec 31)
+     ================================================================= -->
+<style>
+.promo{position:fixed;inset:0;z-index:9200;display:grid;place-items:center;padding:1.25rem;
+  background:rgba(8,6,3,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .6s var(--e),visibility 0s linear .6s}
+.promo.open{opacity:1;visibility:visible;transition:opacity .6s var(--e),visibility 0s}
+.promo-card{position:relative;width:min(920px,100%);max-height:calc(100svh - 2.5rem);overflow:auto;
+  display:grid;grid-template-columns:1fr 1.15fr;background:var(--bg-2);border:1px solid var(--line);
+  transform:translateY(24px);transition:transform .8s var(--e)}
+.promo.open .promo-card{transform:translateY(0)}
+.promo-img{position:relative;min-height:100%;background:url(li-13.jpg) center/cover}
+.promo-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,13,8,0) 45%,rgba(16,13,8,.85))}
+.promo-img .stamp{position:absolute;left:1.4rem;bottom:1.3rem;z-index:1;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-2)}
+.promo-body{padding:clamp(1.6rem,4vw,2.8rem)}
+.promo-x{position:absolute;top:.9rem;right:1rem;z-index:2;width:36px;height:36px;display:grid;place-items:center;font-size:1.4rem;line-height:1;color:var(--ivory-2);background:rgba(16,13,8,.6);border:1px solid var(--line-2);border-radius:50%;transition:color .3s,border-color .3s}
+.promo-x:hover{color:var(--ivory);border-color:var(--line)}
+.promo h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:1rem 0 .8rem}
+.promo p.lede{color:var(--muted);font-size:.98rem;margin-bottom:1.5rem}
+.promo-form{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.promo-form .full{grid-column:1/-1}
+.promo-form label{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-bottom:.35rem}
+.promo-form input{width:100%;font:inherit;font-size:.95rem;color:var(--ivory);background:var(--panel);border:1px solid var(--line-2);border-radius:1px;padding:.8rem .9rem;transition:border-color .3s}
+.promo-form input:focus{outline:none;border-color:var(--brass)}
+.promo-form .btn{justify-content:center;margin-top:.4rem}
+.promo-fine{font-size:.72rem;color:var(--muted-2);margin-top:1rem;line-height:1.5}
+.promo-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.promo-err{display:none;font-size:.8rem;color:#f0a58a;line-height:1.4}
+.promo-err.show{display:block}
+.promo-form .btn[disabled]{opacity:.6;pointer-events:none}
+.promo-done{display:none;text-align:left}
+.promo.sent .promo-form,.promo.sent .lede,.promo.sent .promo-fine,.promo.sent #promoTitle,.promo.sent .promo-body>.tag{display:none}
+.promo.sent .promo-done{display:block}
+.promo-done p{color:var(--muted);margin:.4rem 0 1.4rem}
+@media(max-width:720px){
+  .promo-card{grid-template-columns:1fr}
+  .promo-img{min-height:110px}
+  .promo-body{padding:1.4rem 1.25rem 1.3rem}
+  .promo h2{font-size:1.75rem;margin:.7rem 0 .5rem}
+  .promo p.lede{font-size:.9rem;line-height:1.5;margin-bottom:1rem}
+  .promo-form{gap:.55rem}
+  .promo-form input{padding:.65rem .75rem}
+  .promo-form .wide{grid-column:1/-1}
+  .promo-fine{margin-top:.7rem}
+}
+</style>
+<div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
+  <div class="promo-card">
+    <button class="promo-x" id="promoX" aria-label="Close">&times;</button>
+    <div class="promo-img"><span class="stamp">End-of-Year Promotion</span></div>
+    <div class="promo-body">
+      <span class="tag">New here?</span>
+      <h2 id="promoTitle">Your first listing is <em>on us.</em></h2>
+      <p class="lede">First time working with us? Sign up and we'll email you a code for free photos or video on your first listing!</p>
+      <form class="promo-form" id="promoForm">
+        <div><label for="pFirst">First name</label><input id="pFirst" name="first" required autocomplete="given-name" /></div>
+        <div><label for="pLast">Last name</label><input id="pLast" name="last" required autocomplete="family-name" /></div>
+        <div class="wide"><label for="pPhone">Phone</label><input id="pPhone" name="phone" type="tel" required autocomplete="tel" /></div>
+        <div class="wide"><label for="pEmail">Email</label><input id="pEmail" name="email" type="email" required autocomplete="email" /></div>
+        <div class="full"><label for="pBrok">Brokerage</label><input id="pBrok" name="brokerage" required autocomplete="organization" /></div>
+        <input class="promo-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <button type="submit" class="btn btn-brass full" id="promoBtn">Sign up <span class="ar">&rarr;</span></button>
+        <p class="promo-err full" id="promoErr" role="alert"></p>
+      </form>
+      <p class="promo-fine">New clients only. One free shoot per agent. Sign up by December 31, 2026.</p>
+      <div class="promo-done">
+        <h2>Thank you, <em id="promoName">friend</em>.</h2>
+        <p>Your promo code is on its way to your inbox. We're excited to shoot your first listing together.</p>
+        <button class="btn btn-out" id="promoClose">Back to the site</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const promo=document.getElementById("promo");
+  // Only runs Nov 1 – Dec 31
+  const m=new Date().getMonth();
+  const preview=location.search.includes("promo");
+  if(!(m===10||m===11||preview)) return;
+  try{ if(!preview && localStorage.getItem("amcPromoSeen")) return; }catch(e){}
+  const open=()=>promo.classList.add("open");
+  const close=()=>{ promo.classList.remove("open"); try{localStorage.setItem("amcPromoSeen","1")}catch(e){} };
+  setTimeout(open,preview?2200:6000);
+  document.getElementById("promoX").addEventListener("click",close);
+  document.getElementById("promoClose").addEventListener("click",close);
+  promo.addEventListener("click",e=>{ if(e.target===promo) close(); });
+  document.addEventListener("keydown",e=>{ if(e.key==="Escape") close(); });
+  // Google Apps Script web app that saves the sign-up and emails the code
+  const SIGNUP_URL="https://script.google.com/macros/s/AKfycbyNx7cVzhuFtRhyBQZU1MleFRs783yyijyLL_11FT-eTNv6PX57iyNOmORC-CGyWYKjQA/exec";
+  const form=document.getElementById("promoForm"),btn=document.getElementById("promoBtn"),err=document.getElementById("promoErr");
+  form.addEventListener("submit",async e=>{
+    e.preventDefault();
+    btn.disabled=true; btn.firstChild.textContent="Sending… "; err.classList.remove("show");
+    try{
+      await fetch(SIGNUP_URL,{method:"POST",mode:"no-cors",body:new URLSearchParams(new FormData(form))});
+      document.getElementById("promoName").textContent=document.getElementById("pFirst").value.trim()||"friend";
+      promo.classList.add("sent");
+      try{localStorage.setItem("amcPromoSeen","1")}catch(e){}
+    }catch(x){
+      err.textContent="Something went wrong. Please try again, or email info@atlantamediaco.com.";
+      err.classList.add("show");
+    }
+    btn.disabled=false; btn.firstChild.textContent="Sign up ";
+  });
+})();
+</script>
+
 </body>
 </html>

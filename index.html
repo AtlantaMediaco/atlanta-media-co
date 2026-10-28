@@ -1,1094 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Atlanta Media Co. — Atlanta Real Estate Media</title>
-<meta name="description" content="Photo, video, and marketing for Atlanta &amp; North Georgia agents. Help your listings stand out, sell, and grow your name." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://atlantamediaco.com/" />
-<meta property="og:title" content="Atlanta Media Co. — Atlanta Real Estate Media" />
-<meta property="og:description" content="Photo, video, and marketing that help Atlanta &amp; North Georgia agents win listings, sell them, and grow their name." />
-<meta property="og:image" content="https://atlantamediaco.com/share-card.jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://atlantamediaco.com/share-card.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600;1,700&family=Albert+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&display=swap" rel="stylesheet" />
-<style>
-/* =================================================================
-   ATLANTA MEDIA CO. — CINEMATIC LUXURY
-   ================================================================= */
-:root{
-  --bg:#100d08;            /* warm cream (light) */
-  --bg-2:#1a1409;
-  --panel:#241b10;
-  --ivory:#f5ead0;         /* warm near-black text */
-  --ivory-2:#ecdfbf;
-  --muted:#b6a67f;
-  --muted-2:#968763;
-  --brass:#e7c568;         /* true red — Ferrari-ish, not pink/orange */
-  --brass-2:#ddba5c;       /* true red accent text */
-  --line:rgba(231,197,104,.26);
-  --line-2:rgba(231,197,104,.14);
-  --serif:'Playfair Display',Georgia,serif;
-  --sans:'Albert Sans',-apple-system,BlinkMacSystemFont,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --e:cubic-bezier(.16,1,.3,1);
-  --e2:cubic-bezier(.7,0,.2,1);
-  --pad:clamp(1.25rem,4.5vw,5rem);
-  --maxw:1560px;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
-body{font-family:var(--sans);background:var(--bg);color:var(--ivory);font-size:16px;line-height:1.6;overflow-x:hidden}
-img,video{display:block;max-width:100%}
-a{color:inherit;text-decoration:none}
-button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-::selection{background:var(--brass);color:var(--bg)}
-.serif{font-family:var(--serif)}
-.italic{font-style:italic}
-em{font-style:italic;color:var(--brass-2);font-family:var(--serif)}
-/* grain */
-.grain{position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-.vignette{position:fixed;inset:0;z-index:8999;pointer-events:none;box-shadow:inset 0 0 16vw rgba(50,34,16,.12)}
-/* ---------- custom cursor ---------- */
-.cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:9500;pointer-events:none;border-radius:50%;mix-blend-mode:difference}
-.cursor-dot{width:6px;height:6px;background:var(--ivory);transform:translate(-50%,-50%)}
-.cursor-ring{width:46px;height:46px;border:1px solid rgba(244,239,230,.6);transform:translate(-50%,-50%);
-  transition:width .35s var(--e),height .35s var(--e),background .35s var(--e),border-color .35s var(--e),opacity .35s}
-.cursor-ring .clabel{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;color:var(--bg);opacity:0;transition:opacity .3s;text-transform:uppercase}
-body.cur-hover .cursor-ring{width:84px;height:84px;background:var(--ivory);border-color:var(--ivory)}
-body.cur-hover .cursor-ring .clabel{opacity:1}
-@media(hover:none),(pointer:coarse){.cursor-dot,.cursor-ring{display:none}}
-/* ---------- preloader ---------- */
-.loader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2.2rem}
-.loader.done{transform:translateY(-100%);transition:transform 1.1s var(--e)}
-.loader .lname{font-family:var(--serif);font-size:clamp(1.4rem,4vw,2.4rem);letter-spacing:.04em;color:var(--ivory);opacity:0;animation:fadeUp 1s var(--e) .15s forwards}
-.loader .lbar{width:min(320px,60vw);height:1px;background:var(--line);position:relative;overflow:hidden}
-.loader .lbar i{position:absolute;inset:0;background:var(--brass);transform:scaleX(0);transform-origin:left}
-.loader .lnum{font-family:var(--mono);font-size:.72rem;letter-spacing:.2em;color:var(--muted)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-/* ---------- type helpers ---------- */
-.tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--brass-2);display:inline-flex;align-items:center;gap:.7rem}
-.tag::before{content:"";width:1.4rem;height:1px;background:var(--brass-2)}
-.tag.bare::before{display:none}
-.tag.center{justify-content:center}
-h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
-h2,h3{text-wrap:balance}
-/* word reveal */
-.lines .ln{display:block;overflow:hidden}
-.lines .w{display:inline-block;overflow:hidden;vertical-align:top}
-.lines .w > span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--e)}
-.lines.in .w > span{transform:translateY(0)}
-.lines .w{margin-right:.26em}
-/* ---------- buttons ---------- */
-.btn{position:relative;display:inline-flex;align-items:center;gap:.8rem;font-family:var(--sans);font-weight:500;
-  font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:1.1rem 2rem;border-radius:1px;overflow:hidden;z-index:0;
-  transition:color .5s var(--e)}
-.btn .ar{transition:transform .5s var(--e)}
-.btn:hover .ar{transform:translateX(5px)}
-.btn::after{content:"";position:absolute;inset:0;z-index:-1;transition:transform .6s var(--e);transform-origin:left}
-.btn-brass{background:var(--brass);color:var(--bg)}
-.btn-brass::after{background:var(--ivory);transform:scaleX(0)}
-.btn-brass:hover::after{transform:scaleX(1)}
-.btn-out{border:1px solid var(--line);color:var(--ivory)}
-.btn-out::after{background:var(--ivory);transform:scaleX(0)}
-.btn-out:hover{color:var(--bg)}
-.btn-out:hover::after{transform:scaleX(1)}
-.btn-line{padding:0;letter-spacing:.16em;position:relative}
-.btn-line span.u{position:absolute;left:0;bottom:-6px;height:1px;width:100%;background:currentColor;transform:scaleX(1);transform-origin:right;transition:transform .5s var(--e)}
-.btn-line:hover span.u{transform:scaleX(0);transform-origin:left}
-/* =================================================================
-   NAV
-   ================================================================= */
-header.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.7rem var(--pad);
-  display:flex;align-items:center;justify-content:space-between;
-  transition:transform .6s var(--e),background .5s var(--e),padding .5s var(--e),border-color .5s var(--e);
-  border-bottom:1px solid transparent}
-header.nav.hide{transform:translateY(-100%)}
-header.nav.solid{background:rgba(16,13,8,.87);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  padding:1.1rem var(--pad);border-bottom:1px solid var(--line-2)}
-.wordmark{font-family:var(--serif);font-size:1.3rem;letter-spacing:.02em;line-height:1}
-.wordmark small{display:block;font-family:var(--mono);font-size:.52rem;letter-spacing:.32em;color:var(--muted);margin-top:.4rem;text-transform:uppercase}
-.nav-r{display:flex;align-items:center;gap:2.4rem}
-.nav-r a.l{position:relative;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory-2);transition:color .4s}
-.nav-r a.l::after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--brass);transition:width .4s var(--e)}
-.nav-r a.l:hover{color:var(--brass-2)}
-.nav-r a.l:hover::after{width:100%}
-.nav-book{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);padding:.7rem 1.3rem;border-radius:1px;transition:all .45s var(--e)}
-.nav-book:hover{background:var(--brass);border-color:var(--brass);color:var(--bg)}
-.burger{display:none;flex-direction:column;gap:6px;width:30px;z-index:1100}
-.burger span{height:1.5px;width:100%;background:var(--ivory);transition:all .4s var(--e)}
-.menu-open .burger span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
-.menu-open .burger span:nth-child(2){opacity:0}
-.menu-open .burger span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
-.mobile{position:fixed;inset:0;z-index:1050;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:var(--pad);overflow-y:auto;transform:translateY(-100%);visibility:hidden;transition:transform .7s var(--e),visibility 0s linear .7s}
-.menu-open .mobile{transform:translateY(0);visibility:visible;transition:transform .7s var(--e),visibility 0s}
-.menu-open header.nav{z-index:1100;background:transparent;border-bottom-color:transparent}
-.mobile a{font-family:var(--serif);font-size:clamp(2.2rem,11vw,4rem);padding:.45rem 0;border-bottom:1px solid var(--line-2);transition:color .4s,padding-left .4s var(--e)}
-.mobile a:hover{color:var(--brass-2);padding-left:1rem}
-/* =================================================================
-   HERO
-   ================================================================= */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;display:flex;align-items:flex-end;padding:0 var(--pad) clamp(2.5rem,6vh,5rem)}
-.hero-media{position:absolute;inset:0;z-index:0;overflow:hidden}
-.hero-media video,.hero-media .fb{position:absolute;inset:0;width:100%;height:118%;object-fit:cover;top:-9%}
-.hero-media video{opacity:0;transition:opacity 1.6s var(--e)}
-.hero-media video.ready{opacity:1}
-.fb{background:
-  radial-gradient(110% 80% at 78% 12%,rgba(227,29,29,.20),transparent 55%),
-  radial-gradient(120% 120% at 8% 92%,rgba(206,186,156,.5),transparent 60%),
-  linear-gradient(160deg,#f7f3ea 0%,#ece4d4 50%,#e3d8c3 100%);
-  animation:kb 30s var(--e2) infinite alternate}
-.fb::after{content:"";position:absolute;inset:0;opacity:.25;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E")}
-@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16)}}
-.hero-scrim{position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(245,241,232,.94) 2%,rgba(245,241,232,.5) 38%,rgba(245,241,232,.15) 62%,rgba(245,241,232,.45) 100%)}
-/* cinematic letterbox bars */
-.bar{position:absolute;left:0;width:100%;height:6vh;background:var(--bg);z-index:3;pointer-events:none}
-.bar.top{top:0}.bar.bot{bottom:0}
-.hero-in{position:relative;z-index:4;width:100%;max-width:var(--maxw);margin:0 auto}
-.hero h1{font-size:clamp(2.3rem,5.4vw,5.6rem);line-height:1;letter-spacing:-.015em;max-width:18ch;margin:1.4rem 0 1.5rem}
-.hero h1 .sm{display:block;font-size:.32em;font-style:italic;font-weight:400;color:var(--ivory-2);letter-spacing:0;margin-bottom:.25em}
-.hero .lede{font-size:clamp(1rem,1.4vw,1.18rem);max-width:48ch;color:rgba(26,22,17,.75);line-height:1.6}
-.hero-cta{display:flex;flex-wrap:wrap;gap:1.1rem;align-items:center;margin-top:2.4rem}
-.hero-corners{position:absolute;inset:0;z-index:4;pointer-events:none}
-.hc{position:absolute;font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(26,22,17,.5)}
-.hc.tl{top:calc(6vh + 1.6rem);left:var(--pad)}
-.hc.br{bottom:calc(6vh + 1.6rem);right:var(--pad);text-align:right}
-.scroll-cue{position:absolute;left:50%;bottom:calc(6vh + 1.2rem);transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(26,22,17,.5);pointer-events:none}
-.scroll-cue .ln{width:1px;height:40px;background:linear-gradient(var(--brass),transparent);animation:drop 2.2s var(--e) infinite}
-.scroll-cue span{font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase}
-@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.sound{position:absolute;right:var(--pad);bottom:calc(6vh + 1.2rem);z-index:5;display:flex;align-items:center;gap:.6rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(26,22,17,.7);pointer-events:auto}
-.sound .dot{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}
-.sound:hover .dot{border-color:var(--brass)}
-.sound svg{width:13px;height:13px;fill:var(--ivory)}
-/* hero entrance (after loader) */
-.he{opacity:0;transform:translateY(22px)}
-.reveal-now .he{opacity:1;transform:translateY(0);transition:opacity 1s var(--e),transform 1s var(--e)}
-.reveal-now .d1{transition-delay:.1s}.reveal-now .d2{transition-delay:.25s}.reveal-now .d3{transition-delay:.4s}.reveal-now .d4{transition-delay:.55s}
-/* =================================================================
-   MARQUEE
-   ================================================================= */
-.strip{border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:1.5rem 0;overflow:hidden;background:var(--bg)}
-.strip .lab{text-align:center;font-family:var(--mono);font-size:.62rem;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;margin-bottom:1.1rem}
-.mq{display:flex;width:max-content;gap:3.5rem;white-space:nowrap;animation:scrollx 45s linear infinite}
-.strip:hover .mq{animation-play-state:paused}
-.mq .it{font-family:var(--serif);font-size:1.4rem;color:var(--ivory-2);display:inline-flex;align-items:center;gap:3.5rem;font-style:italic}
-.mq .it::after{content:"✦";font-style:normal;color:var(--brass);font-size:.6rem}
-@keyframes scrollx{to{transform:translateX(-50%)}}
-/* =================================================================
-   SECTION SHELL
-   ================================================================= */
-section{padding:clamp(3.5rem,8vh,6.5rem) var(--pad);position:relative}
-.wrap{max-width:var(--maxw);margin:0 auto;width:100%}
-.shead{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:1.5rem;margin-bottom:clamp(2.5rem,5vh,4.5rem)}
-.shead h2{font-size:clamp(1.75rem,3.2vw,2.75rem);max-width:24ch}
-/* =================================================================
-   MANIFESTO
-   ================================================================= */
-.manifesto .big{font-family:var(--serif);font-size:clamp(1.35rem,2.6vw,2.2rem);line-height:1.22;font-weight:400;max-width:26ch;letter-spacing:-.005em}
-.manifesto .grid{display:grid;grid-template-columns:1fr;gap:2rem}
-.manifesto .note{max-width:40ch;color:var(--muted);justify-self:end;font-size:1.02rem}
-@media(min-width:900px){.manifesto .grid{grid-template-columns:1.5fr .8fr;align-items:end}}
-/* =================================================================
-   FEATURED REELS (vertical)
-   ================================================================= */
-.reels{background:var(--bg-2)}
-.reel-row{display:flex;gap:clamp(.9rem,1.6vw,1.4rem);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem;-ms-overflow-style:none;scrollbar-width:none}
-.reel-row::-webkit-scrollbar{display:none}
-.reel{position:relative;flex:0 0 auto;width:clamp(220px,23vw,300px);aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);scroll-snap-align:start;cursor:pointer}
-.reel video,.reel img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--e)}.reel-vimeo{position:absolute;inset:0;width:100%;height:100%;border:0}
-.reel:hover video,.reel:hover img{transform:scale(1.05)}
-.reel .meta{position:absolute;left:0;right:0;bottom:0;padding:1.1rem;z-index:2;
-  background:linear-gradient(to top,rgba(8,6,4,.85),transparent)}
-.reel .meta .pl{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;color:#e7c568;text-transform:uppercase}
-.reel .meta .ti{font-family:var(--serif);font-size:1.05rem;margin-top:.25rem;color:#f6f2ea}
-.reel .pp{position:absolute;top:1rem;right:1rem;width:34px;height:34px;border-radius:50%;background:rgba(244,239,230,.16);backdrop-filter:blur(6px);display:grid;place-items:center;border:1px solid var(--line);z-index:2;transition:all .4s}
-.reel:hover .pp{background:var(--brass);border-color:var(--brass)}
-.reel .pp svg{width:11px;height:11px;fill:var(--ivory)}.reels{overflow:hidden}.reel-carousel{position:relative}.reel-row{display:flex;gap:clamp(1.6rem,3vw,2.6rem);overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem clamp(.5rem,4vw,3rem) 2.4rem;-ms-overflow-style:none;scrollbar-width:none;scroll-padding-left:clamp(.5rem,4vw,3rem)}.reel-row::-webkit-scrollbar{display:none}.reel-cell{flex:0 0 auto;scroll-snap-align:center}.phone{position:relative;width:clamp(258px,26vw,300px);aspect-ratio:1179/2556;border-radius:17%/8%;background:linear-gradient(145deg,#43454a,#0c0c0e 32%,#050506 70%,#26272b);padding:2.5%;box-shadow:0 44px 90px -22px rgba(0,0,0,.85),0 0 0 1px rgba(0,0,0,.5);transition:transform .7s var(--e)}.phone:hover{transform:translateY(-10px)}.phone::before{content:'';position:absolute;left:-1.5px;top:30%;width:2px;height:13%;border-radius:2px;background:linear-gradient(#6a6c72,#242529)}.phone::after{content:'';position:absolute;right:-1.5px;top:25%;width:2px;height:17%;border-radius:2px;background:linear-gradient(#6a6c72,#242529)}.phone-scr{position:relative;width:100%;height:100%;border-radius:14%/6.3%;overflow:hidden;background:#111}.reel-vimeo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:123%;height:100%;border:0;pointer-events:none;z-index:0}.rl-gt{position:absolute;top:0;left:0;right:0;height:15%;background:linear-gradient(rgba(0,0,0,.38),transparent);z-index:1;pointer-events:none}.rl-gb{position:absolute;bottom:0;left:0;right:0;height:34%;background:linear-gradient(transparent,rgba(0,0,0,.66));z-index:1;pointer-events:none}.rl-st{position:absolute;top:1.4%;left:0;right:0;z-index:7;display:flex;justify-content:space-between;align-items:center;padding:0 8% 0 8.5%;color:#fff}.rl-st .clk{font-size:.76rem;font-weight:700}.rl-st .sic{display:flex;align-items:center;gap:5px}.rl-st .sic svg{height:11px;fill:#fff}.rl-island{position:absolute;top:2.9%;left:50%;transform:translateX(-50%);width:31%;height:3.4%;background:#000;border-radius:99px;z-index:8}.rl-top{position:absolute;top:6.7%;left:0;right:0;z-index:5;display:flex;align-items:center;padding:0 5%}.rl-top .bk{width:9px;height:16px;flex:0 0 auto}.rl-top .bk svg{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:2.6}.rl-top .ttl{position:absolute;left:0;right:0;text-align:center;font-weight:700;font-size:.98rem;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}.rl-top .cam{margin-left:auto;width:21px;height:21px}.rl-top .cam svg{width:100%;height:100%;fill:none;stroke:#fff;stroke-width:1.7}.rl-rail{position:absolute;right:3.4%;bottom:13.5%;z-index:5;display:flex;flex-direction:column;align-items:center;gap:16px}.rl-act{display:flex;flex-direction:column;align-items:center;gap:3px;color:#fff}.rl-act svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:1.85}.rl-act b{font-size:.66rem;font-weight:600;text-shadow:0 1px 2px rgba(0,0,0,.5)}.rl-act.more svg{fill:#fff;stroke:none;width:22px;height:22px}.rl-disc{width:29px;height:29px;border-radius:8px;border:2px solid #fff;overflow:hidden;box-shadow:0 2px 6px rgba(0,0,0,.55);margin-top:2px}.rl-disc img{width:100%;height:100%;object-fit:cover;display:block;animation:rlspin 5s linear infinite}@keyframes rlspin{to{transform:rotate(360deg)}}.rl-info{position:absolute;left:4.5%;right:16%;bottom:9.5%;z-index:5;color:#fff}.rl-uline{display:flex;align-items:center;gap:7px}.rl-ava{width:30px;height:30px;border-radius:50%;flex:0 0 auto;overflow:hidden;border:1.5px solid rgba(255,255,255,.9)}.rl-ava img{width:100%;height:100%;object-fit:cover;display:block}.rl-uline .un{font-weight:600;font-size:.8rem;text-shadow:0 1px 3px rgba(0,0,0,.5)}.rl-uline .vf{width:13px;height:13px;flex:0 0 auto}.rl-uline .fol{font-weight:600;font-size:.74rem;border:1px solid rgba(255,255,255,.9);border-radius:8px;padding:.16rem .72rem;margin-left:3px}.rl-cap{font-size:.77rem;line-height:1.3;margin-top:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 3px rgba(0,0,0,.55)}.rl-aud{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:.72rem;font-weight:500;text-shadow:0 1px 2px rgba(0,0,0,.5)}.rl-aud svg.mn{width:13px;height:13px;fill:#fff;flex:0 0 auto}.rl-aud .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:50%}.rl-aud .usr{display:flex;align-items:center;gap:3px;opacity:.92;flex:0 0 auto}.rl-aud .usr svg{width:11px;height:11px;fill:#fff}.rl-athumb{position:absolute;right:0;bottom:0;width:34px;height:34px;border-radius:7px;border:1.5px solid rgba(255,255,255,.85);overflow:hidden;z-index:6}.rl-athumb img{width:100%;height:100%;object-fit:cover;display:block}.rl-nav{position:absolute;left:0;right:0;bottom:2.4%;z-index:6;display:flex;align-items:center;justify-content:space-between;padding:0 7.5%}.rl-nav svg{width:23px;height:23px;fill:none;stroke:#fff;stroke-width:1.85}.rl-nav .np{width:22px;height:22px;border-radius:50%;overflow:hidden;border:1px solid rgba(255,255,255,.5)}.rl-nav .np img{width:100%;height:100%;object-fit:cover;display:block}.rl-home{position:absolute;bottom:.8%;left:50%;transform:translateX(-50%);width:32%;height:4px;border-radius:99px;background:#fff;opacity:.92;z-index:9}.rc-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:12;width:50px;height:50px;border-radius:50%;background:rgba(20,15,8,.66);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--line);color:var(--ivory);font-family:var(--serif);font-size:1.7rem;line-height:0;display:grid;place-items:center;cursor:pointer;transition:all .4s var(--e)}.rc-arrow:hover{background:var(--brass);color:var(--bg);border-color:var(--brass)}.rc-arrow.prev{left:-4px}.rc-arrow.next{right:-4px}@media(max-width:760px){.rc-arrow{display:none}}
-/* placeholder */
-.ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;overflow:hidden;background:linear-gradient(145deg,var(--panel),#0d0a06)}
-.ph::before{content:"";position:absolute;inset:0;opacity:.25;mix-blend-mode:multiply;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n3'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n3)'/%3E%3C/svg%3E")}
-.ph .ico{width:28px;height:28px;opacity:.5;stroke:var(--brass-2);fill:none;stroke-width:1.2}
-.ph .lb{position:relative;font-family:var(--mono);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-/* =================================================================
-   SERVICES (hover preview)
-   ================================================================= */
-.services{background:var(--bg)}
-.svc-wrap{position:relative}
-.svc-list{border-top:1px solid var(--line)}
-.svc{display:grid;grid-template-columns:1fr;gap:1.4rem;align-items:center;padding:clamp(1.6rem,3.6vw,2.6rem) 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .5s var(--e)}
-.svc:hover{padding-left:1.4rem}
-.svc .n{font-family:var(--mono);font-size:.78rem;color:var(--brass);align-self:start;padding-top:.5rem}
-.svc .nm{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,1.9rem);line-height:1.05;transition:color .4s,opacity .4s}
-.svc .ds{color:var(--muted);max-width:46ch;margin-top:.6rem;font-size:.98rem}
-.svc .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
-.svc .tg{font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);border:1px solid var(--line-2);padding:.3rem .7rem;border-radius:99px}
-.svc .pk{font-family:var(--mono);font-size:.66rem;color:var(--muted-2);letter-spacing:.1em;text-transform:uppercase;align-self:start;padding-top:.5rem;transition:color .4s}
-.svc:hover .nm{color:var(--brass-2)}
-@media(hover:hover) and (pointer:fine){
-  .svc-wrap.has-hover .svc:not(.active) .nm{opacity:.32}
-}
-.svc-preview{position:fixed;width:300px;height:380px;border-radius:3px;overflow:hidden;pointer-events:none;z-index:50;opacity:0;transform:scale(.94) translate(-50%,-50%);transition:opacity .4s var(--e),transform .5s var(--e);box-shadow:0 30px 80px rgba(0,0,0,.55)}
-.svc-preview.show{opacity:1;transform:scale(1) translate(-50%,-50%)}
-.svc-preview img,.svc-preview video{width:100%;height:100%;object-fit:cover}
-@media(max-width:780px){.svc-preview{display:none}}
-/* =================================================================
-   SELECTED WORK (full-bleed projects)
-   ================================================================= */
-.work{background:var(--bg-2)}
-.work-tiles{display:grid;grid-template-columns:1fr;gap:1.2rem}
-@media(min-width:760px){.work-tiles{grid-template-columns:repeat(3,1fr)}}
-.wt{display:block}
-.wt-img{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:var(--panel)}
-@media(min-width:760px){.wt-img{aspect-ratio:4/5}}
-.wt-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--e)}
-.wt:hover .wt-img img{transform:scale(1.04)}
-.wt-play{position:absolute;left:1rem;bottom:1rem;width:46px;height:46px;border-radius:50%;background:rgba(16,13,8,.6);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid rgba(245,234,208,.35);display:grid;place-items:center}
-.wt-play svg{width:15px;height:15px;fill:var(--ivory);margin-left:2px}
-.wt-cap{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:.9rem}
-.wt-t{font-family:var(--serif);font-size:1.3rem;color:var(--ivory);transition:color .3s}
-.wt:hover .wt-t{color:var(--brass-2)}
-.wt-n{color:var(--muted);font-size:.9rem;white-space:nowrap}
-.proj{position:relative;cursor:pointer}
-.proj-media{position:relative;overflow:hidden;border-radius:3px;aspect-ratio:16/9;background:var(--panel);
-  clip-path:inset(8% 6% 8% 6%);transition:clip-path 1.2s var(--e)}
-.proj.in .proj-media{clip-path:inset(0 0 0 0)}
-.proj-media .inner{position:absolute;inset:0;transform:scale(1.18);transition:transform 1.4s var(--e)}
-.proj.in .proj-media .inner{transform:scale(1)}
-.proj-media .inner img,.proj-media .inner video{width:100%;height:100%;object-fit:cover}
-.proj-media .scrim{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,4,.6),transparent 45%);opacity:0;transition:opacity .5s}
-.proj:hover .proj-media .scrim{opacity:1}
-.proj:hover .proj-media .inner{transform:scale(1.04)}
-.proj .pp-big{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);width:clamp(70px,7vw,96px);height:clamp(70px,7vw,96px);border-radius:50%;background:rgba(244,239,230,.12);backdrop-filter:blur(8px);border:1px solid var(--line);display:grid;place-items:center;z-index:3;opacity:0;transition:all .5s var(--e)}
-.proj:hover .pp-big{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.proj .pp-big svg{width:22px;height:22px;fill:var(--ivory);margin-left:3px}
-.proj-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:1rem;margin-top:1.3rem}
-.proj-foot .t{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1;transition:color .4s}
-.proj:hover .proj-foot .t{color:var(--brass-2)}
-.proj-foot .m{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
-.proj-foot .m b{color:var(--brass-2);font-weight:400}
-/* =================================================================
-   FILM BAND
-   ================================================================= */
-.filmband{padding:0;background:var(--bg)}
-.filmband .frame{position:relative;height:clamp(420px,72vh,760px);overflow:hidden;display:grid;place-items:center}
-.filmband video,.filmband img{position:absolute;inset:0;width:100%;height:110%;object-fit:cover;top:-5%}
-.filmband .scrim{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,rgba(245,241,232,.4),rgba(16,13,8,.87))}
-.filmband .center{position:relative;z-index:2;text-align:center;padding:0 var(--pad)}
-.filmband .center .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;color:var(--brass-2);text-transform:uppercase}
-.filmband .center h2{font-size:clamp(2rem,6vw,5rem);margin:1rem 0 2rem;max-width:18ch;margin-inline:auto}
-.fplay{position:relative;width:clamp(80px,9vw,120px);height:clamp(80px,9vw,120px);border-radius:50%;background:rgba(26,22,17,.06);border:1px solid var(--line);display:grid;place-items:center;margin:0 auto;backdrop-filter:blur(8px);transition:all .5s var(--e)}
-.fplay::after{content:"";position:absolute;inset:0;border-radius:50%;border:1px solid var(--brass-2);animation:pulse 2.8s var(--e) infinite}
-@keyframes pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.7);opacity:0}}
-.fplay:hover{background:var(--brass);transform:scale(1.05)}
-.fplay svg{width:26px;height:26px;fill:var(--ivory);margin-left:4px}
-/* =================================================================
-   PROOF BAR (sits under the hero; overlaps it on wide screens)
-   ================================================================= */
-.proof{position:relative;z-index:6;padding:0 var(--pad);background:var(--bg)}
-.proof-in{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:4px;overflow:hidden}
-.pf{display:block;background:var(--bg-2);padding:1.05rem 1.15rem 1.15rem}
-a.pf:hover .pf-n{color:var(--brass-2)}
-.pf-n{font-family:var(--serif);font-weight:500;font-size:1.45rem;line-height:1.15;color:var(--ivory);transition:color .3s}
-.pf-n .st5{font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;color:var(--brass);margin-left:.45rem;vertical-align:.18em}
-.pf-l{color:var(--muted);font-size:.9rem;line-height:1.4;margin-top:.3rem}
-@media(min-width:900px){
-  .proof{background:transparent;margin-top:-3.6rem}
-  .proof-in{grid-template-columns:repeat(4,1fr);background:rgba(231,197,104,.16)}
-  .pf{background:rgba(16,13,8,.84);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:1.25rem 1.5rem 1.35rem}
-  .hero{padding-bottom:calc(clamp(2.5rem,6vh,5rem) + 3.6rem)}
-}
-@media(max-width:899px){.proof{padding-top:1.25rem}}
-/* =================================================================
-   ABOUT
-   ================================================================= */
-.about{background:var(--bg)}
-.about-grid{display:grid;grid-template-columns:1fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:center}
-@media(min-width:900px){.about-grid{grid-template-columns:.82fr 1.18fr}}
-.about-photo{position:relative;aspect-ratio:4/5;border-radius:3px;overflow:hidden;background:var(--panel);clip-path:inset(6% 0 6% 0);transition:clip-path 1.2s var(--e)}
-.about-photo.in{clip-path:inset(0 0 0 0)}
-.about-photo .inner{position:absolute;inset:0;transform:scale(1.15);transition:transform 1.4s var(--e)}
-.about-photo.in .inner{transform:scale(1)}
-.about-photo .inner img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
-.about-photo .badge{position:absolute;left:0;bottom:1.4rem;background:var(--brass);color:var(--bg);padding:.6rem 1.2rem;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;z-index:2}
-.about-body h2{font-size:clamp(2rem,4.6vw,3.6rem);margin:1.1rem 0 1.4rem;max-width:18ch}
-.about-body p{color:var(--muted);max-width:54ch;margin-bottom:1.1rem;font-size:1.05rem}
-.about-sign{font-family:var(--serif);font-style:italic;font-size:1.7rem;margin-top:1.6rem;color:var(--ivory)}
-.about-role{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:.4rem}
-/* =================================================================
-   PROCESS
-   ================================================================= */
-.process{background:var(--bg-2)}
-.steps{display:grid;grid-template-columns:1fr;gap:clamp(1.6rem,3vw,2.5rem)}
-@media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
-.step{padding-top:1.6rem;border-top:1px solid var(--line)}
-.step .sn{font-family:var(--mono);font-size:.72rem;color:var(--brass);letter-spacing:.1em}
-.step h3{font-size:clamp(1.2rem,1.8vw,1.45rem);margin:.8rem 0 .5rem}
-.step p{color:var(--muted);max-width:34ch}
-/* =================================================================
-   TESTIMONIALS
-   ================================================================= */
-.tests{background:var(--bg);overflow:hidden}
-.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:clamp(2rem,4vh,3rem)}
-.rv-head h2{font-size:clamp(1.75rem,3.2vw,2.75rem);max-width:24ch}
-.rv-badge{display:flex;align-items:center;gap:1.1rem;border:1px solid var(--line);padding:1.1rem 1.4rem;border-radius:3px;transition:border-color .4s,background .4s}
-.rv-badge:hover{border-color:var(--brass);background:rgba(231,197,104,.05)}
-.rv-score{font-family:var(--serif);font-size:3rem;line-height:1;color:var(--ivory)}
-.rv-stars{color:var(--brass);letter-spacing:.18em;font-size:.95rem}
-.rv-meta{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
-.rv-link{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-2);margin-left:.6rem;white-space:nowrap}
-.rv-feature{text-align:center;padding:clamp(2rem,4.5vh,3.2rem) 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);margin-bottom:clamp(2.5rem,5vh,4rem)}
-.rv-feature .rv-stars{font-size:.9rem;letter-spacing:.3em}
-.rv-feature blockquote{font-family:var(--serif);font-size:clamp(1.25rem,2.3vw,1.85rem);line-height:1.3;max-width:30ch;margin:1.4rem auto 1.6rem;color:var(--ivory)}
-.rv-who .nm{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory)}
-.rv-who .rl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:.35rem}
-.tests{padding-top:clamp(3.5rem,8vh,6rem);padding-bottom:clamp(3.5rem,8vh,6rem)}
-.rv-carousel{position:relative}
-.rv-row{display:flex;gap:1.4rem;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:.4rem 0 .6rem}
-.rv-row::-webkit-scrollbar{display:none}
-.rv-row .rv-card{flex:0 0 86%;scroll-snap-align:start;display:flex;flex-direction:column;margin-bottom:0}
-@media(min-width:700px){.rv-row .rv-card{flex-basis:calc((100% - 1.4rem)/2)}}
-@media(min-width:1080px){.rv-row .rv-card{flex-basis:calc((100% - 2.8rem)/3)}}
-.rv-row .rv-card .rv-who{margin-top:auto}
-.rv-carousel .rc-arrow.prev{left:-60px}.rv-carousel .rc-arrow.next{right:-60px}
-@media(max-width:1179px){.rv-carousel .rc-arrow{display:none}}
-.rv-card{background:var(--bg-2);border:1px solid var(--line-2);border-radius:3px;padding:1.6rem 1.6rem 1.4rem;transition:border-color .4s,transform .6s var(--e)}
-.rv-card:hover{border-color:var(--line);transform:translateY(-4px)}
-.rv-card .rv-stars{font-size:.8rem}
-.rv-card p{color:var(--ivory-2);font-size:1rem;line-height:1.65;margin:1rem 0 1.3rem}
-.rv-card .rv-who{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-top:1rem;border-top:1px solid var(--line-2)}
-.rv-card .rv-who .rl{margin-top:0}
-.rv-more{text-align:center;margin-top:1.6rem}
-/* guarantee */
-.guarantee{background:var(--bg);padding-top:0}
-.g-row{display:grid;gap:1.4rem;align-items:center;background:var(--bg-2);border:1px solid var(--line-2);border-left:2px solid var(--brass);border-radius:4px;padding:clamp(1.4rem,3vw,2rem) clamp(1.3rem,3vw,2.2rem)}
-@media(min-width:900px){.g-row{grid-template-columns:1fr auto;gap:3rem}}
-.g-row h2{font-size:clamp(1.35rem,2.2vw,1.8rem)}
-.g-row p{color:var(--muted);max-width:62ch;margin-top:.45rem;font-size:1rem}
-.g-row .btn{justify-self:start}
-.g-more{color:var(--brass-2);white-space:nowrap;border-bottom:1px solid rgba(221,186,92,.35)}
-.g-more:hover{color:var(--ivory);border-color:var(--ivory)}
-/* agent video testimonials */
-.rv-videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.4rem;margin-bottom:clamp(2rem,4vh,3rem)}
-.rv-video .vf{position:relative;aspect-ratio:9/16;border-radius:3px;overflow:hidden;background:var(--panel);border:1px solid var(--line-2)}
-.rv-video .vf iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.rv-video .nm{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory);margin-top:.9rem}
-.rv-video .rl{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);margin-top:.3rem}
-/* hero proof line */
-.hero-proof{display:inline-flex;flex-wrap:wrap;align-items:center;gap:.5rem .9rem;margin-top:1.8rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ivory-2)}
-.hero-proof .hp-stars{color:var(--brass);letter-spacing:.15em;font-size:.8rem}
-.hero-proof .sep{color:var(--brass);opacity:.6}
-.hero-proof:hover{color:var(--ivory)}
-/* promise row */
-.promise{list-style:none;display:grid;grid-template-columns:1fr;gap:1.4rem;max-width:1100px;margin:clamp(3rem,6vh,4rem) auto 0;text-align:left}
-@media(min-width:700px){.promise{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1080px){.promise{grid-template-columns:repeat(4,1fr)}}
-.promise li{border-top:1px solid var(--line);padding-top:1.1rem}
-.promise b{display:block;font-family:var(--serif);font-weight:500;font-size:1.15rem;color:var(--ivory)}
-.promise span{display:block;color:var(--muted);font-size:.95rem;margin-top:.35rem}
-/* =================================================================
-   CTA
-   ================================================================= */
-.cta{background:var(--bg-2);text-align:center;padding:clamp(4rem,9vh,7rem) var(--pad)}
-.cta .k{font-family:var(--mono);font-size:.66rem;letter-spacing:.2em;color:var(--brass-2);text-transform:uppercase}
-.cta h2{font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.05;max-width:18ch;margin:0 auto 1.2rem}
-.cta .sub{color:var(--muted);max-width:46ch;margin:0 auto 2.6rem;font-size:1.05rem}
-.cta .avail{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:2.2rem;display:inline-flex;align-items:center;gap:.6rem}
-.cta .avail .pulse{width:7px;height:7px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 0 rgba(227,29,29,.6);animation:beat 2s infinite}
-@keyframes beat{0%{box-shadow:0 0 0 0 rgba(227,29,29,.5)}70%{box-shadow:0 0 0 9px rgba(227,29,29,0)}100%{box-shadow:0 0 0 0 rgba(227,29,29,0)}}
-/* =================================================================
-   FOOTER
-   ================================================================= */
-footer{background:var(--bg);padding:clamp(3.5rem,8vh,6rem) var(--pad) 2.2rem;border-top:1px solid var(--line-2)}
-.foot-top{display:grid;grid-template-columns:1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line-2)}
-@media(min-width:860px){.foot-top{grid-template-columns:1.5fr .6fr .6fr 1fr}}
-.foot-brand .wm{font-family:var(--serif);font-size:2.2rem}
-.foot-brand p{color:var(--muted-2);max-width:32ch;margin-top:1.2rem;font-size:.95rem}
-.fcol h4{font-family:var(--mono);font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--brass-2);margin-bottom:1.2rem}
-.fcol a,.fcol p{display:block;color:var(--ivory-2);font-size:.95rem;padding:.35rem 0;transition:color .3s,padding-left .3s var(--e)}
-.fcol a:hover{color:var(--brass-2);padding-left:.4rem}
-.nl{display:flex;border:1px solid var(--line);border-radius:1px;overflow:hidden;margin-top:.6rem}
-.nl input{flex:1;background:transparent;border:none;padding:.85rem 1rem;color:var(--ivory);font-family:inherit;font-size:.9rem;outline:none}
-.nl input::placeholder{color:var(--muted-2)}
-.nl button{background:var(--brass);color:var(--bg);padding:0 1.1rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;transition:background .4s}
-.nl button:hover{background:var(--brass-2)}
-.foot-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;margin-top:2.2rem;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--muted-2);text-transform:uppercase}
-.foot-bottom .soc{display:flex;gap:1.4rem}
-.foot-bottom .soc a:hover{color:var(--brass-2)}
-/* =================================================================
-   LIGHTBOX
-   ================================================================= */
-.lightbox{position:fixed;inset:0;z-index:2000;background:rgba(6,5,4,.96);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:var(--pad)}
-.lightbox.open{display:flex}
-.lb-in{position:relative;max-width:1200px;width:100%;max-height:88vh}
-.lb-in img,.lb-in video{width:100%;max-height:88vh;object-fit:contain;border-radius:3px}
-.lb-close{position:absolute;top:-3rem;right:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;display:flex;gap:.6rem;align-items:center;color:#f4efe6}
-.lb-close:hover{color:#e7c568}
-.lb-cap{position:absolute;bottom:-2.6rem;left:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#c9c0b0}
-/* =================================================================
-   REVEAL + RESPONSIVE
-   ================================================================= */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 1s var(--e),transform 1s var(--e)}
-.reveal.in{opacity:1;transform:translateY(0)}
-.par{will-change:transform}
-@media(max-width:1180px){.nav-r{display:none}.burger{display:flex}}
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;transition-duration:.001ms!important}
-  .reveal,.he,.lines .w>span{opacity:1!important;transform:none!important}
-  .proj-media,.about-photo{clip-path:none!important}
-  .proj-media .inner,.about-photo .inner{transform:none!important}
-}
-/* ===== HERO over-video legibility (custom) ===== */
-.hero-scrim{background:
-  linear-gradient(105deg, rgba(8,7,5,.82) 0%, rgba(8,7,5,.52) 34%, rgba(8,7,5,.18) 58%, rgba(8,7,5,0) 82%),
-  linear-gradient(to top, rgba(8,7,5,.50), rgba(8,7,5,0) 50%)}
-.hero .bar{display:none}.hero .sound{display:none}.hero-vimeo{position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-width:177.78vh;min-height:100vh;transform:translate(-50%,-50%);border:0;pointer-events:none}.hero-mp4{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;opacity:1!important}@media(max-width:768px){.hero-vimeo{display:none}.hero-mp4{display:block}}
-.svc-view{display:inline-block;margin-top:.9rem;font-size:.92rem;font-weight:500;color:var(--brass-2)}
-.svc.has-gallery{cursor:pointer}
-.glb{position:fixed;inset:0;z-index:3000;background:rgba(8,7,4,.97);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;overflow-y:auto;padding:clamp(3rem,7vh,5rem) clamp(1rem,4vw,3rem) 4rem}
-.glb.open{display:block}
-.glb-head{display:flex;justify-content:space-between;align-items:center;max-width:1500px;margin:0 auto 1.6rem;gap:1rem}
-.glb-head h3{font-family:var(--serif);font-size:clamp(1.6rem,3.6vw,2.7rem);color:var(--ivory)}
-.gclose{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ivory);border:1px solid var(--line);padding:.6rem 1.1rem;border-radius:1px;flex:0 0 auto;cursor:pointer}
-.gclose:hover{background:var(--brass);color:var(--bg);border-color:var(--brass)}
-.glb-grid{max-width:1500px;margin:0 auto;column-count:3;column-gap:14px}
-@media(max-width:900px){.glb-grid{column-count:2}}
-@media(max-width:560px){.glb-grid{column-count:1}}
-.glb-grid img{width:100%;margin:0 0 14px;border-radius:3px;display:block;break-inside:avoid;background:var(--panel)}
-.hero .hc.br,.hero .hc.tl{display:none}
-.hero h1,.hero h1 .sm,.hero h1 em{font-family:'Playfair Display',Georgia,serif;letter-spacing:-.005em}
-/* same brushed-gold finish on every gold headline word */
-h2 em,.manifesto .big em{background:radial-gradient(135% 130% at 26% 16%,rgba(255,249,224,.98) 0%,rgba(255,244,205,0) 44%),linear-gradient(96deg,#7c5810 0%,#c99a34 15%,#f7e08d 31%,#ffe479 47%,#c99b34 63%,#f4d77e 80%,#8f6a1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;-webkit-box-decoration-break:clone;box-decoration-break:clone;padding-right:.06em;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3)) drop-shadow(0 0 12px rgba(240,201,95,.18))}
-.hero h1{font-weight:500;font-style:normal}
-.hero h1 .sm,.hero h1 em{font-style:italic}
-.hero h1{color:#f7f3ea}
-.hero h1 .sm{color:rgba(247,243,234,.86)}
-.hero em,.hero h1 em{color:#f1d488}
-.hero .lede{color:rgba(247,243,234,.9)}
-.hero .btn-line{color:#f7f3ea}
-.hero .tag{color:#f5efe5}
-.hero .tag::before{background:#f5efe5}
-.hero .hc{color:rgba(247,243,234,.72)}
-.hero .scroll-cue{color:rgba(247,243,234,.78)}
-.hero .sound{color:rgba(247,243,234,.85)}
-.hero .sound svg{fill:#f7f3ea}
-.hero .sound .dot{border-color:rgba(247,243,234,.45)}
-header.nav:not(.solid) .wordmark{color:#f7f3ea}
-header.nav:not(.solid) .wordmark small{color:rgba(247,243,234,.72)}
-header.nav:not(.solid) .nav-r a.l{color:rgba(247,243,234,.92)}
-header.nav:not(.solid) .nav-book{color:#f7f3ea;border-color:rgba(247,243,234,.45)}
-header.nav:not(.solid) .burger span{background:#f7f3ea}
-#film{display:none}
-.team-grid{display:grid;grid-template-columns:1fr;gap:clamp(2rem,4vw,3rem);margin-top:.5rem}
-@media(min-width:760px){.team-grid{grid-template-columns:1fr 1fr;gap:clamp(2.5rem,5vw,4rem)}}
-.team-member .about-photo{aspect-ratio:4/5;max-width:330px;margin-bottom:1.3rem}
-.tm-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:1rem;background:linear-gradient(145deg,var(--panel),#0d0a06);font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.tm-name{font-family:var(--serif);font-size:1.5rem;line-height:1.1;margin-top:.2rem}
-.tm-role{font-family:var(--mono);font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-top:.5rem}
-.tm-bio{color:var(--muted);max-width:42ch;margin-top:.9rem;font-size:.97rem}
-
-.hero h1 em{background:radial-gradient(135% 130% at 26% 16%,rgba(255,249,224,.98) 0%,rgba(255,244,205,0) 44%),linear-gradient(96deg,#7c5810 0%,#c99a34 15%,#f7e08d 31%,#ffe479 47%,#c99b34 63%,#f4d77e 80%,#8f6a1a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35)) drop-shadow(0 0 16px rgba(240,201,95,.30))}
-.btn-brass{background:#e7c568;color:#1b1305}
-</style>
-<noscript><style>.he{opacity:1!important;transform:none!important}.reveal,.proj,.about-photo{opacity:1!important;transform:none!important;clip-path:none!important}.loader{display:none!important}.proj-media .inner,.about-photo .inner{transform:none!important}</style></noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlanta Media Co. — Real Estate Photo &amp; Video</title>
+<meta name="description" content="Photo, video, and marketing for Atlanta &amp; North Georgia agents. Help your listings stand out, sell, and build your brand.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://atlantamediaco.com/">
+<meta property="og:title" content="Atlanta Media Co. — Real Estate Photo &amp; Video">
+<meta property="og:description" content="Photo, video, and marketing for Atlanta &amp; North Georgia agents. Help your listings stand out, sell, and build your brand.">
+<meta property="og:image" content="https://atlantamediaco.com/share-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://atlantamediaco.com/share-card.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css?v=23">
 </head>
-<body>
-<div class="grain"></div>
-<div class="vignette"></div>
-<div class="cursor-dot"></div>
-<div class="cursor-ring"><span class="clabel">View</span></div>
-<!-- NAV -->
-<header class="nav" id="nav">
-  <a href="#top" class="wordmark" data-cursor="">Atlanta Media Co.</a>
-  <nav class="nav-r">
-    <a href="#work" class="l">Work</a>
-    <a href="#services" class="l">Services</a>
-    <a href="#about" class="l">About</a>
-    <a href="/client-care" class="l">Client Care</a>
-    <a href="/guarantee" class="l">Our Guarantee</a>
-    <a href="#contact" class="l">Contact</a>
-    <a href="#" class="nav-book" data-book>Book a Shoot</a>
-  </nav>
-  <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-</header>
-<div class="mobile" id="mobile">
-  <a href="#work">Work</a>
-  <a href="#services">Services</a>
-  <a href="#about">About</a>
-  <a href="/client-care">Client Care</a>
-  <a href="/guarantee">Our Guarantee</a>
-  <a href="#contact">Contact</a>
-  <a href="#" data-book>Book a Shoot</a>
-</div>
-<main id="top">
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-media" id="heroMedia"><div class="fb par" data-speed="0.12"></div><iframe class="hero-vimeo" src="https://player.vimeo.com/video/1220375566?h=3c1de00dcf&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="Atlanta Media Co. hero film"></iframe><video class="hero-mp4" src="hero.mp4" muted loop autoplay playsinline preload="none" poster="hero-poster.jpg"></video></div>
-    <div class="hero-scrim"></div>
-    <div class="bar top"></div><div class="bar bot"></div>
-    <div class="hero-corners">
-      <div class="hc tl" id="hcLoc">Atlanta · North Georgia</div>
-      <div class="hc br">Reel — 2025</div>
-    </div>
-    <div class="hero-in">
-      <h1 class="he d2">
-        
-        Win the listing.<br>Sell the home.<br><em>Grow your name.</em>
-      </h1>
-      <p class="lede he d3" id="heroLede">Photos, film, and marketing that make your listings stand out — and make you the agent sellers want to hire.</p>
-      <div class="hero-cta he d4">
-        <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
-        <a href="#" class="btn btn-line" id="heroReel" data-cursor>Watch the Reel <span class="u"></span></a>
-      </div>
-    </div>
-    <button class="sound" id="soundBtn" aria-label="Toggle sound"><span class="dot"><svg id="soundIcon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="16" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2"/><line x1="22" y1="9" x2="16" y2="15" stroke="currentColor" stroke-width="2"/></svg></span><span id="soundLabel">Sound Off</span></button>
-  </section>
-  <!-- PROOF -->
-  <div class="proof" id="stats"><div class="proof-in" id="statGrid"></div></div>
-  <!-- TRUSTED -->
-  <div class="strip">
-    <div class="lab">Trusted by agents &amp; brokerages across Georgia</div>
-    <div class="mq" id="mq"></div>
-  </div>
-  <!-- TESTIMONIALS -->
-  <section class="tests" id="testimonials">
-    <div class="wrap">
-      <div class="rv-head reveal">
-        <div><h2>Hear it from <em>agents like you.</em></h2></div>
-        <a class="rv-badge" id="rvBadge" href="#" target="_blank" rel="noopener" data-cursor>
-          <div class="rv-score" id="rvScore">5.0</div>
-          <div><div class="rv-stars">★★★★★</div><div class="rv-meta" id="rvMeta">Reviews on Google</div></div>
-          <span class="rv-link">Read all →</span>
-        </a>
-      </div>
-      <div class="rv-videos" id="rvVideos" hidden></div>
-      <figure class="rv-feature reveal" id="rvFeature"></figure>
-      <div class="rv-carousel"><button class="rc-arrow prev" id="rvPrev" aria-label="Previous reviews">‹</button><div class="rv-row" id="rvGrid"></div><button class="rc-arrow next" id="rvNext" aria-label="More reviews">›</button></div>
-    </div>
-  </section>
-  <!-- GUARANTEE -->
-  <section class="guarantee" id="guarantee">
-    <div class="wrap">
-      <div class="g-row reveal">
-        <div class="g-copy">
-          <h2>Every shoot is <em>risk-free.</em></h2>
-          <p>If something isn't right with the photos, we come back and reshoot at no charge within 48 hours. We don't stop until you're happy. <a href="/guarantee" class="g-more">How our guarantee works</a></p>
-        </div>
-        <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
-      </div>
-    </div>
-  </section>
-  <!-- MANIFESTO -->
-  <section class="manifesto" id="intro">
-    <div class="wrap">
-      <div class="grid">
-        <p class="big reveal">You need more than good photos. You need someone who answers fast, shows up on time, and cares how your listing looks <em>as much as you do.</em></p>
-        <p class="note reveal">When your listing sells and the next seller calls you because of it, we've done our job.</p>
-      </div>
-    </div>
-  </section>
-  <!-- FEATURED REELS -->
-  <section class="reels" id="reels">
-    <div class="wrap">
-      <div class="shead reveal">
-        <div><h2>Reels that get <em>you noticed.</em></h2></div>
-        <a href="#" class="btn btn-line" id="reelsAll" data-cursor>Follow on Instagram <span class="u"></span></a>
-      </div>
-      <div class="reel-carousel"><button class="rc-arrow prev" id="rcPrev" aria-label="Previous reels">‹</button><div class="reel-row" id="reelRow"></div><button class="rc-arrow next" id="rcNext" aria-label="More reels">›</button></div>
-    </div>
-  </section>
-  <!-- SERVICES -->
-  <section class="services" id="services">
-    <div class="wrap">
-      <div class="shead reveal">
-        <div><h2>Everything your listing needs, in one booking.</h2></div>
-        <a href="#" class="btn btn-line" data-book data-cursor>See pricing <span class="u"></span></a>
-      </div>
-      <div class="svc-wrap" id="svcWrap">
-        <div class="svc-list" id="svcList"></div>
-        <div class="svc-preview" id="svcPreview"></div>
-      </div>
-    </div>
-  </section>
-  <!-- SELECTED WORK -->
-  <section class="work" id="work">
-    <div class="wrap">
-      <div class="shead reveal">
-        <div><h2>See what your listing could look like.</h2></div>
-      </div>
-      <div class="work-tiles" id="workTiles"></div>
-    </div>
-  </section>
-  <!-- FILM BAND -->
-  <section class="filmband" id="film">
-    <div class="frame" id="filmFrame">
-      <div class="ph"><svg class="ico" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg><span class="lb">Add your showreel</span></div>
-      <div class="scrim"></div>
-      <div class="center">
-        <div class="k">The Showreel</div>
-        <h2 id="filmTitle">Your next listing, on film.</h2>
-        <button class="fplay" id="fplay" data-cursor="Play" aria-label="Play showreel"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-      </div>
-    </div>
-  </section>
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <div class="wrap">
-      <div class="shead reveal"><div><h2>The people who'll take care of you.</h2></div></div>
-      <div class="team-grid">
-        <div class="team-member reveal">
-          <div class="about-photo" id="aboutPhoto"><span class="badge">Founder &amp; Owner</span></div>
-          <div class="tm-name">Victor Huertas</div>
-          <div class="tm-role">Founder &amp; Owner</div>
-          <p class="tm-bio">Victor learns how you work and what your brand needs, then makes sure every listing reflects it. He's in it with you for the long run, not just one shoot.</p>
-        </div>
-        <div class="team-member reveal">
-          <div class="about-photo"><div class="inner"><img src="caroline.jpg" alt="Caroline Swiger"></div><span class="badge">Creative Media Specialist</span></div>
-          <div class="tm-name">Caroline Swiger</div>
-          <div class="tm-role">Admin &amp; Creative Media Specialist</div>
-          <p class="tm-bio">Caroline is the friendly voice you'll hear from most. She confirms your shoot, answers your questions, and makes sure your files arrive on time.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- PROCESS -->
-  <section class="process" id="process">
-    <div class="wrap">
-      <div class="shead reveal"><div><h2>Easy for you, start to finish.</h2></div></div>
-      <div class="steps" id="steps"></div>
-    </div>
-  </section>
-  <!-- CTA -->
-  <section class="cta" id="contact">
-    <div class="wrap">
-      <h2 class="reveal">Make your next listing <em>unforgettable.</em></h2>
-      <p class="sub reveal">Booking takes a few minutes. Pick your package and time, and we'll take it from there.</p>
-      <a href="#" class="btn btn-brass" data-book data-cursor>Book My Shoot <span class="ar">→</span></a>
-      <ul class="promise reveal">
-        <li><b>24-hour delivery</b><span>Guaranteed. Most listings land by the next morning.</span></li>
-        <li><b>No contracts</b><span>Book us when you need us. Nothing to sign up for.</span></li>
-        <li><b>No cancellation fees</b><span>Plans change. Reschedule without paying extra.</span></li>
-        <li><b>Risk-free, every shoot</b><span>If something isn't right, we come back and fix it for free.</span></li>
-      </ul>
-    </div>
-  </section>
-</main>
-<!-- FOOTER -->
-<footer>
-  <div class="wrap">
-    <div class="foot-top">
-      <div class="foot-brand">
-        <div class="wm">Atlanta Media Co.</div>
-        <p>Photo, video, and marketing that help Atlanta &amp; North Georgia agents sell listings and grow their name.</p>
-      </div>
-      <div class="fcol"><h4>Explore</h4><a href="/listing-photography">Listing Photography</a><a href="/editorial-photography">Editorial Photography</a><a href="/cinematic-video">Cinematic Video</a><a href="#about">About</a></div>
-      <div class="fcol"><h4>Company</h4><a href="#" data-book>Book a Shoot</a><a id="clientCare" href="#">Client Care</a><a href="/guarantee">Our Guarantee</a><a id="emailLink" href="#">Email</a></div>
-      <div class="fcol"><h4>Stay in the loop</h4><p style="padding-top:0">New work, availability &amp; promotions.</p><div class="nl"><input id="nlEmail" type="email" placeholder="Your email" aria-label="Email"/><button id="nlBtn">Join</button></div></div>
-    </div>
-    <div class="foot-bottom">
-      <span>© <span id="year"></span> Atlanta Media Co, LLC — Cartersville, GA</span>
-      <div class="soc"><a id="igLink" href="#">Instagram</a><a id="ytLink" href="#">YouTube</a><a id="liLink" href="#">LinkedIn</a></div>
-    </div>
-  </div>
-</footer>
-<!-- LIGHTBOX -->
+<body id="top">
 
-<div class="lightbox" id="lightbox">
-  <div class="lb-in">
-    <button class="lb-close" id="lbClose" data-cursor="Close">Close ✕</button>
-    <div id="lbContent"></div>
-    <div class="lb-cap" id="lbCap"></div>
+<!-- HERO -->
+<section class="hero intro">
+  <div class="hero-media" style="background-image:url(hero-poster.jpg)">
+    <iframe src="https://player.vimeo.com/video/1220375566?h=3c1de00dcf&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="Atlanta Media Co. showreel"></iframe>
+  </div>
+  <div class="hero-in">
+    <p class="tagline he d1">Atlanta Real Estate Media</p>
+    <h1 class="he d2">Win the listing.<br>Sell the home.<br><em>Build your brand.</em></h1>
+    <p class="lede he d3">Photos, video, and marketing that make your listings stand out, and make you the agent sellers want to hire.</p>
+    <div class="btns he d4">
+      <a class="btn btn-glass" href="https://order.atlantamediaco.com/order/atlmediaco/media">Book My Shoot</a>
+    </div>
+  </div>
+  <a class="hero-foot he d4" href="#services"><span class="caps">Browse by Service</span><small>Tap to view</small></a>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="sec">
+  <div class="wrap sec-head rv">
+    <span class="eyebrow">Client reviews</span>
+    <h2 class="h-lg">You're in <em>Good Hands</em></h2>
+    <p>5.0 stars from 13 reviews on Google.</p>
+  </div>
+  <div class="reviews">
+    <article class="review"><span class="stars">★★★★★</span><q>Since using Victor this year all of my social media reels have gotten more views and comments. I am consistently asked to refer him to other Realtors.</q><span class="who"><b>Tara N.</b> · Realtor</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>Victor and his team are the best. Professional, timely, and truly talented. He delivers the photos back in less than 24 hours and they're always beautiful.</q><span class="who"><b>Bailey M.</b> · Google review</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>Victor's photos of my house turned out great. His communication was perfect and got my house sold faster than I anticipated.</q><span class="who"><b>Kylan M.</b> · Home seller</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>They're professional, reliable, on time, have quick turnaround times, and are incredibly easy to work and communicate with.</q><span class="who"><b>Bob C.</b> · Google review</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>Victor made beautiful photos of my listing. He listened to what I wanted and delivered that and more.</q><span class="who"><b>Alicia T.</b> · Google review</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>He was so quick to get me my photos back and I was so pleasantly surprised at the editing! 11/10!</q><span class="who"><b>Annie B.</b> · Google review</span></article>
+    <article class="review"><span class="stars">★★★★★</span><q>It's rare to come across someone who's both dependable and so easy to work with.</q><span class="who"><b>N'evaeh W.</b> · Google review</span></article>
+  </div>
+  <div class="btns" style="margin-top:36px">
+    <a class="btn btn-solid" href="https://maps.google.com/?cid=7793355568307794385">Read All Reviews</a>
+    <a class="btn" href="https://order.atlantamediaco.com/order/atlmediaco/media">Book a Shoot</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <span class="eyebrow">By the numbers</span>
+  <div class="stat-row">
+    <div class="stat"><b>400+</b><span>Listings shot</span></div>
+    <div class="stat"><b>24 hr</b><span>Delivery, guaranteed</span></div>
+    <div class="stat"><b>5.0★</b><span>On Google</span></div>
+    <div class="stat"><b>48 hr</b><span>Free reshoot if anything&rsquo;s off</span></div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<section class="trusted">
+  <span class="eyebrow">Trusted by agents &amp; brokerages across Georgia</span>
+  <div class="mq"><span>Keller Williams Cartersville</span><span>RE/MAX Greater Atlanta</span><span>Coldwell Banker Realty NW</span><span>Atlanta Communities</span><span>Berkshire Hathaway</span><span>Compass</span></div>
+</section>
+
+<!-- SOCIAL REELS -->
+<section id="closer" class="sec">
+  <div class="wrap sec-head rv">
+    <span class="eyebrow">Social media</span>
+    <h2 class="h-lg">Reels That Get You <em>Noticed</em></h2>
+    <p>Short vertical videos made for your feed. They show off the listing and keep your name in front of sellers.</p>
+  </div>
+  <div class="stack-wrap"><div class="iphones stack" data-iphones="0,1,4"></div></div>
+  <div class="btns" style="margin-top:28px">
+    <a class="btn btn-solid" href="#" data-ig>Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- SERVICE CARDS -->
+<section class="sec tight" style="padding-bottom:0">
+  <div class="wrap sec-head rv">
+    <span class="eyebrow">Services</span>
+    <h2 class="h-lg">Everything Your Listing Needs</h2>
+    <p>Photos, video, and marketing in one booking.</p>
+  </div>
+</section>
+<div id="services" class="cards">
+  <a class="card rv" href="listing-photography" style="background-image:url(thumbs/li-02.jpg)"><h3>Listing Photography</h3><p>Clean, MLS-ready photos for everyday listings, delivered fast.</p></a>
+  <a class="card rv" href="editorial-photography" style="background-image:url(thumbs/ed-08.jpg)"><h3>Editorial Photography</h3><p>Bright, true-to-color photos that make every room the one buyers remember.</p></a>
+  <a class="card rv" href="cinematic-video" style="background-image:url(thumbs/li-01.jpg)"><h3>Cinematic Video</h3><p>Listing videos and vertical reels that let buyers feel the home first.</p></a>
+  <a class="card rv" href="#closer" style="background-image:url(thumbs/li-46.jpg)"><h3>Branding &amp; Marketing</h3><p>Listing sites, social content and branding that keep your name out front.</p></a>
+</div>
+
+<div class="chipbar">
+  <p class="caps">Browse by Service</p>
+  <div class="chips">
+    <a class="chip" href="listing-photography">Photography</a>
+    <a class="chip" href="cinematic-video">Videography</a>
+    <a class="chip" href="cinematic-video">Social Reels</a>
+    <a class="chip" href="editorial-photography">Twilight</a>
+    <a class="chip" href="cinematic-video">Walkthroughs</a>
+    <a class="chip" href="#closer">Listing Sites</a>
+    <a class="chip" href="#closer">Agent Branding</a>
+    <a class="chip" href="https://order.atlantamediaco.com/order/atlmediaco/media">See Pricing</a>
   </div>
 </div>
-<!-- ================================================================
-     ⚙️  EDIT EVERYTHING HERE — THE ONLY PLACE YOU NEED TO TOUCH
-     ================================================================
-     ADD A PHOTO OR VIDEO:  paste its web address into  src:""
-     KEEP THE PLACEHOLDER:  leave  src:""  empty
-     GET A URL:             upload to your host (Cloudflare R2,
-                            Bunny.net, S3, Cloudinary, Vimeo direct
-                            link) and paste the link — or use a local
-                            path like "media/estate.mp4".
-     VIDEOS:                use compressed MP4 (H.264). Add a poster
-                            image so it looks great while loading.
-     ================================================================ -->
-<script>
-const SITE = {
-  /* ---- LINKS (booking already wired to your system) ---- */
-  bookingUrl:    "https://order.atlantamediaco.com/order/atlmediaco/media",
-  clientCareUrl: "/client-care",
-  email:         "hello@atlantamediaco.com",   // ← confirm your real email
-  instagram:     "#",                            // ← your Instagram URL
-  youtube:       "#",                            // ← your YouTube URL
-  linkedin:      "#",                            // ← your LinkedIn URL
-  /* ---- HERO ---- */
-  hero:{
-    eyebrow:"Atlanta Real Estate Media",
-    location:"Atlanta · North Georgia",
-    videoUrl:"",   // ← paste your hero .mp4 URL (a 10–25s cinematic clip is ideal)
-    posterUrl:"hero-poster.jpg"   // ← optional still image shown while the video loads
-  },
-  /* ---- SHOWREEL (the big film band) ---- */
-  film:{ title:"Your next listing, on film.", videoUrl:"", posterUrl:"" },
-  /* ---- TRUSTED BY (confirm / edit these names) ---- */
-  trustedBy:[
-    "Keller Williams Cartersville","RE/MAX Greater Atlanta","Coldwell Banker Realty NW",
-    "Atlanta Communities","Berkshire Hathaway","Compass"
-  ],
-  /* ---- FEATURED REELS — vertical 9:16 clips (location · price style) ---- */
-  reels:[
-    {type:"video", vimeo:"1220726892?h=99ef95a2b0", src:"", poster:"", place:"Cartersville, GA", title:"$1.2M Estate"},
-    {type:"video", vimeo:"1220726658?h=82b7152c0a", src:"", poster:"", place:"Marietta, GA",     title:"Modern Farmhouse"},
-    {type:"video", vimeo:"1220726660?h=635c3bccbf", src:"", poster:"", place:"Atlanta, GA",      title:"$2.4M Penthouse"},
-    {type:"video", vimeo:"1220726661?h=e0585fde30", src:"", poster:"", place:"Acworth, GA",      title:"Lakefront Listing"},
-    {type:"video", vimeo:"1220726659?h=17b8637ea1", src:"", poster:"", place:"Roswell, GA",      title:"Agent Brand Reel"}
-  ],
-  /* ---- SERVICES (each can have an optional image for the hover preview) ---- */
-  services:[
-    {name:"Cinematic Video",      pkg:"Film",   page:"/cinematic-video",       linkText:"See the films",   desc:"Listing films and vertical reels that let buyers feel the home before they visit — and give you content worth posting.", tags:["Listing Films","Reels","Walkthroughs"], image:""},
-    {name:"Editorial Photography",pkg:"Photo",  page:"/editorial-photography", linkText:"See all 44 photos",  desc:"Bright, true-to-color photos that show buyers every room at its best and make your listing the one they want to see.", tags:["Interiors","Exteriors","Twilight"], image:"ed-02.jpg", gallery:["ed-01.jpg","ed-02.jpg","ed-03.jpg","ed-04.jpg","ed-05.jpg","ed-06.jpg","ed-07.jpg","ed-08.jpg","ed-09.jpg","ed-10.jpg","ed-11.jpg","ed-12.jpg","ed-13.jpg","ed-14.jpg","ed-15.jpg","ed-16.jpg","ed-17.jpg","ed-18.jpg","ed-19.jpg","ed-20.jpg","ed-21.jpg","ed-22.jpg","ed-23.jpg","ed-24.jpg","ed-25.jpg","ed-26.jpg","ed-27.jpg","ed-28.jpg","ed-29.jpg","ed-30.jpg","ed-31.jpg","ed-32.jpg","ed-33.jpg","ed-34.jpg","ed-35.jpg","ed-36.jpg","ed-37.jpg","ed-38.jpg","ed-39.jpg","ed-40.jpg","ed-41.jpg","ed-42.jpg","ed-43.jpg","ed-44.jpg"]},
-    {name:"Listing Photography",  pkg:"Listing",page:"/listing-photography",   linkText:"See all 51 photos",desc:"Clean, MLS-ready photos for your everyday listings. Consistent quality and fast turnaround, so you can go live sooner.", tags:["Listing Photos","Standard Listings","Quick Turn"], image:"li-02.jpg", gallery:["li-01.jpg","li-02.jpg","li-03.jpg","li-04.jpg","li-05.jpg","li-06.jpg","li-07.jpg","li-08.jpg","li-09.jpg","li-10.jpg","li-11.jpg","li-12.jpg","li-13.jpg","li-14.jpg","li-15.jpg","li-16.jpg","li-17.jpg","li-18.jpg","li-19.jpg","li-20.jpg","li-21.jpg","li-22.jpg","li-23.jpg","li-24.jpg","li-25.jpg","li-26.jpg","li-27.jpg","li-28.jpg","li-29.jpg","li-30.jpg","li-31.jpg","li-32.jpg","li-33.jpg","li-34.jpg","li-35.jpg","li-36.jpg","li-37.jpg","li-38.jpg","li-39.jpg","li-40.jpg","li-41.jpg","li-42.jpg","li-43.jpg","li-44.jpg","li-45.jpg","li-46.jpg","li-47.jpg","li-48.jpg","li-49.jpg","li-50.jpg","li-51.jpg"]},
-    {name:"Branding & Marketing", pkg:"Brand",  desc:"Property websites, social content, and branding sessions that keep your name in front of sellers long after this listing closes.", tags:["Listing Sites","Branding","Social"], image:""}
-  ],
-  /* ---- SELECTED WORK — each tile opens its own shareable page ---- */
-  work:[
-    {title:"Listing Photography",   page:"/listing-photography",   image:"li-01.jpg", note:"51 photos"},
-    {title:"Editorial Photography", page:"/editorial-photography", image:"ed-02.jpg", note:"44 photos"},
-    {title:"Cinematic Video",       page:"/cinematic-video",       image:"li-49.jpg", note:"Listing films and reels", video:true}
-  ],
-  /* ---- ABOUT ---- */
-  about:{ photoUrl:"victor.jpg" },
-  /* ---- STATS (edit numbers to your real figures; use *word* for brass emphasis) ---- */
-  stats:[
-    {n:"400+",      l:"listings shot across Atlanta and North Georgia"},   // ← from Spiro order history (Oct 2026)
-    {n:"24 hours",  l:"delivery, guaranteed. Most land by the next morning."},
-    {n:"5.0", stars:true, l:"on Google, from {reviews} reviews", href:"#testimonials"},
-    {n:"Risk-free", l:"on every shoot. If something isn't right, we come back and fix it for free.", href:"#guarantee"}
-  ],
-  /* ---- PROCESS ---- */
-  process:[
-    {n:"01", t:"You book online",  d:"Pick your package and time in a few minutes. We confirm and handle the prep."},
-    {n:"02", t:"We handle the shoot",     d:"We show up on time and capture every shot your listing needs to sell."},
-    {n:"03", t:"You go live",d:"Edited, ready-to-post media in your inbox, usually by the next morning."}
-  ],
-  /* ---- GOOGLE REVIEWS (real, from the Google Business Profile — update count as new ones come in) ---- */
-  /* ---- AGENT VIDEO TESTIMONIALS — shows automatically once you add at least one.
-       Example: {vimeo:"1234567890?h=abc123", name:"Jane Smith", team:"Keller Williams Cartersville"} ---- */
-  videoReviews:[],
-  reviews:{
-    rating:"5.0",
-    count:13,
-    url:"https://maps.google.com/?cid=7793355568307794385",
-    featured:{quote:"Since using Victor this year all of my social media reels have gotten more views and comments. I am consistently asked to refer him to other Realtors.", name:"Tara N.", role:"Realtor"},
-    items:[
-      {quote:"Victor and his team are the best. Professional, timely, and truly talented. He delivers the photos back in less than 24 hours and they’re always beautiful.", name:"Bailey M."},
-      {quote:"Victor’s photos of my house turned out great. His communication was perfect and got my house sold faster than I anticipated. Would highly recommend him to anyone.", name:"Kylan M.", role:"Home Seller"},
-      {quote:"The photos always turn out great, and they do an excellent job showcasing each property in the best possible light. They’re professional, reliable, on time, have quick turnaround times, and are incredibly easy to work and communicate with.", name:"Bob C."},
-      {quote:"Victor made beautiful photos of my listing. He listened to what I wanted and delivered that and more. He is a delight to work with and very motivated to do a great job for his clients.", name:"Alicia T."},
-      {quote:"He knows how to capture the perfect shot and where/how to get the best angle and color in every spot. … He was so quick to get me my photos back and I was so pleasantly surprised at the editing! 11/10!", name:"Annie B."},
-      {quote:"He arrived right on time, which I really appreciated, and got to work right away. … It’s rare to come across someone who’s both dependable and so easy to work with.", name:"N’evaeh W."}
-    ]
-  }
-};
-/* =================================================================
-   RENDER + INTERACTION ENGINE  (no need to edit below)
-   ================================================================= */
-(function(){
-  const $=(s,el=document)=>el.querySelector(s);
-  const $$=(s,el=document)=>[...el.querySelectorAll(s)];
-  const fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
-  const reduce = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
-  const lerp=(a,b,n)=>a+(b-a)*n;
-  /* ---- links + text ---- */
-  $$("[data-book]").forEach(a=>a.href=SITE.bookingUrl);
-  $("#clientCare").href=SITE.clientCareUrl;
-  $("#emailLink").href="mailto:"+SITE.email;
-  $("#igLink").href=SITE.instagram; $("#ytLink").href=SITE.youtube; $("#liLink").href=SITE.linkedin;
-  $("#year").textContent=new Date().getFullYear();
-  
-  $("#hcLoc").textContent=SITE.hero.location;
-  $("#filmTitle").textContent=SITE.film.title;
-  const PH=(label,vertical)=>`<div class="ph"><svg class="ico" viewBox="0 0 24 24">${vertical?'<polygon points="5 3 19 12 5 21 5 3"/>':'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>'}</svg><span class="lb">${label}</span></div>`;
-  const playIco=`<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;const LOGO='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBAUEBAYFBQUGBgYHCQ4JCQgICRINDQoOFRIWFhUSFBQXGiEcFxgfGRQUHScdHyIjJSUlFhwpLCgkKyEkJST/2wBDAQYGBgkICREJCREkGBQYJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCT/wAARCABIAEgDASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAAIDBAYHBQEI/8QAPBAAAQMDAQYEAgcFCQAAAAAAAQIDBAAFEQYHEhMhMVEiQWGBcZEVIzIzYrHBFEJScoIWNFNUc4Sh0eH/xAAZAQADAQEBAAAAAAAAAAAAAAAAAgQDAQX/xAAoEQACAgAFAwQCAwAAAAAAAAABAgADBBESITETQbEyQlGBInGRoeH/2gAMAwEAAhEDEQA/AMDQsKxjyp5KvSoiVbp5daeSvsazjSWFHHUVKtduk3u5RbfEb4kiS4lptPdROBXPCxg1r+wnTzTBn6wn7qGYaFMxlL6b5Tla/wClPLP4jWGJuFVZczStNbATSJljscfTqNA8ZndELBTnxk5+/wAf6nPPtXzNdIMiz3GTb5aNx+M4ppaexB/LzqVL2nTJG01WsN5f7HxP2cNH/K9MfH9741c9r1oblsxNUQsLQ8lLMhSf3jj6tfuOXsKgwwfD2BbD69/v4lNmmxCU9viZsogHIJB70w4sq64o3zgdKQtQ8yK9aRRtSsgj8qKQopI64J60V2E9Se3nSwo45n40wFDPqK9ByRk/CiE6NqhyLrPjwYqC4/IcS02nuonArX9sV6j6I0Hb9EWpwB6S3wnFp5EoHN1Z/mUcfOqLYdKaihaY/t3ZnN1+3ystt7uS4hI8ax3SCd0jtntVZ1NqaTrPUci8ym1N7wShpnOeGgDp88n3qF069q5H8V5/c3U9ND8nxJNl0NetQWxcm3QS7GbXwy4VpSN7GceIjPI1ruz+yXGboyRpjUUfhIKVR2nCtK8o6oUME/ZP5CscjbRNUWaEi1wZTLUNoq3G+Ag9TkkkjJNPRtrWtYp+pnMJ/wBs2f0pMVRiLthlkDmOc49NlSbnORbnCk2qfJgSkbj8ZxTTg7KBwag5HXrVx1FYNSXHTzetb+psypbiUqaQ0EKDW7hDqgP4sY74wT1qlrUnHLkaspsDrzv3/cnddJgvHpRTalHyINFbRIoH41Psdqk3y6xbdFTvSJLqWkdgSevwHM+1ctB8jzrVdkFrZt0adqqaUtoZQplhSvLllxfsMD3NT4m7pVlu81pr1sFly1LrmzaCfsWk2TuRwzw+LnAaA5Bah+JW8TWb6/0g1AWbxbGwIjqvrW0dGVnt+E/8Hl2qmaguUjV99mXNSFqVIWeEgDJS2B4R8hn51bdAaw4rX0BdSl0FBbaLvMOo80H17f8AlQrhnwyi1dz7hKeqtpNZ+pTFpST051pGyjZ6xdXhfrw0Po2MSWmljAkrT3/Anz79O9MQdmTk3UiRxFCyn6xT4PiCf8P+f17c6k7WNeIhxhpCxFLCEIDUktcktNjo0n1Pmf8As1pdiDdlVQdzyfgREp0ZvZwP7lkY13atdXK92VKt+KEcMuE/fJPIqSPLdVjHtWM3aC9a7jIgvjDjCyhXrjz9+vvTNlnPaYvEWdurTwlYdR0Kmz1HyOflVz2jQm5iI17jYUlaUtOkefLKFe45ewoprGGtCL6W8/7Ouxur1HkeJRCSAcUUhZ9eVFelI5JgRH7jNYiR0bzryw2hPqTgVoe0i7NWDTMLStvc+2jhrKfNsHKlf1K/Ws8tV/ladmInQ22HH0hSU8VO8E5GCQM9cZ+dMz7rKvtwXPmlPFWAAEDCUgdAKmspay1SfSN/ubJYFQgcnxO3oNYZ1hZTgYEpOQeh5GlbRrHFsmo1JtyihtxCZLaU8i1knwg+hHL2rixLk/aJbE+KEl+OsOI3xkZ9fnTlzv8AN1HLEycloOJbDQDYIG6M9ye9Ma36wccZZTgZenp75yzR9qkiLp8tNoxdz9UHMeEDH3nx9O/OomzSxxb9qUfSalONsoVKdSrmXiCORPYkjPpmqpwgF5xmujadRTdNSlTICWVOrbLRDqd4bpIPcc+QpGw4RGFOxMYXFmBs4E6OvF8fWN7yB/e14AGMdK62j57d5sT9jlr5oHDBP8B+yfY/pVQl3B+7TJE+VuceQsuL3BgZPpTcW4SLTKEqLu7+6UkKGQQe9degtUE7jL+RBLQrluxi5bDkOQ6w8kpcbUUKHYg4NFeTrq/eJK5clLaXl43uGMA4GM/GiqFzyGrmYnLPaRj4+tLThIooppyKI3h05V434eVFFEIvr50hwZ+FFFEIJwkcqbUd7yooohPAMUUUUQn/2Q==';const ICO={heart:`<svg viewBox='0 0 24 24'><path d='M12 20.5s-7-4.3-9.4-8.6C.7 8.7 2 5.8 4.8 5.8c1.8 0 2.9 1 3.4 1.8.5-.8 1.6-1.8 3.4-1.8h.8c2.8 0 4.1 2.9 2.2 6.1C19 16.2 12 20.5 12 20.5z'/></svg>`,comment:`<svg viewBox='0 0 24 24'><path d='M12 3.5C6.8 3.5 2.6 7 2.6 11.4c0 2.1 1 4 2.7 5.4L4.5 20.5l3.8-1.5c1.1.4 2.4.6 3.7.6 5.2 0 9.4-3.6 9.4-8.2S17.2 3.5 12 3.5z'/></svg>`,send:`<svg viewBox='0 0 24 24'><path d='M21.5 3.2L2.6 10.4c-.7.3-.7 1.3 0 1.5l6.8 2.3 2.4 6.8c.2.7 1.2.7 1.5 0L21.9 4.2c.3-.7-.3-1.3-1-1z'/><path d='M9.4 14.2l4.4-4.4'/></svg>`,more:`<svg viewBox='0 0 24 24'><circle cx='5' cy='12' r='1.7'/><circle cx='12' cy='12' r='1.7'/><circle cx='19' cy='12' r='1.7'/></svg>`,mn:`<svg class='mn' viewBox='0 0 24 24'><path d='M9 17V5l10-2v11' fill='none' stroke='#fff' stroke-width='2'/><ellipse cx='6.2' cy='17' rx='2.8' ry='2.5'/><ellipse cx='16.2' cy='14' rx='2.8' ry='2.5'/></svg>`,person:`<svg viewBox='0 0 24 24'><circle cx='12' cy='8' r='4'/><path d='M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7'/></svg>`,sig:`<svg viewBox='0 0 18 12'><rect x='0' y='7' width='3' height='5' rx='1'/><rect x='5' y='4.5' width='3' height='7.5' rx='1'/><rect x='10' y='2' width='3' height='10' rx='1'/><rect x='15' y='0' width='3' height='12' rx='1'/></svg>`,wifi:`<svg viewBox='0 0 16 12'><path d='M8 11.2a1.4 1.4 0 100-2.8 1.4 1.4 0 000 2.8zM3.4 6.6a6.6 6.6 0 019.2 0l-1.3 1.3a4.7 4.7 0 00-6.6 0zM1 4.2a10 10 0 0114 0l-1.3 1.3a8.1 8.1 0 00-11.4 0z'/></svg>`,batt:`<svg viewBox='0 0 26 12'><rect x='1' y='1' width='21' height='10' rx='3' fill='none' stroke='#fff' stroke-width='1.2' opacity='.55'/><rect x='3' y='3' width='16' height='6' rx='1.5'/><rect x='23.5' y='4' width='2' height='4' rx='1'/></svg>`,chev:`<svg viewBox='0 0 12 20'><path d='M10 2 2 10l8 8'/></svg>`,cam:`<svg viewBox='0 0 24 24'><rect x='3' y='7' width='18' height='13' rx='4'/><path d='M8 7l1.6-3h4.8L16 7'/><circle cx='12' cy='13.5' r='3.3'/></svg>`,verified:`<svg viewBox='0 0 24 24'><path fill='#3b9bff' stroke='none' d='M12 1.5l2.3 1.9 3-.3 1.2 2.8 2.8 1.2-.3 3 1.9 2.3-1.9 2.3.3 3-2.8 1.2-1.2 2.8-3-.3L12 22.5l-2.3-1.9-3 .3-1.2-2.8L2.7 17l.3-3L1.1 11.7 3 9.4l-.3-3 2.8-1.2L6.7 2.4l3 .3z'/><path d='M8.5 12l2.3 2.3 4.7-4.9' fill='none' stroke='#fff' stroke-width='1.9'/></svg>`,home:`<svg viewBox='0 0 24 24'><path d='M3 11l9-8 9 8'/><path d='M5.5 10v10h13V10'/></svg>`,search:`<svg viewBox='0 0 24 24'><circle cx='11' cy='11' r='7'/><path d='M21 21l-4-4'/></svg>`,reelsNav:`<svg viewBox='0 0 24 24' style='fill:#fff'><rect x='3' y='3' width='18' height='18' rx='5' fill='none' stroke='#fff' stroke-width='1.85'/><path d='M3.5 8.5h17M9 3.2l2.5 5.3M15 3.2l2.5 5.3' fill='none' stroke='#fff' stroke-width='1.5'/><path d='M10.2 11.7v4.6l4-2.3z'/></svg>`,shop:`<svg viewBox='0 0 24 24'><path d='M5 8h14l-1 12H6z'/><path d='M8.5 8a3.5 3.5 0 017 0'/></svg>`};
-  /* ---- marquee ---- */
-  const mkItems=arr=>arr.map(n=>`<span class="it">${n}</span>`).join("");
-  $("#mq").innerHTML=mkItems(SITE.trustedBy)+mkItems(SITE.trustedBy);
-  /* ---- hero video ---- */
-  let heroVid=null;
-  if(SITE.hero.videoUrl){
-    heroVid=document.createElement("video");
-    heroVid.src=SITE.hero.videoUrl; heroVid.muted=true; heroVid.loop=true; heroVid.autoplay=true;
-    heroVid.playsInline=true; heroVid.setAttribute("playsinline","");
-    if(SITE.hero.posterUrl) heroVid.poster=SITE.hero.posterUrl;
-    heroVid.classList.add("par"); heroVid.dataset.speed="0.12";
-    heroVid.addEventListener("loadeddata",()=>heroVid.classList.add("ready"));
-    $("#heroMedia").appendChild(heroVid);
-    heroVid.play().catch(()=>{});
-  }
-  /* sound toggle */
-  $("#soundBtn").addEventListener("click",()=>{
-    if(!heroVid){ alert("Add your hero video URL in the SITE config (hero.videoUrl) to enable sound."); return; }
-    heroVid.muted=!heroVid.muted;
-    $("#soundLabel").textContent=heroVid.muted?"Sound Off":"Sound On";
-    $("#soundIcon").style.opacity=heroVid.muted?".7":"1";
-    if(!heroVid.muted) heroVid.play().catch(()=>{});
-  });
-  /* ---- reels ---- */
-  $("#reelRow").innerHTML=SITE.reels.map(r=>{
-    const media = r.vimeo ? `<iframe class="reel-vimeo" src="https://player.vimeo.com/video/${r.vimeo}&background=1&autoplay=1&loop=1&muted=1&autopause=0" allow="autoplay; fullscreen" title="${r.title}"></iframe>` : r.src
-      ? (r.type==="video"
-          ? `<video src="${r.src}" muted loop playsinline preload="metadata" ${r.poster?`poster="${r.poster}"`:""}></video>`
-          : `<img src="${r.src}" alt="${r.title}" loading="lazy">`)
-      : PH("Add reel",true);
-    return `<div class='reel-cell'><div class='phone'><div class='phone-scr'><div class='rl-gt'></div><div class='rl-gb'></div><div class='rl-st'><span class='clk'>9:41</span><span class='sic'>${ICO.sig}${ICO.wifi}${ICO.batt}</span></div><div class='rl-island'></div><div class='rl-top'><span class='bk'>${ICO.chev}</span><span class='ttl'>Reels</span><span class='cam'>${ICO.cam}</span></div><div class='rl-rail'><span class='rl-act'>${ICO.heart}<b>3,689</b></span><span class='rl-act'>${ICO.comment}<b>977</b></span><span class='rl-act'>${ICO.send}<b>680</b></span><span class='rl-act more'>${ICO.more}</span><span class='rl-disc'><img src='${LOGO}' alt=''></span></div><div class='rl-info'><div class='rl-uline'><span class='rl-ava'><img src='${LOGO}' alt=''></span><span class='un'>atlantamediaco</span><span class='vf'>${ICO.verified}</span><span class='fol'>Follow</span></div><div class='rl-cap'>${r.title} · ${r.place}</div><div class='rl-aud'>${ICO.mn}<span class='nm'>Atlanta Media Co · Original audio</span><span class='usr'>${ICO.person}166K</span></div><div class='rl-athumb'><img src='${LOGO}' alt=''></div></div><div class='rl-nav'>${ICO.home}${ICO.search}${ICO.reelsNav}${ICO.shop}<span class='np'><img src='${LOGO}' alt=''></span></div><div class='rl-home'></div>
-      ${media}
-      
-      </div></div>
-    </div>`;
-  }).join("");
-  /* ---- services ---- */
-  $("#svcList").innerHTML=SITE.services.map((s,i)=>{const t=s.page?"a":"div";return `
-    <${t} class="svc${s.page?' has-page':''}"${s.page?` href="${s.page}" data-cursor="View"`:""} data-i="${i}">
-      <div>
-        <div class="nm">${s.name}</div>
-        <p class="ds">${s.desc}</p>
-        <div class="tags">${s.tags.map(t=>`<span class="tg">${t}</span>`).join("")}</div>
-        ${s.page?`<span class="svc-view">${s.linkText||"See the work"} →</span>`:""}
+
+<!-- COLLAGE BAND -->
+<section class="collage">
+  <div class="collage-grid" aria-hidden="true">
+    <img src="thumbs/li-01.jpg" alt=""><img src="thumbs/ed-03.jpg" alt=""><img src="thumbs/li-13.jpg" alt=""><img src="thumbs/ed-41.jpg" alt=""><img src="thumbs/li-44.jpg" alt=""><img src="thumbs/ed-14.jpg" alt="">
+    <img src="thumbs/li-11.jpg" alt=""><img src="thumbs/li-46.jpg" alt=""><img src="thumbs/ed-08.jpg" alt=""><img src="thumbs/li-02.jpg" alt=""><img src="thumbs/ed-29.jpg" alt=""><img src="thumbs/li-40.jpg" alt="">
+    <img src="thumbs/ed-22.jpg" alt=""><img src="thumbs/li-29.jpg" alt=""><img src="thumbs/li-50.jpg" alt=""><img src="thumbs/ed-36.jpg" alt=""><img src="thumbs/li-21.jpg" alt=""><img src="thumbs/ed-02.jpg" alt="">
+    <img src="thumbs/li-35.jpg" alt=""><img src="thumbs/ed-17.jpg" alt=""><img src="thumbs/li-48.jpg" alt=""><img src="thumbs/ed-10.jpg" alt=""><img src="thumbs/li-17.jpg" alt=""><img src="thumbs/li-43.jpg" alt="">
+  </div>
+  <div class="rv">
+    <h2 class="h-xl">Listings That Stand Out</h2>
+    <p>Photos · Video · Marketing</p>
+  </div>
+</section>
+
+<!-- CLOSER LOOK: PHOTO -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap sec-head rv">
+    <span class="eyebrow">A closer look</span>
+    <h2 class="h-lg">Photography</h2>
+    <p>Every room shot at its best. Clean composition, true-to-life color and careful editing, delivered within 24 hours and ready for the MLS, print and social.</p>
+  </div>
+  <div class="strip rv">
+    <a href="editorial-photography"><img src="thumbs/ed-02.jpg" alt="" loading="lazy"></a>
+    <a href="listing-photography"><img src="thumbs/li-13.jpg" alt="" loading="lazy"></a>
+    <a href="editorial-photography"><img src="thumbs/ed-41.jpg" alt="" loading="lazy"></a>
+    <a href="listing-photography"><img src="thumbs/li-11.jpg" alt="" loading="lazy"></a>
+    <a href="editorial-photography"><img src="thumbs/ed-14.jpg" alt="" loading="lazy"></a>
+    <a href="listing-photography"><img src="thumbs/li-44.jpg" alt="" loading="lazy"></a>
+    <a href="editorial-photography"><img src="thumbs/ed-29.jpg" alt="" loading="lazy"></a>
+    <a href="listing-photography"><img src="thumbs/li-50.jpg" alt="" loading="lazy"></a>
+  </div>
+  <div class="wrap split rv">
+    <div>
+      <h3 class="h-md">Editorial &amp; Listing Photography</h3>
+      <p class="sub">Bright, crisp + true to life</p>
+      <p>Editorial photography for listings that deserve the full treatment: interiors, exteriors and twilight. Listing photography for everyday listings: consistent quality and fast turnaround, so you can go live sooner.</p>
+    </div>
+    <div>
+      <div class="checks">
+        <div class="check">Delivered within 24 hours, guaranteed</div>
+        <div class="check">Interiors, exteriors + twilight</div>
+        <div class="check">MLS-ready, print-ready, social-ready</div>
       </div>
-    </${t}>`}).join("");
-  /* ---- selected work tiles ---- */
-  $("#workTiles").innerHTML=SITE.work.map(w=>`<a class="wt reveal" href="${w.page}" data-cursor="View">
-      <div class="wt-img"><img src="${w.image}" alt="${w.title} by Atlanta Media Co." loading="lazy">${w.video?`<span class="wt-play">${playIco}</span>`:""}</div>
-      <div class="wt-cap"><span class="wt-t">${w.title}</span><span class="wt-n">${w.note}</span></div>
-    </a>`).join("");
-  /* ---- film band ---- */
-  if(SITE.film.posterUrl){
-    const i=document.createElement("img"); i.src=SITE.film.posterUrl; i.alt="Showreel";
-    $("#filmFrame").prepend(i); const ph=$(".ph",$("#filmFrame")); if(ph) ph.remove();
-  }
-  /* ---- stats ---- */
-  const em=t=>t.replace(/\*(.*?)\*/g,'<em>$1</em>');
-  $("#statGrid").innerHTML=SITE.stats.map(s=>{const t=s.href?"a":"div";return `<${t} class="pf"${s.href?` href="${s.href}"`:""}><div class="pf-n">${s.n}${s.stars?'<span class="st5" aria-label="5 stars">★★★★★</span>':''}</div><div class="pf-l">${s.l.replace("{reviews}",SITE.reviews.count)}</div></${t}>`}).join("");
-  /* ---- about photo ---- */
-  if(SITE.about.photoUrl){
-    $("#aboutPhoto").insertAdjacentHTML("afterbegin",`<div class="inner"><img src="${SITE.about.photoUrl}" alt="Victor Huertas, Founder of Atlanta Media Co."></div>`);
-  }else{
-    $("#aboutPhoto").insertAdjacentHTML("afterbegin",`<div class="inner">${PH("Add your photo",false)}</div>`);
-  }
-  /* ---- process ---- */
-  $("#steps").innerHTML=SITE.process.map(s=>`<div class="step reveal"><div class="sn">${s.n}</div><h3>${s.t}</h3><p>${s.d}</p></div>`).join("");
-  /* ---- google reviews ---- */
-  const R=SITE.reviews, stars="★★★★★";
-  $("#rvBadge").href=R.url; $("#rvScore").textContent=R.rating;
-  $("#rvMeta").textContent=`${R.count} reviews on Google`;
-  const who=r=>`<div class="rv-who"><div class="nm">${r.name}</div><div class="rl">${r.role?r.role+" · ":""}Google review</div></div>`;
-  const V=SITE.videoReviews||[];
-  if(V.length){ const vb=$("#rvVideos"); vb.hidden=false;
-    vb.innerHTML=V.map(v=>`<div class="rv-video reveal"><div class="vf"><iframe src="https://player.vimeo.com/video/${v.vimeo}${v.vimeo.includes("?")?"&":"?"}title=0&byline=0&portrait=0" allow="fullscreen; picture-in-picture" loading="lazy" title="${v.name} testimonial"></iframe></div><div class="nm">${v.name}</div><div class="rl">${v.team||""}</div></div>`).join(""); }
-  $("#rvFeature").innerHTML=`<div class="rv-stars">${stars}</div><blockquote>“${R.featured.quote}”</blockquote>${who(R.featured)}`;
-  const rvRow=$("#rvGrid"), rvStep=()=>{const c=rvRow.querySelector(".rv-card");return c?c.offsetWidth+22:300};
-  $("#rvPrev").addEventListener("click",()=>rvRow.scrollBy({left:-rvStep(),behavior:"smooth"}));
-  $("#rvNext").addEventListener("click",()=>rvRow.scrollBy({left:rvStep(),behavior:"smooth"}));
-  $("#rvGrid").innerHTML=R.items.map(r=>`<div class="rv-card reveal"><div class="rv-stars">${stars}</div><p>“${r.quote}”</p>${who(r)}</div>`).join("");
-  /* ---- lightbox ---- */
-  const lb=$("#lightbox"),lbC=$("#lbContent"),lbCap=$("#lbCap");
-  function openLB(type,src,title,poster){
-    if(!src) return;
-    lbC.innerHTML = type==="video"
-      ? `<video src="${src}" controls autoplay playsinline ${poster?`poster="${poster}"`:""}></video>`
-      : `<img src="${src}" alt="${title||''}">`;
-    lbCap.textContent=title||""; lb.classList.add("open"); document.body.style.overflow="hidden";
-  }
-  function closeLB(){ lb.classList.remove("open"); lbC.innerHTML=""; document.body.style.overflow=""; }
-  $("#lbClose").addEventListener("click",closeLB);
-  lb.addEventListener("click",e=>{if(e.target===lb)closeLB();});
-  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLB();});
-  $("#fplay").addEventListener("click",()=>{
-    if(SITE.film.videoUrl) openLB("video",SITE.film.videoUrl,SITE.film.title,SITE.film.posterUrl);
-    else alert("Add your showreel video URL in the SITE config (film.videoUrl) to enable playback.");
-  });
-  $("#heroReel").addEventListener("click",e=>{e.preventDefault(); if(SITE.film.videoUrl||SITE.hero.videoUrl) openLB("video",SITE.film.videoUrl||SITE.hero.videoUrl,"Showreel",SITE.film.posterUrl); else document.getElementById("reels").scrollIntoView();});
-  $("#reelsAll").addEventListener("click",e=>{e.preventDefault(); if(SITE.instagram&&SITE.instagram!=="#"){window.open(SITE.instagram,"_blank");} else {document.getElementById("reels").scrollIntoView();}});(function(){var row=document.getElementById("reelRow"),prev=document.getElementById("rcPrev"),next=document.getElementById("rcNext");if(!row)return;var step=function(){var c=row.querySelector('.reel-cell');var gap=parseFloat(getComputedStyle(row).gap)||24;return c?c.getBoundingClientRect().width+gap:320;};if(next)next.addEventListener('click',function(){row.scrollBy({left:step(),behavior:'smooth'});});if(prev)prev.addEventListener('click',function(){row.scrollBy({left:-step(),behavior:'smooth'});});var auto=setInterval(function(){if(row.scrollLeft+row.clientWidth>=row.scrollWidth-8){row.scrollTo({left:0,behavior:'smooth'});}else{row.scrollBy({left:step(),behavior:'smooth'});}},4200);row.addEventListener('mouseenter',function(){clearInterval(auto);});row.addEventListener('touchstart',function(){clearInterval(auto);},{passive:true});})();
-  function bindMedia(){
-    $$(".reel,.proj").forEach(el=>el.addEventListener("click",()=>{
-      const src=el.dataset.src; if(!src) return;
-      openLB(el.dataset.type,src,el.dataset.title,el.dataset.poster);
-    }));
-    // play project video on hover
-    if(fine){
-      $$(".proj").forEach(p=>{
-        const v=$("video",p); if(!v) return;
-        p.addEventListener("mouseenter",()=>v.play().catch(()=>{}));
-        p.addEventListener("mouseleave",()=>v.pause());
-      });
-    }
-  }
-  bindMedia();
-  /* ---- nav scroll ---- */
-  const nav=$("#nav"); let lastY=0;
-  const onScroll=()=>{
-    const y=window.scrollY;
-    nav.classList.toggle("solid",y>40);
-    if(y>lastY && y>window.innerHeight*0.9) nav.classList.add("hide"); else nav.classList.remove("hide");
-    lastY=y;
-  };
-  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
-  /* ---- mobile menu ---- */
-  $("#burger").addEventListener("click",()=>document.body.classList.toggle("menu-open"));
-  $$("#mobile a").forEach(a=>a.addEventListener("click",()=>document.body.classList.remove("menu-open")));
-  /* ---- reveals ---- */
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.16,rootMargin:"0px 0px -6% 0px"});
-  function scan(){ $$(".reveal:not(.in),.proj:not(.in),.about-photo:not(.in)").forEach((el,i)=>{el.style.transitionDelay=(Math.min(i,5)*55)+"ms";io.observe(el);}); }
-  scan();
-  /* ---- parallax ---- */
-  if(fine && !reduce){
-    const items=$$(".par");
-    let raf;
-    const tick=()=>{
-      const vh=window.innerHeight;
-      items.forEach(el=>{
-        const r=el.getBoundingClientRect();
-        const sp=parseFloat(el.dataset.speed||"0.1");
-        const off=((r.top+r.height/2)-vh/2)*sp*-1;
-        el.style.transform=`translate3d(0,${off.toFixed(1)}px,0) scale(1.04)`;
-      });
-      raf=requestAnimationFrame(tick);
-    };
-    tick();
-  }
-  /* ---- custom cursor ---- */
-  if(fine){
-    const dot=$(".cursor-dot"),ring=$(".cursor-ring"),clab=$(".clabel",ring);
-    let mx=innerWidth/2,my=innerHeight/2,rx=mx,ry=my;
-    window.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;});
-    const cur=()=>{rx=lerp(rx,mx,.18);ry=lerp(ry,my,.18);ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(cur);};
-    cur();
-    $$("[data-cursor]").forEach(el=>{
-      el.addEventListener("mouseenter",()=>{document.body.classList.add("cur-hover");clab.textContent=el.getAttribute("data-cursor")||"View";});
-      el.addEventListener("mouseleave",()=>document.body.classList.remove("cur-hover"));
-    });
-  }
-  /* ---- magnetic buttons ---- */
-  if(fine && !reduce){
-    $$(".btn-brass,.nav-book,.fplay").forEach(b=>{
-      b.addEventListener("mousemove",e=>{
-        const r=b.getBoundingClientRect();
-        const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
-        b.style.transform=`translate(${x*.18}px,${y*.22}px)`;
-      });
-      b.addEventListener("mouseleave",()=>b.style.transform="");
-    });
-  }
-  /* ---- services hover preview ---- */
-  if(fine){
-    const wrap=$("#svcWrap"),pv=$("#svcPreview");
-    let px=0,py=0,tx=0,tyy=0;
-    const pvTick=()=>{tx=lerp(tx,px,.16);tyy=lerp(tyy,py,.16);pv.style.left=tx+"px";pv.style.top=tyy+"px";requestAnimationFrame(pvTick);};
-    pvTick();
-    window.addEventListener("mousemove",e=>{px=e.clientX+60;py=e.clientY;});
-    $$("#svcList .svc").forEach(svc=>{
-      svc.addEventListener("mouseenter",()=>{
-        wrap.classList.add("has-hover"); svc.classList.add("active");
-        const s=SITE.services[+svc.dataset.i];
-        pv.innerHTML = s.image
-          ? `<img src="${s.image}" alt="${s.name}">`
-          : PH(s.name,false);
-        pv.classList.add("show");
-      });
-      svc.addEventListener("mouseleave",()=>{svc.classList.remove("active");});
-    });
-    $("#svcList").addEventListener("mouseleave",()=>{wrap.classList.remove("has-hover");pv.classList.remove("show");});
-  }
-  /* ---- newsletter ---- */
-  $("#nlBtn").addEventListener("click",()=>{
-    const e=$("#nlEmail").value.trim(); if(!e){$("#nlEmail").focus();return;}
-    window.location.href=`mailto:${SITE.email}?subject=Add me to your list&body=Please add ${encodeURIComponent(e)} to your updates.`;
-  });
-  /* ---- PRELOADER + hero word reveal ---- */
-  function buildLoader(){
-    const l=document.createElement("div");
-    l.className="loader"; l.id="loader";
-    l.innerHTML=`<div class="lname">Atlanta Media Co.</div><div class="lbar"><i></i></div><div class="lnum">000</div>`;
-    document.body.appendChild(l);
-    const bar=$("i",l),num=$(".lnum",l);
-    let p=0;const start=performance.now();const dur=reduce?200:1300;
-    const step=t=>{
-      const k=Math.min(1,(t-start)/dur); p=Math.round(k*100);
-      num.textContent=String(p).padStart(3,"0"); bar.style.transform=`scaleX(${k})`;
-      if(k<1) requestAnimationFrame(step);
-      else setTimeout(()=>{ l.classList.add("done"); document.body.classList.add("reveal-now");
-        setTimeout(()=>l.remove(),1200); }, 180);
-    };
-    requestAnimationFrame(step);
-  }
-  // run loader (skip gracefully if anything is off)
-  try{ buildLoader(); }catch(e){ document.body.classList.add("reveal-now"); }
-  /* allow click to skip loader */
-  document.addEventListener("click",function once(){ const l=$("#loader"); if(l){l.classList.add("done");document.body.classList.add("reveal-now");setTimeout(()=>l.remove(),1100);} document.removeEventListener("click",once); });
-})();
-</script>
-<!-- =================================================================
-     HOLIDAY PROMO POP-UP (Nov 1 – Dec 31)
-     ================================================================= -->
-<style>
-.promo{position:fixed;inset:0;z-index:9200;display:grid;place-items:center;padding:1.25rem;
-  background:rgba(8,6,3,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  opacity:0;visibility:hidden;transition:opacity .6s var(--e),visibility 0s linear .6s}
-.promo.open{opacity:1;visibility:visible;transition:opacity .6s var(--e),visibility 0s}
-.promo-card{position:relative;width:min(920px,100%);max-height:calc(100svh - 2.5rem);overflow:auto;
-  display:grid;grid-template-columns:1fr 1.15fr;background:var(--bg-2);border:1px solid var(--line);
-  transform:translateY(24px);transition:transform .8s var(--e)}
-.promo.open .promo-card{transform:translateY(0)}
-.promo-img{position:relative;min-height:100%;background:url(li-13.jpg) center/cover}
-.promo-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,13,8,0) 45%,rgba(16,13,8,.85))}
-.promo-img .stamp{position:absolute;left:1.4rem;bottom:1.3rem;z-index:1;font-family:var(--mono);font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ivory-2)}
-.promo-body{padding:clamp(1.6rem,4vw,2.8rem)}
-.promo-x{position:absolute;top:.9rem;right:1rem;z-index:2;width:36px;height:36px;display:grid;place-items:center;font-size:1.4rem;line-height:1;color:var(--ivory-2);background:rgba(16,13,8,.6);border:1px solid var(--line-2);border-radius:50%;transition:color .3s,border-color .3s}
-.promo-x:hover{color:var(--ivory);border-color:var(--line)}
-.promo h2{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:1rem 0 .8rem}
-.promo p.lede{color:var(--muted);font-size:.98rem;margin-bottom:1.5rem}
-.promo-form{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-.promo-form .full{grid-column:1/-1}
-.promo-form label{display:block;font-family:var(--mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-bottom:.35rem}
-.promo-form input{width:100%;font:inherit;font-size:.95rem;color:var(--ivory);background:var(--panel);border:1px solid var(--line-2);border-radius:1px;padding:.8rem .9rem;transition:border-color .3s}
-.promo-form input:focus{outline:none;border-color:var(--brass)}
-.promo-form .btn{justify-content:center;margin-top:.4rem}
-.promo-fine{font-size:.72rem;color:var(--muted-2);margin-top:1rem;line-height:1.5}
-.promo-hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.promo-err{display:none;font-size:.8rem;color:#f0a58a;line-height:1.4}
-.promo-err.show{display:block}
-.promo-form .btn[disabled]{opacity:.6;pointer-events:none}
-.promo-done{display:none;text-align:left}
-.promo.sent .promo-form,.promo.sent .lede,.promo.sent .promo-fine,.promo.sent #promoTitle,.promo.sent .promo-body>.tag{display:none}
-.promo.sent .promo-done{display:block}
-.promo-done p{color:var(--muted);margin:.4rem 0 1.4rem}
-@media(max-width:720px){
-  .promo-card{grid-template-columns:1fr}
-  .promo-img{min-height:110px}
-  .promo-body{padding:1.4rem 1.25rem 1.3rem}
-  .promo h2{font-size:1.75rem;margin:.7rem 0 .5rem}
-  .promo p.lede{font-size:.9rem;line-height:1.5;margin-bottom:1rem}
-  .promo-form{gap:.55rem}
-  .promo-form input{padding:.65rem .75rem}
-  .promo-form .wide{grid-column:1/-1}
-  .promo-fine{margin-top:.7rem}
-}
-</style>
+      <div class="btns">
+        <a class="btn" href="editorial-photography">Editorial Work</a>
+        <a class="btn" href="listing-photography">Listing Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEOPLE -->
+<section class="sec band-cream round-top">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">The people behind every shoot</span>
+      <h2 class="h-lg">Victor <span class="gold">+</span> Caroline</h2>
+      <p>Atlanta Media Co. is owner-run. Victor shoots your listings himself, and Caroline makes sure everything around the shoot runs smoothly.</p>
+    </div>
+    <div class="people">
+      <div class="person rv"><img src="victor.jpg" alt="Victor Huertas"><h3>Victor Huertas</h3><span class="role">Founder &amp; Owner</span><p>Victor learns how you work and what your brand needs, then makes sure every listing reflects it. He's in it with you for the long run, not just one shoot.</p></div>
+      <div class="person rv"><img src="caroline.jpg" alt="Caroline Swiger"><h3>Caroline Swiger</h3><span class="role">Admin &amp; Creative Media Specialist</span><p>Caroline is the friendly voice you'll hear from most. She confirms your shoot, answers your questions, and makes sure your files arrive on time.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Why agents choose us</span>
+      <h2 class="h-lg">Why Atlanta Media Co.?</h2>
+      <p>What you can count on, every shoot.</p>
+    </div>
+    <div class="tiles">
+      <div class="tile rv"><img src="thumbs/li-11.jpg" alt=""><h3>24-Hour Delivery</h3><p>Guaranteed. Most listings land in your inbox by the next morning.</p></div>
+      <div class="tile rv"><img src="thumbs/ed-14.jpg" alt=""><h3>Risk-Free Shoots</h3><p>If something isn't right, we come back and reshoot at no charge within 48 hours.</p></div>
+      <div class="tile rv"><img src="thumbs/li-29.jpg" alt=""><h3>No Contracts</h3><p>Book us when you need us. Reschedule without paying extra.</p></div>
+      <div class="tile rv"><img src="victor.jpg" alt=""><h3>Personal Service</h3><p>You're a partner, not a ticket number. We learn your style and look out for your brand.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="sec" style="background:var(--ink)">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Easy, start to finish</span>
+      <h2 class="h-lg">How It Works</h2>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="n">01</div><h3>You book online</h3><p>Pick your package and time in a few minutes. We confirm and handle the prep.</p></div>
+      <div class="step rv"><div class="n">02</div><h3>We handle the shoot</h3><p>We show up on time and capture every shot your listing needs to sell.</p></div>
+      <div class="step rv"><div class="n">03</div><h3>You go live</h3><p>Edited, ready-to-post media in your inbox, usually by the next morning.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Your next listing</span>
+      <h2 class="h-lg">Make It <em>Unforgettable</em></h2>
+      <p>Booking takes a few minutes. Pick your package and time, and we'll take it from there.</p>
+      <div class="btns" style="margin-top:28px"><a class="btn btn-solid" href="https://order.atlantamediaco.com/order/atlmediaco/media">Book a Shoot</a><a class="btn" href="guarantee">Our Guarantee</a></div>
+    </div>
+    <div class="promises rv">
+      <div class="promise"><b>24-hour delivery</b><span>Guaranteed. Most land by the next morning.</span></div>
+      <div class="promise"><b>No contracts</b><span>Book us when you need us.</span></div>
+      <div class="promise"><b>No cancel fees</b><span>Plans change. Reschedule free.</span></div>
+      <div class="promise"><b>Risk-free</b><span>If something isn't right, we fix it free.</span></div>
+    </div>
+  </div>
+</section>
+
+<script src="/site.js?v=23"></script>
+
+<!-- END-OF-YEAR PROMO POP-UP (Nov 1 - Dec 31) -->
 <div class="promo" id="promo" role="dialog" aria-modal="true" aria-labelledby="promoTitle">
   <div class="promo-card">
     <button class="promo-x" id="promoX" aria-label="Close">&times;</button>
     <div class="promo-img"><span class="stamp">End-of-Year Promotion</span></div>
     <div class="promo-body">
-      <span class="tag">New here?</span>
-      <h2 id="promoTitle">Your first listing, <em>50% off.</em></h2>
+      <span class="eyebrow">New here?</span>
+      <h2 id="promoTitle">Your first listing, <em class="gold">50% off.</em></h2>
       <p class="lede">First time working with us? Sign up and we'll email you a code for 50% off photos or video on your first listing!</p>
       <form class="promo-form" id="promoForm">
         <div><label for="pFirst">First name</label><input id="pFirst" name="first" required autocomplete="given-name" /></div>
@@ -1097,14 +252,14 @@ const SITE = {
         <div class="wide"><label for="pEmail">Email</label><input id="pEmail" name="email" type="email" required autocomplete="email" /></div>
         <div class="full"><label for="pBrok">Brokerage</label><input id="pBrok" name="brokerage" required autocomplete="organization" /></div>
         <input class="promo-hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <button type="submit" class="btn btn-brass full" id="promoBtn">Sign up <span class="ar">&rarr;</span></button>
+        <button type="submit" class="btn btn-solid full" id="promoBtn">Sign up <span>&rarr;</span></button>
         <p class="promo-err full" id="promoErr" role="alert"></p>
       </form>
       <p class="promo-fine">New clients only. One discounted shoot per agent. Sign up by December 31, 2026.</p>
       <div class="promo-done">
-        <h2>Thank you, <em id="promoName">friend</em>.</h2>
+        <h2>Thank you, <em class="gold" id="promoName">friend</em>.</h2>
         <p>Your promo code is on its way to your inbox. We're excited to shoot your first listing together.</p>
-        <button class="btn btn-out" id="promoClose">Back to the site</button>
+        <button class="btn" id="promoClose">Back to the site</button>
       </div>
     </div>
   </div>
@@ -1143,6 +298,5 @@ const SITE = {
   });
 })();
 </script>
-
 </body>
 </html>

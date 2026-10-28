@@ -3,7 +3,7 @@ const SITE = {
   booking: "https://order.atlantamediaco.com/order/atlmediaco/media",
   email: "info@atlantamediaco.com",
   reviewsUrl: "https://maps.google.com/?cid=7793355568307794385",
-  instagram: "#", youtube: "#", linkedin: "#"
+  instagram: "https://www.instagram.com/atlantamediaco/", youtube: "#", linkedin: "#"
 };
 const A = p => p;
 const reels = [

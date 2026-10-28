@@ -244,7 +244,7 @@ a.chip:hover{background:var(--txt);color:var(--ink)}
 .stack-dots{display:flex;justify-content:center;gap:8px;margin-top:4px}
 .stack-dots i{width:6px;height:6px;border-radius:50%;background:var(--line-2);transition:background .3s,transform .3s}
 .stack-dots i.on{background:var(--brass);transform:scale(1.3)}
-@media(max-width:760px){.iphones.stack{--pw:60vw;--shift:46%;padding:0;overflow:hidden}.stack .iphone{scroll-snap-align:none}.stack-wrap .ph-arrow.l{left:8px}.stack-wrap .ph-arrow.r{right:8px}}
+@media(max-width:760px){.iphones.stack{--pw:max(190px,min(60vw,calc((100svh - 230px) / 2.05)));--shift:46%;padding:0;overflow:hidden}.stack .iphone{scroll-snap-align:none}.stack-wrap .ph-arrow.l{left:8px}.stack-wrap .ph-arrow.r{right:8px}}
 .swipe-hint{display:none;text-align:center;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--txt-mute);margin-top:-18px}
 @media(max-width:760px){
   .iphones{justify-content:flex-start;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:18px;padding:24px calc(50vw - 33vw) 40px}

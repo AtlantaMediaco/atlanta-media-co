@@ -210,19 +210,19 @@ a.chip:hover{background:var(--txt);color:var(--ink)}
 
 /* ---------- iPhone reels (3 playing at once) ---------- */
 .iphones{display:flex;justify-content:center;align-items:flex-end;gap:clamp(22px,3.4vw,52px);margin-top:60px;padding:30px var(--pad) 50px}
-.iphone{position:relative;flex:0 0 auto;width:clamp(230px,21vw,292px);aspect-ratio:71.6/146.6;container-type:inline-size;border-radius:17%/8.3%;padding:1.15%;
-  background:linear-gradient(150deg,#6a6762 0%,#3a3835 14%,#232220 42%,#1b1a19 60%,#34322f 84%,#605d58 100%);
-  box-shadow:0 60px 100px -40px rgba(0,0,0,.95),0 24px 50px -24px rgba(0,0,0,.8),inset 0 0 0 1px rgba(255,255,255,.14),inset 0 0 0 2px rgba(0,0,0,.55)}
-.iphone .sb{position:absolute;width:.9%;border-radius:1px;background:linear-gradient(90deg,#26252300,#4c4a46 40%,#5a5853 60%,#2a2927)}
+.iphone{position:relative;flex:0 0 auto;width:clamp(230px,21vw,292px);aspect-ratio:71.6/146.6;container-type:inline-size;border-radius:16.5%/8.05%;padding:.75%;
+  background:linear-gradient(160deg,#4a4946 0%,#252523 18%,#161615 50%,#1f1f1d 82%,#45443f 100%);
+  box-shadow:0 40px 80px -30px rgba(0,0,0,.9),0 0 0 .5px rgba(255,255,255,.22),inset 0 0 0 .5px rgba(255,255,255,.18)}
+.iphone .sb{position:absolute;width:.7%;border-radius:1px;background:linear-gradient(90deg,#1a1a19,#3a3936 50%,#1f1f1e)}
 .iphone .sb.ac{left:-.75%;top:17%;height:4%}
 .iphone .sb.v1{left:-.75%;top:23.5%;height:7%}
 .iphone .sb.v2{left:-.75%;top:32%;height:7%}
 .iphone .sb.pw{right:-.75%;top:26%;height:11%}
-.iphone .bezel{position:relative;height:100%;border-radius:16%/7.8%;background:#000;padding:2.4%}
+.iphone .bezel{position:relative;height:100%;border-radius:15.9%/7.75%;background:#000;padding:1.9%}
 .iphone .scr{position:relative;height:100%;border-radius:13.8%/6.5%;overflow:hidden;background:#0d0d0d;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',sans-serif;color:#fff}
-.iphone .scr iframe{position:absolute;top:50%;left:50%;height:100%;width:123%;transform:translate(-50%,-50%) scale(1.24);border:0;pointer-events:none}
+.iphone .scr iframe{position:absolute;top:50%;left:50%;height:100%;width:auto;max-width:none;aspect-ratio:9/16;transform:translate(-50%,-50%);border:0;pointer-events:none}
 .iphone .scr::before{content:"";position:absolute;left:0;right:0;top:0;height:12%;z-index:3;pointer-events:none;background:linear-gradient(rgba(0,0,0,.35),transparent)}
-.iphone .scr::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,0) 32%)}
+.iphone .scr::after{content:"";position:absolute;inset:0;z-index:6;pointer-events:none;background:linear-gradient(118deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,0) 28%)}
 .iphone .island{position:absolute;top:1.7%;left:50%;transform:translateX(-50%);width:31%;height:3.6%;border-radius:999px;background:#000;z-index:8}
 .iphone .sbar{position:absolute;top:2.2%;left:10.5%;right:8.5%;z-index:7;display:flex;justify-content:space-between;align-items:center;font-size:5.2cqw;font-weight:600;letter-spacing:-.01em}
 .iphone .sbar .ic{display:flex;gap:1.5cqw;align-items:center}
@@ -231,12 +231,12 @@ a.chip:hover{background:var(--txt);color:var(--ink)}
 .stack-cap{text-align:center;margin-top:6px;font-size:.78rem;letter-spacing:.06em;color:var(--txt-mute);min-height:1.4em}
 .stack-cap b{color:var(--txt);font-weight:600}
 /* stacked: one iPhone in front, two behind (tap a side phone or the arrows to rotate) */
-.iphones.stack{--pw:clamp(250px,23vw,310px);--shift:64%;position:relative;display:block;height:calc(var(--pw) * 2.048 + 80px);overflow:hidden;padding:0}
-.stack .iphone{position:absolute;left:50%;top:40px;width:var(--pw);transform:translateX(-50%);transition:transform .8s var(--e),filter .8s var(--e)}
+.iphones.stack{--pw:max(210px,min(clamp(240px,21vw,290px),calc((100svh - 240px) / 2.05)));--shift:60%;position:relative;display:block;height:calc(var(--pw) * 2.048 + 70px);overflow:hidden;padding:0}
+.stack .iphone{position:absolute;left:50%;top:35px;width:var(--pw);transform:translateX(-50%);transition:transform .8s var(--e),filter .8s var(--e)}
 .stack .iphone.pos-c{z-index:3;transform:translateX(-50%)}
-.stack .iphone.pos-l{z-index:2;transform:translateX(calc(-50% - var(--shift))) scale(.84) rotate(-4deg);filter:brightness(.5) saturate(.85);cursor:pointer}
-.stack .iphone.pos-r{z-index:2;transform:translateX(calc(-50% + var(--shift))) scale(.84) rotate(4deg);filter:brightness(.5) saturate(.85);cursor:pointer}
-.stack .iphone.pos-l:hover,.stack .iphone.pos-r:hover{filter:brightness(.7)}
+.stack .iphone.pos-l{z-index:2;transform:translateX(calc(-50% - var(--shift))) scale(.86) rotate(-3deg);filter:brightness(.42);cursor:pointer}
+.stack .iphone.pos-r{z-index:2;transform:translateX(calc(-50% + var(--shift))) scale(.86) rotate(3deg);filter:brightness(.42);cursor:pointer}
+.stack .iphone.pos-l:hover,.stack .iphone.pos-r:hover{filter:brightness(.62)}
 .stack-wrap{position:relative;margin-top:44px}
 .stack-wrap .ph-arrow{z-index:6}
 .stack-wrap .ph-arrow.l{left:max(var(--pad),calc(50% - var(--pw,300px) * 1.55))}

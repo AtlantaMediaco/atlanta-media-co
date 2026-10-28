@@ -7,11 +7,11 @@ const SITE = {
 };
 const A = p => p;
 const reels = [
-  {v:"1220726892?h=99ef95a2b0", t:"$1.2M Estate", p:"Cartersville, GA"},
-  {v:"1220726658?h=82b7152c0a", t:"Modern Farmhouse", p:"Marietta, GA"},
-  {v:"1220726660?h=635c3bccbf", t:"$2.4M Penthouse", p:"Atlanta, GA"},
-  {v:"1220726661?h=e0585fde30", t:"Lakefront Listing", p:"Acworth, GA"},
-  {v:"1220726659?h=17b8637ea1", t:"Agent Brand Reel", p:"Roswell, GA"}
+  {v:"1220726892?h=99ef95a2b0", t:"Listing Reel", p:"Canton, GA"},
+  {v:"1220726658?h=82b7152c0a", t:"Listing Reel", p:"Dallas, GA"},
+  {v:"1220726660?h=635c3bccbf", t:"Listing Reel", p:"Newnan, GA"},
+  {v:"1220726661?h=e0585fde30", t:"Listing Reel", p:"Fayetteville, GA"},
+  {v:"1220726659?h=17b8637ea1", t:"Listing Reel", p:"Ball Ground, GA"}
 ];
 
 (function(){
